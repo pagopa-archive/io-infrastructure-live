@@ -7,7 +7,7 @@ terragrunt = {
       resource_group_name  = "${get_env("RG_NAME", "io-infra")}"
       storage_account_name = "${get_env("TERRAFORM_STORAGE_ACCOUNT_NAME", "iotf")}"
       container_name       = "${get_env("TERRAFORM_CONTAINER_NAME", "io-tf")}"
-      key = "development/${path_relative_to_include()}/terraform.tfstate"
+      key                  = "development/${path_relative_to_include()}/terraform.tfstate"
     }
   }
 
