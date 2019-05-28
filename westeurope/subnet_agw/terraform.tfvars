@@ -18,6 +18,6 @@ terragrunt = {
 # Azure subnet module variables
 vnet_name                      = "common"
 subnet_name                    = "agw"
-azurerm_subnet_address_prefix  = "172.16.33.0/24"
+azurerm_subnet_address_prefix  = "172.16.49.0/24"
 add_security_group             = true
 azurerm_network_security_rules = []
