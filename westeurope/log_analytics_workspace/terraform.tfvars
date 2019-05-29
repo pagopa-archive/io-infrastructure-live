@@ -19,4 +19,5 @@ terragrunt = {
 }
 
 # Log workspace analytics module variables
-log_analytics_workspace_name = "log-analytics-workspace"
+log_analytics_workspace_name                      = "log-analytics-workspace"
+azurerm_log_analytics_workspace_retention_in_days = 30
