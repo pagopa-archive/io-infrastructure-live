@@ -1,7 +1,8 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../resource_group"
+      "../resource_group",
+      "../cosmosdb_account"
     ]
   }
 
