@@ -7,7 +7,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git = =git@github.com =teamdigitale/io-infrastructure-modules.git//azurerm_cosmosdb_collections"
+    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_cosmosdb_container"
   }
 
   # Include all settings from the root terraform.tfvars file
