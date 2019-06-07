@@ -17,4 +17,4 @@ terragrunt = {
 
 # Storage account module related variables
 storage_account_name_suffix = "appdata"
-storage_queue_name          = "profileevents" 
+storage_queue_name          = "profileevents"
