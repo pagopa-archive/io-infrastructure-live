@@ -3,7 +3,7 @@ terragrunt = {
     paths = [
       "../resource_group",
       "../cosmosdb_account",
-      "../cosmosdb_sql_database",
+      "../azurerm_cosmosdb_sql_database",
     ]
   }
 
