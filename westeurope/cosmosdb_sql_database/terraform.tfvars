@@ -1,13 +1,12 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../resource_group",
       "../cosmosdb_account",
     ]
   }
 
   terraform {
-    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_cosmosdb_container"
+    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_cosmosdb_sql_database"
   }
 
   # Include all settings from the root terraform.tfvars file
