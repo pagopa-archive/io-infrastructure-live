@@ -1,10 +1,6 @@
 terragrunt = {
   dependencies {
-    paths = [
-      "../resource_group",
-      "../cosmosdb_account",
-      "../azurerm_cosmosdb_sql_database",
-    ]
+    paths = ["../azurerm_cosmosdb_sql_database"]
   }
 
   terraform {
@@ -23,14 +19,3 @@ cosmosdb_account_name = "apim"
 container_name = "messages"
 
 partitionKey_paths = ["/fiscalCode"]
-
-# azurerm_cosmosdb_collections = {
-#     messages = "fiscalCode"
-#     profiles = "fiscalCode"
-#     notifications = "messageId"
-#     notification-status = "notificationId"
-#     message-status = "messageId"
-#     services = "serviceId"
-#     sender-services = "recipientFiscalCode"
-#   }
-
