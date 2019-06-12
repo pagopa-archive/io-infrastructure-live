@@ -19,3 +19,20 @@ cosmosdb_account_name = "apim"
 container_name = "services"
 
 partitionKey_paths = ["/serviceId"]
+
+includedPaths = [{
+  path = "/*"
+
+  indexes = [
+    {
+      kind      = "Range"
+      dataType  = "Number"
+      precision = -1
+    },
+    {
+      kind      = "Hash"
+      dataType  = "String"
+      precision = 3
+    },
+  ]
+}]
