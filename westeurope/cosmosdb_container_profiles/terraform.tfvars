@@ -19,3 +19,20 @@ cosmosdb_account_name = "apim"
 container_name = "profiles"
 
 partitionKey_paths = ["/fiscalCode"]
+
+includedPaths = [{
+  path = "/*"
+
+  indexes = [
+    {
+      kind      = "Range"
+      dataType  = "Number"
+      precision = -1
+    },
+    {
+      kind      = "Hash"
+      dataType  = "String"
+      precision = 3
+    },
+  ]
+}]
