@@ -18,4 +18,4 @@ terragrunt = {
 # Storage container module related variables
 azurerm_storage_account_name_suffix = "appdata"
 
-azurerm_storage_container_name = "message-content "
+azurerm_storage_container_name = "message-content"
