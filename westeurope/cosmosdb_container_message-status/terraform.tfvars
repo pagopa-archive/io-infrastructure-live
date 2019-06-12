@@ -19,3 +19,24 @@ cosmosdb_account_name = "apim"
 container_name = "message-status"
 
 partitionKey_paths = ["/messageId"]
+
+includedPaths = [{
+  path = "/*"
+
+  indexes = [
+    {
+      kind      = "Range"
+      dataType  = "Number"
+      precision = -1
+    },
+    {
+      kind      = "Range"
+      dataType  = "String"
+      precision = -1
+    },
+    {
+      kind     = "Spatial"
+      dataType = "Point"
+    },
+  ]
+}]

@@ -19,3 +19,24 @@ cosmosdb_account_name = "apim"
 container_name = "notification-status"
 
 partitionKey_paths = ["/notificationId"]
+
+includedPaths = [{
+  path = "/*"
+
+  indexes = [
+    {
+      kind      = "Range"
+      dataType  = "Number"
+      precision = -1
+    },
+    {
+      kind      = "Range"
+      dataType  = "String"
+      precision = -1
+    },
+    {
+      kind     = "Spatial"
+      dataType = "Point"
+    },
+  ]
+}]

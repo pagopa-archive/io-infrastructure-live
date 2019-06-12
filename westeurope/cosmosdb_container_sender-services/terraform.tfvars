@@ -19,3 +19,24 @@ cosmosdb_account_name = "apim"
 container_name = "sender-services"
 
 partitionKey_paths = ["/recipientFiscalCode"]
+
+includedPaths = [{
+  path = "/*"
+
+  indexes = [
+    {
+      kind      = "Range"
+      dataType  = "number"
+      precision = -1
+    },
+    {
+      kind      = "Range"
+      dataType  = "string"
+      precision = -1
+    },
+    {
+      kind     = "Spatial"
+      dataType = "Point"
+    },
+  ]
+}]
