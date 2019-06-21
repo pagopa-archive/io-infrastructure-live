@@ -21,3 +21,4 @@ subnet_name                   = "functions"
 azurerm_subnet_address_prefix = "172.16.51.0/24"
 add_security_group             = true
 azurerm_network_security_rules = []
+azurerm_subnet_service_endpoints = ["Microsoft.Storage"]
