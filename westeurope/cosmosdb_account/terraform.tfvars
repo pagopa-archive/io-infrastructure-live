@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../resource_group"
+      "../resource_group",
     ]
   }
 
@@ -16,12 +16,14 @@ terragrunt = {
 }
 
 # CosmosDB account specific variables
-cosmosdb_account_name                        = "apim"
-azurerm_cosmosdb_account_offer_type          = "Standard"
-azurerm_cosmosdb_account_kind                = "GlobalDocumentDB"
+cosmosdb_account_name = "apim"
 
-azurerm_cosmosdb_account_consistency_policy  = {
-    consistency_level = "Session"
+azurerm_cosmosdb_account_offer_type = "Standard"
+
+azurerm_cosmosdb_account_kind = "GlobalDocumentDB"
+
+azurerm_cosmosdb_account_consistency_policy = {
+  consistency_level = "Session"
 }
 
 # TODO: extract environment variables (dev / prod)
@@ -36,3 +38,9 @@ azurerm_cosmosdb_account_geo_location_slave = {
   failover_priority = 1
   prefix            = "io-dev-cosmosdb-apim-slave"
 }
+
+azurerm_cosmosdb_account_virtual_network_filter_enabled = true
+
+# TODO: create arbitrary number of virtual_network_rule with terraform 0.12
+vnet_name   = "common"
+subnet_name = "functions"
