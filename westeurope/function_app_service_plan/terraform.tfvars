@@ -16,8 +16,10 @@ terragrunt = {
 }
 
 # App service plan module related variables
-azurerm_app_service_plan_sku_tier = "Premium"
+azurerm_app_service_plan_sku_tier = "Isolated"
 
-azurerm_app_service_plan_sku_size = "P1v2"
+azurerm_app_service_plan_sku_size = "I1"
 
-azurerm_app_service_plan_suffix   = "function-app"
+#azurerm_app_service_plan_sku_capacity = "2"
+
+azurerm_app_service_plan_suffix = "function-app"
