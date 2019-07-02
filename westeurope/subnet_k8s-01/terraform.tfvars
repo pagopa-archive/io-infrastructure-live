@@ -19,5 +19,5 @@ terragrunt = {
 vnet_name                     = "common"
 subnet_name                   = "k8s-01"
 azurerm_subnet_address_prefix = "172.16.0.0/20"
-add_security_group             = true
+add_security_group             = false
 azurerm_network_security_rules = []
