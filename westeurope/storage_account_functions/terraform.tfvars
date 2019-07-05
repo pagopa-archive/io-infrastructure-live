@@ -2,6 +2,8 @@ terragrunt = {
   dependencies {
     paths = [
       "../resource_group",
+      "../vnet_common",
+      "../subnet_functions",
     ]
   }
 

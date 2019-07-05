@@ -7,6 +7,7 @@ terragrunt = {
       "../subnet_k8s_01",
       "../cosmosdb_sql_database",
       "../subnet_functions",
+      "../storage_account_functions",
     ]
   }
 
@@ -37,10 +38,6 @@ connectionStrings = [
 
 appSettings = [
   {
-    # {
-    #   Name  = "AzureWebJobsStorage"
-    #   Alias = "azurewebjobsstorage"
-    # },
     Name = "AzureWebJobsSecretStorageType"
 
     Alias = "azurewebjobssecretstoragetype"
