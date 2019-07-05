@@ -27,7 +27,6 @@ subnet_name = "functions"
 
 plan_name = "premium-plan"
 
-storage_account_name = "functions"
 
 azurerm_functionapp_git_repo = "https://github.com/teamdigitale/digital-citizenship-functions"
 
