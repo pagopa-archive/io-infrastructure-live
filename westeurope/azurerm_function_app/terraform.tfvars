@@ -37,10 +37,6 @@ connectionStrings = [
 
 appSettings = [
   {
-    # {
-    #   Name  = "AzureWebJobsStorage"
-    #   Alias = "azurewebjobsstorage"
-    # },
     Name = "AzureWebJobsSecretStorageType"
 
     Alias = "azurewebjobssecretstoragetype"

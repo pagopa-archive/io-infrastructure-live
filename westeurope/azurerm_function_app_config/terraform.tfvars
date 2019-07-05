@@ -19,14 +19,12 @@ terragrunt = {
 }
 
 # Function App module variables
-# log_analytics_workspace_name = "log-analytics-workspace"
 
 vnet_name = "common"
 
 subnet_name = "functions"
 
 plan_name = "premium-plan"
-
 
 azurerm_functionapp_git_repo = "https://github.com/teamdigitale/digital-citizenship-functions"
 
