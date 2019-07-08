@@ -22,10 +22,14 @@ terragrunt = {
 }
 
 plan_name                      = "premium-plan"
-storage_account_name           = "functions"
+storage_account_name           = "fn01"
 functionapp_name               = "1-01"
 
 functionapp_settings           = [
+  {
+    name  = "AzureWebJobsSecretStorageType"
+    value = "disabled"
+  }
   {
     name  = "COSMOSDB_NAME"
     value = "io-documentdb-dev"
@@ -73,10 +77,6 @@ functionapp_settings           = [
 ]
 
 functionapp_settings_secrets   = [
-  {
-    name        = "AzureWebJobsSecretStorageType"
-    vault_alias = "fn-1-01-azurewebjobssecretstoragetype"
-  },
   {
     name        = "MAILUP_USERNAME"
     vault_alias = "fn-1-01-mailup-username"
