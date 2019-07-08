@@ -75,41 +75,41 @@ functionapp_settings           = [
 functionapp_settings_secrets   = [
   {
     name        = "AzureWebJobsSecretStorageType"
-    vault_alias = "azurewebjobssecretstoragetype"
+    vault_alias = "fn-1-01-azurewebjobssecretstoragetype"
   },
   {
     name        = "MAILUP_USERNAME"
-    vault_alias = "mailup-username"
+    vault_alias = "fn-1-01-mailup-username"
   },
   {
     name        = "MAILUP_SECRET"
-    vault_alias = "mailup-secret"
+    vault_alias = "fn-1-01-mailup-secret"
   },
   {
     name        = "PUBLIC_API_KEY"
-    vault_alias = "public-api-key"
+    vault_alias = "fn-1-01-public-api-key"
   },
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
-    vault_alias = "appinsights-instrumentationkey"
+    vault_alias = "fn-1-01-appinsights-instrumentationkey"
   },
   {
     name        = "QueueStorageConnection"
-    vault_alias = "queuestorageconnection"
+    vault_alias = "fn-1-01-queuestorageconnection"
   },
   {
     name        = "WEBHOOK_CHANNEL_URL"
-    vault_alias = "webhook-channel-url"
+    vault_alias = "fn-1-01-webhook-channel-url"
   }
 ]
 
 functionapp_connection_strings = [
   {
     name        = "COSMOSDB_KEY"
-    vault_alias = "cosmosdb-key"
+    vault_alias = "fn-1-01-cosmosdb-key"
   },
   {
     name        = "COSMOSDB_URI"
-    vault_alias = "cosmosdb-uri"
+    vault_alias = "fn-1-01-cosmosdb-uri"
   }
 ]
