@@ -7,7 +7,7 @@ terragrunt = {
       "../subnet_k8s_01",
       "../cosmosdb_sql_database",
       "../subnet_functions",
-      "../storage_account_functions",
+      "../storage_account_functions"
     ]
   }
 
@@ -21,93 +21,97 @@ terragrunt = {
   }
 }
 
-plan_name = "premium-plan"
+plan_name                      = "premium-plan"
 
-storage_account_name = "functions"
+storage_account_name           = "functions"
 
-connectionStrings = [
+functionapp_name               = "1-01"
+
+functionapp_settings           = [
   {
-    Name  = "COSMOSDB_KEY"
-    Alias = "cosmosdb-key"
+    name  = "COSMOSDB_NAME"
+    value = "io-documentdb-dev"
   },
   {
-    Name  = "COSMOSDB_URI"
-    Alias = "cosmosdb-uri"
+    name  = "DIAGNOSTICS_AZUREBLOBRETENTIONINDAYS"
+    value = 1
   },
+  {
+    name  = "FUNCTION_APP_EDIT_MODE"
+    value = "readonly"
+  },
+  {
+    name  = "FUNCTIONS_EXTENSION_VERSION"
+    value = "~1"
+  },
+  {
+    name  = "FUNCTIONS_WORKER_RUNTIME"
+    value = "node"
+  },
+  {
+    name  = "MAIL_FROM_DEFAULT"
+    value = "IO - l'app dei servizi pubblici <no-reply@io.italia.it>"
+  },
+  {
+    name  = "MESSAGE_CONTAINER_NAME"
+    value = "message-content"
+  },
+  {
+    name  = "PUBLIC_API_URL"
+    value = "https://api.cd.italia.it/"
+  },
+  {
+    name  = "SCM_USE_FUNCPACK_BUILD"
+    value = 1
+  },
+  {
+    name  = "WEBSITE_HTTPLOGGING_RETENTION_DAYS"
+    value = 30
+  },
+  {
+    name  = "WEBSITE_NODE_DEFAULT_VERSION"
+    value = "6.11.2"
+  }
 ]
 
-appSettings = [
+functionapp_settings_secrets   = [
   {
-    Name = "AzureWebJobsSecretStorageType"
+    name        = "AzureWebJobsSecretStorageType"
+    vault_alias = "azurewebjobssecretstoragetype"
+  },
+  {
+    name        = "MAILUP_USERNAME"
+    vault_alias = "mailup-username"
+  },
+  {
+    name        = "MAILUP_SECRET"
+    vault_alias = "mailup-secret"
+  },
+  {
+    name        = "PUBLIC_API_KEY"
+    vault_alias = "public-api-key"
+  },
+  {
+    name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
+    vault_alias = "appinsights-instrumentationkey"
+  },
+  {
+    name        = "QueueStorageConnection"
+    vault_alias = "queuestorageconnection"
+  },
+  {
+    name        = "WEBHOOK_CHANNEL_URL"
+    vault_alias = "webhook-channel-url"
+  }
+]
 
-    Alias = "azurewebjobssecretstoragetype"
+functionapp_connection_strings = [
+  {
+    name        = "COSMOSDB_KEY"
+    vault_alias = "cosmosdb-key"
   },
   {
-    Name  = "MAIL_FROM_DEFAULT"
-    Alias = "mail-from-default"
-  },
-  {
-    Name  = "MAILUP_SECRET"
-    Alias = "mailup-secret"
-  },
-  {
-    Name  = "MAILUP_USERNAME"
-    Alias = "mailup-username"
-  },
-  {
-    Name  = "MESSAGE_CONTAINER_NAME"
-    Alias = "message-container-name"
-  },
-  {
-    Name  = "PUBLIC_API_KEY"
-    Alias = "public-api-key"
-  },
-  {
-    Name  = "PUBLIC_API_URL"
-    Alias = "public-api-url"
-  },
-  {
-    Name  = "COSMOSDB_NAME"
-    Alias = "cosmosdb-name"
-  },
-  {
-    Name  = "APPINSIGHTS_INSTRUMENTATIONKEY"
-    Alias = "appinsights-instrumentationkey"
-  },
-  {
-    Name  = "QueueStorageConnection"
-    Alias = "queuestorageconnection"
-  },
-  {
-    Name  = "WEBHOOK_CHANNEL_URL"
-    Alias = "webhook-channel-url"
-  },
-  {
-    Name  = "WEBSITE_HTTPLOGGING_RETENTION_DAYS"
-    Alias = "website-httplogging-retention-days"
-  },
-  {
-    Name  = "FUNCTION_APP_EDIT_MODE"
-    Alias = "function-app-edit-mode"
-  },
-  {
-    Name  = "SCM_USE_FUNCPACK_BUILD"
-    Alias = "scm-use-funcpack-build"
-  },
-  {
-    Name  = "DIAGNOSTICS_AZUREBLOBRETENTIONINDAYS"
-    Alias = "diagnostics-azureblobretentionindays"
-  },
-  {
-    Name  = "FUNCTIONS_EXTENSION_VERSION"
-    Alias = "functions-extension-version"
-  },
-  {
-    Name  = "FUNCTIONS_WORKER_RUNTIME"
-    Alias = "functions-worker-runtime"
-  },
-  {
-    Name  = "WEBSITE_NODE_DEFAULT_VERSION"
-    Alias = "website-node-default-version"
-  },
+    name        = "COSMOSDB_URI"
+    vault_alias = "cosmosdb-uri"
+  }
 ]
