@@ -22,9 +22,7 @@ terragrunt = {
 }
 
 plan_name                      = "premium-plan"
-
 storage_account_name           = "functions"
-
 functionapp_name               = "1-01"
 
 functionapp_settings           = [

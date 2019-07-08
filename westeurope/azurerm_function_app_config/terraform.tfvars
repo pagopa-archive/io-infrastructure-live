@@ -18,16 +18,10 @@ terragrunt = {
   }
 }
 
-# Function App module variables
-
-vnet_name = "common"
-
-subnet_name = "functions"
-
-plan_name = "premium-plan"
-
-azurerm_functionapp_git_repo = "https://github.com/teamdigitale/digital-citizenship-functions"
-
+# Function app config module variables
+functionapp_name               = "1-01"
+vnet_name                      = "common"
+subnet_name                    = "functions"
+azurerm_functionapp_git_repo   = "https://github.com/teamdigitale/digital-citizenship-functions"
 azurerm_functionapp_git_branch = "funcpack-release-latest"
-
-azurerm_key_vault_tenant_id = "cb44f084-ca44-4753-8973-dd3045d9ad2b"
+storage_account_name           = "functions"
