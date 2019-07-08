@@ -4,7 +4,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../azurerm_function_app",
+      "../function_app_fn101",
     ]
   }
 
@@ -24,4 +24,4 @@ vnet_name                      = "common"
 subnet_name                    = "functions"
 azurerm_functionapp_git_repo   = "https://github.com/teamdigitale/digital-citizenship-functions"
 azurerm_functionapp_git_branch = "funcpack-release-latest"
-storage_account_name           = "functions"
+storage_account_name           = "fn101"

@@ -22,14 +22,14 @@ terragrunt = {
 }
 
 plan_name                      = "premium-plan"
-storage_account_name           = "fn01"
+storage_account_name           = "fn101"
 functionapp_name               = "1-01"
 
 functionapp_settings           = [
   {
     name  = "AzureWebJobsSecretStorageType"
     value = "disabled"
-  }
+  },
   {
     name  = "COSMOSDB_NAME"
     value = "io-documentdb-dev"
@@ -79,37 +79,37 @@ functionapp_settings           = [
 functionapp_settings_secrets   = [
   {
     name        = "MAILUP_USERNAME"
-    vault_alias = "fn-1-01-mailup-username"
+    vault_alias = "fn101MailupUsername"
   },
   {
     name        = "MAILUP_SECRET"
-    vault_alias = "fn-1-01-mailup-secret"
+    vault_alias = "fn101MailupSecret"
   },
   {
     name        = "PUBLIC_API_KEY"
-    vault_alias = "fn-1-01-public-api-key"
+    vault_alias = "fn101PublicApiKey"
   },
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
-    vault_alias = "fn-1-01-appinsights-instrumentationkey"
+    vault_alias = "fn101AppInsightsInstrumentationKey"
   },
   {
     name        = "QueueStorageConnection"
-    vault_alias = "fn-1-01-queuestorageconnection"
+    vault_alias = "fn101QueueStorageConnection"
   },
   {
     name        = "WEBHOOK_CHANNEL_URL"
-    vault_alias = "fn-1-01-webhook-channel-url"
+    vault_alias = "fn101WebhookChannelUrl"
   }
 ]
 
 functionapp_connection_strings = [
   {
     name        = "COSMOSDB_KEY"
-    vault_alias = "fn-1-01-cosmosdb-key"
+    vault_alias = "fn101CosmosdbKey"
   },
   {
     name        = "COSMOSDB_URI"
-    vault_alias = "fn-1-01-cosmosdb-uri"
+    vault_alias = "fn101CosmosdbUri"
   }
 ]
