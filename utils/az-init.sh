@@ -63,3 +63,24 @@ run_cmd az storage container create --name $TERRAFORM_CONTAINER_NAME\
 run_cmd az keyvault secret set --name ${TERRAFORM_VAULT_KEY_STORAGE_ACCOUNT}\
   --vault-name ${VAULT_NAME}\
   --value ${TERRAFORM_ACCOUNT_KEY}
+
+### Packer specific
+
+# Create an application, a service profile and assign a Contributor role for Packer
+# to let it build images. Then, save the service profile client secret in the vault.
+PACKER_SP_SECRET=$(generate_random_pwd)
+
+PACKER_SP_ID=$(az ad sp list --display-name ${PACKER_SP_NAME} --query '[0].{"id":"appId"}' -o tsv)
+
+if [ -z "$PACKER_SP_ID" ]
+then
+  run_cmd az ad sp create-for-rbac --name ${PACKER_SP_NAME}\
+    --password ${PACKER_SP_SECRET}
+else
+  run_cmd az ad sp credential reset --name ${PACKER_SP_NAME}\
+    --password ${PACKER_SP_SECRET}
+fi
+
+run_cmd az keyvault secret set --name ${PACKER_VAULT_KEY}\
+  --vault-name ${VAULT_NAME}\
+  --value ${PACKER_SP_SECRET}
