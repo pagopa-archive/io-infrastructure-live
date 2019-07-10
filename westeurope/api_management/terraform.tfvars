@@ -91,3 +91,14 @@ apim_groups = [
     display_name = "ApiServiceWrite"
   },
 ]
+
+apim_products = [
+  {
+    id                  = "io-dev-apim-prod-01"
+    display_name        = "Digital Citizenship (alpha)"
+    description         = "Subscribers will be able to integrate with the alpha version Digital Citizenship API"
+    subscriptions_limit = "100"
+  },
+]
+
+backendUrl = "https://dev-functions-test.azurewebsites.net"
