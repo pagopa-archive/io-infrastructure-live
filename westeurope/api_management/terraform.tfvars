@@ -32,3 +32,62 @@ notification_sender_email = "io-dev@agid.gov.it"
 sku_name = "Developer"
 
 ADB2C_TENANT_ID = "cb44f084-ca44-4753-8973-dd3045d9ad2b"
+
+apim_groups = [
+  {
+    name = "ApiAdmin"
+  },
+  {
+    name = "ApiDebugRead"
+  },
+  {
+    name = "ApiFullProfileRead"
+  },
+  {
+    name = "ApiInfoRead"
+  },
+  {
+    name         = "apilimitedmessagewrite"
+    display_name = "ApiLimitedMessageWrite"
+  },
+  {
+    name = "ApiLimitedProfileRead"
+  },
+  {
+    name = "ApiMessageList"
+  },
+  {
+    name = "ApiMessageRead"
+  },
+  {
+    name = "ApiMessageWrite"
+  },
+  {
+    name        = "ApiMessageWriteDefaultAddress"
+    description = "messages: ability to set default address when sending a message"
+  },
+  {
+    name        = "ApiMessageWriteDryRun"
+    description = "messages: send messages in dry run mode"
+  },
+  {
+    name = "ApiProfileWrite"
+  },
+  {
+    name = "ApiPublicServiceList"
+  },
+  {
+    name = "ApiPublicServiceRead"
+  },
+  {
+    name = "ApiServiceByRecipientQuery"
+  },
+  {
+    name         = "apiserviceread"
+    display_name = "ApiServiceRead"
+  },
+  {
+    name         = "apiservicewrite"
+    display_name = "ApiServiceWrite"
+  },
+]
