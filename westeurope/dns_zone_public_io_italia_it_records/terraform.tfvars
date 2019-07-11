@@ -17,15 +17,17 @@ terragrunt = {
 }
 
 # Azure DNS zone records module variables
-dns_zone_suffix          = "io.italia.it"
+dns_zone_suffix                = "io.italia.it"
 
-azurerm_public_ip_name   = "k8s-01"
+kubernetes_public_ip_name      = "k8s-01"
+kubernetes_resource_group_name = "MC_io-dev-rg_io-dev-aks-k8s-01_westeurope"
+aks_cluster_name               = "k8s-01"
+kubernetes_cname_records       = []
 
-aks_cluster_name         = "k8s-01"
+vpn_dev_host_name              = "vpn-srv-01.dev"
+vpn_dev_public_ip_name         = "vpn-01"
 
-kubernetes_cname_records = []
-
-developers_cname_records = [
+developers_cname_records       = [
   {
     name  = "developer"
     value = "teamdigitale.github.io"
@@ -36,18 +38,18 @@ developers_cname_records = [
   }
 ]
 
-mailgun_cname_record     = {
+mailgun_cname_record           = {
   name  = "email"
   value = "mailgun.org"
 }
 
-mailgun_mx_record        = {
+mailgun_mx_record              = {
   name    = "@"
   value_a = "mxa.mailgun.org"
   value_b = "mxb.mailgun.org"
 }
 
-mailup_txt_records       = [
+mailup_txt_records             = [
   {
     name  = "@"
     value = "v=spf1 include:musvc.com ~all"
@@ -58,7 +60,7 @@ mailup_txt_records       = [
   }
 ]
 
-mailup_cname_records     = [
+mailup_cname_records           = [
   {
     name  = "ml01._domainkey"
     value = "ml01.dkim.musvc.com."
