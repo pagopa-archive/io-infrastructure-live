@@ -48,7 +48,7 @@ azurerm_network_security_rules                                = [
     destination_address_prefix = "*"
   },
   {
-    name                       = "AllowSshInBound"
+    name                       = "AllowHttpsInBound"
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
