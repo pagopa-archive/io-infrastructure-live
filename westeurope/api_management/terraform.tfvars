@@ -143,7 +143,7 @@ apim_apis = [
     revision     = "1"
     path         = ""
 
-    # protocols    = ["https"]
+    protocols = "https"
   },
   {
     name         = "digital-citizenship-api"
@@ -152,7 +152,7 @@ apim_apis = [
     revision     = "3"
     path         = "api/v1"
 
-    # protocols    = ["https"]
+    protocols = "https"
   },
 ]
 
