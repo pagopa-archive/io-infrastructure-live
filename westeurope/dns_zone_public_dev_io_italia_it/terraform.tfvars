@@ -19,4 +19,4 @@ terragrunt = {
 dns_zone_suffix            = "io.italia.it"
 azurerm_dns_zone_zone_type = "Public"
 dns_reverse_zone           = false
-add_environment            = false
+add_environment            = true
