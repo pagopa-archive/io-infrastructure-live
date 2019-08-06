@@ -7,6 +7,9 @@
 #
 # teamdigitale.governo.it
 
+set -e
+set -u
+
 if [ ! -f .env ]; then
   echo """
   ERROR:
