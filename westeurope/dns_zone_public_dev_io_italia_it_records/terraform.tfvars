@@ -24,7 +24,7 @@ kubernetes_public_ip_name      = "k8s-01"
 kubernetes_resource_group_name = "MC_io-dev-rg_io-dev-aks-k8s-01_westeurope"
 aks_cluster_name               = "k8s-01"
 kubernetes_cname_records       = [
-  "pa-onboarding"
+  "api.pa-onboarding"
 ]
 
 # Kubernetes specific variables end
