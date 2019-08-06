@@ -7,10 +7,6 @@
 # 
 # teamdigitale.governo.it
 
-set -o pipefail
-set -o nounset
-# set -o xtrace
-
 if [ ! -f .env ]; then
   echo """
   ERROR:
@@ -20,15 +16,13 @@ if [ ! -f .env ]; then
   exit -1
 fi
 
+# shellcheck disable=SC1091
 source .env
-
-function generate_random_pwd() {
-  echo $(LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_{|}~' </dev/urandom | head -c 20)
-}
 
 # Set account subscription
 run_cmd az account set -s ${SUBSCRIPTION}
 
+# Create resource group
 run_cmd az group create --location ${LOCATION}\
   --subscription ${SUBSCRIPTION}\
   --name ${RG_NAME}
@@ -39,11 +33,7 @@ run_cmd az keyvault create --name ${VAULT_NAME}\
   --location ${LOCATION}\
   --output none
 
-az keyvault secret show --name ${DEFAULT_SSH_PRIVATE_KEY_VAULT_KEY}\
-  --vault-name ${VAULT_NAME} > /dev/null 2>&1)
-last_result=$(echo $?)
-
-### Terraform specific
+# Terraform specific
 
 # Create storage account to store the Terraform states and save
 # the secret in the vault
@@ -56,31 +46,12 @@ TERRAFORM_ACCOUNT_KEY=$(az storage account keys list --resource-group ${RG_NAME}
   --account-name ${TERRAFORM_STORAGE_ACCOUNT_NAME}\
   --query [0].value -o tsv)
 
+# Create storage container
 run_cmd az storage container create --name $TERRAFORM_CONTAINER_NAME\
   --account-name ${TERRAFORM_STORAGE_ACCOUNT_NAME}\
   --account-key ${TERRAFORM_ACCOUNT_KEY}
 
+# Save account key for storage account
 run_cmd az keyvault secret set --name ${TERRAFORM_VAULT_KEY_STORAGE_ACCOUNT}\
   --vault-name ${VAULT_NAME}\
   --value ${TERRAFORM_ACCOUNT_KEY}
-
-### Packer specific
-
-# Create an application, a service profile and assign a Contributor role for Packer
-# to let it build images. Then, save the service profile client secret in the vault.
-PACKER_SP_SECRET=$(generate_random_pwd)
-
-PACKER_SP_ID=$(az ad sp list --display-name ${PACKER_SP_NAME} --query '[0].{"id":"appId"}' -o tsv)
-
-if [ -z "$PACKER_SP_ID" ]
-then
-  run_cmd az ad sp create-for-rbac --name ${PACKER_SP_NAME}\
-    --password ${PACKER_SP_SECRET}
-else
-  run_cmd az ad sp credential reset --name ${PACKER_SP_NAME}\
-    --password ${PACKER_SP_SECRET}
-fi
-
-run_cmd az keyvault secret set --name ${PACKER_VAULT_KEY}\
-  --vault-name ${VAULT_NAME}\
-  --value ${PACKER_SP_SECRET}
