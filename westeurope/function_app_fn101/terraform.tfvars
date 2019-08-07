@@ -21,7 +21,7 @@ terragrunt = {
   }
 }
 
-plan_name                      = "premium-plan"
+plan_name                      = "functions-01"
 storage_account_name           = "fn101"
 functionapp_name               = "1-01"
 
