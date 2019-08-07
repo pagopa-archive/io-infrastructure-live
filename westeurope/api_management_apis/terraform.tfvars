@@ -39,7 +39,6 @@ apim_apis = [
   },
 ]
 
-
 apim_api_operations = [
   {
     api_name     = "digital-citizenship-admin"
@@ -50,38 +49,99 @@ apim_api_operations = [
 
     description = "This can only be done by the logged in user."
 
-    templateParameters = []
+    # templateParameters = []
 
-    request  = []
-    response = []
+
+    # request  = []
+    # response = []
 
     xml_content = <<XML
-<!--
-    IMPORTANT:
-    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
-    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
-    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
-    - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.
-    - To remove a policy, delete the corresponding policy statement from the policy document.
-    - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.
-    - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.
-    - Policies are applied in the order of their appearance, from the top down.
-    - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
--->
 <policies>
     <inbound>
+        <set-backend-service id="apim-generated-policy" base-url="{{backendUrl}}" />
         <base />
+        <set-header name="x-user-id" exists-action="override">
+            <value>@(context.User.Id)</value>
+        </set-header>
+        <set-header name="x-user-groups" exists-action="override">
+            <value>@(String.Join(",", context.User.Groups.Select(g => g.Name)))</value>
+        </set-header>
+        <set-header name="x-subscription-id" exists-action="override">
+            <value>@(context.Subscription.Id)</value>
+        </set-header>
+        <set-header name="x-user-email" exists-action="override">
+            <value>@(context.User.Email)</value>
+        </set-header>
+        <set-header name="x-user-note" exists-action="override">
+            <value>@(Uri.EscapeUriString(context.User.Note != null ? context.User.Note : ""))</value>
+        </set-header>
+        <set-header name="x-functions-key" exists-action="override">
+            <value>{{code}}</value>
+        </set-header>
     </inbound>
-    <backend>
-        <base />
-    </backend>
     <outbound>
         <base />
     </outbound>
+    <backend>
+        <base />
+        <!--              { "azureResource": { "type": "funcapp", "id": "/subscriptions/b77298e2-ddab-4f40-850c-cdc71fdce6d8/resourceGroups/teamdigitale/providers/Microsoft.Web/sites/test-danilo" } }              -->
+    </backend>
     <on-error>
         <base />
     </on-error>
 </policies>
 XML
+  },
+  {
+    api_name     = "digital-citizenship-admin"
+    operation_id = "debug"
+    display_name = "debug"
+    method       = "GET"
+    url_template = "/adm/debug"
+
+    description = "This can only be done by the logged in user."
+
+    # templateParameters = []
+
+    # request  = []
+    # response = []
+  },
+  {
+    api_name     = "digital-citizenship-admin"
+    operation_id = "getService"
+    display_name = "getService"
+    method       = "GET"
+    url_template = "/adm/services/{serviceId}"
+
+    description = "---"
+
+    # template_parameter = "{\"name\": \"serviceId\", \"required\": \"true\",\"values\": \"[]\",\"type\": \"null \"}"
+    template_parameter = "{\"name\": \"serviceId\", \"required\": \"true\",\"type\": \"null \"}"
+
+    # template_parameter = [
+    #   {
+    #     name     = "serviceId"
+    #     required = "true"
+    #     values   = []
+    #     type     = "null"
+    #   },
+    # ]
+
+    # request  = []
+    # response = []
+  },
+  {
+    api_name     = "digital-citizenship-admin"
+    operation_id = "updateService"
+    display_name = "updateService"
+    method       = "PUT"
+    url_template = "/adm/services/{serviceId}"
+
+    description = "---"
+
+    template_parameter = "{\"name\": \"serviceId\", \"required\": \"true\",\"type\": \"null \"}"
+
+    # request  = []
+    # response = []
   },
 ]
