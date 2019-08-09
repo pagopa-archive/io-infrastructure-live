@@ -34,7 +34,7 @@
         "/messages/{fiscal_code}/{id}": {
             "get": {
                 "description": "The previously created message with the provided message ID is returned.",
-                "operationId": "5a01bab4a9ab4016d8ef9a51",
+                "operationId": "getMessage",
                 "summary": "getMessage",
                 "parameters": [
                     {
@@ -88,7 +88,7 @@
         "/messages/{fiscal_code}": {
             "get": {
                 "description": "Returns the messages for the user identified by the provided fiscal code.\nMessages will be returned in inverse acceptance order (from last to first).\nThe \"next\" field, when present, contains an URL pointing to the next page of results.",
-                "operationId": "5a01bab4a9ab4016d8ef9a52",
+                "operationId": "getMessagesByUser",
                 "summary": "getMessagesByUser",
                 "parameters": [
                     {
@@ -150,7 +150,7 @@
             },
             "post": {
                 "description": "Submits a message to a user.\nOn error, the reason is returned in the response payload.",
-                "operationId": "5a01bab4a9ab4016d8ef9a53",
+                "operationId": "submitMessageforUser",
                 "summary": "submitMessageforUser",
                 "parameters": [
                     {
@@ -205,7 +205,7 @@
         "/profiles/{fiscal_code}": {
             "get": {
                 "description": "Returns the preferences for the user identified by the provided fiscal code.",
-                "operationId": "5a01bab4a9ab4016d8ef9a54",
+                "operationId": "getProfile",
                 "summary": "getProfile",
                 "parameters": [
                     {
@@ -239,7 +239,7 @@
             },
             "post": {
                 "description": "Create or update the preferences for the user identified by the provided fiscal code.",
-                "operationId": "5a0ab4eaa9ab400bdc63ca4b",
+                "operationId": "upsertProfile",
                 "summary": "upsertProfile",
                 "parameters": [
                     {
@@ -288,7 +288,7 @@
         "/info": {
             "get": {
                 "description": "An endpoint to test authenticated access to the API backend.",
-                "operationId": "5a01bab4a9ab4016d8ef9a55",
+                "operationId": "getInfo",
                 "summary": "getInfo",
                 "responses": {
                     "200": {
@@ -308,7 +308,7 @@
         },
         "/profiles/{fiscal_code}/sender-services": {
             "get": {
-                "operationId": "senderservices",
+                "operationId": "senderServices",
                 "summary": "senderServices",
                 "parameters": [
                     {
@@ -323,7 +323,7 @@
         },
         "/services": {
             "get": {
-                "operationId": "visibleservices",
+                "operationId": "visibleServices",
                 "summary": "visibleServices",
                 "responses": {}
             }
