@@ -2,7 +2,7 @@ terragrunt = {
   dependencies {
     paths = [
       "../dns_zone_public_dev_io_italia_it",
-      "../public_ip_k8s_01"
+      "../public_ip_k8s_01_nginx"
     ]
   }
 
@@ -20,11 +20,13 @@ terragrunt = {
 dns_zone_suffix                = "dev.io.italia.it"
 
 # Kubernetes specific variables start
-kubernetes_public_ip_name      = "k8s-01"
+kubernetes_public_ip_name      = "k8s-01-nginx"
 kubernetes_resource_group_name = "MC_io-dev-rg_io-dev-aks-k8s-01_westeurope"
 aks_cluster_name               = "k8s-01"
 kubernetes_cname_records       = [
-  "api.pa-onboarding"
+  "api.pa-onboarding",
+  "spid",
+  "app-backend",
+  "app-backend-rc"
 ]
-
 # Kubernetes specific variables end
