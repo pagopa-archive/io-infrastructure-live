@@ -37,6 +37,15 @@ apim_apis = [
     host         = "api.dev.io.italia.it"
     protocols    = "https"
   },
+  {
+    name         = "openapi-specs"
+    display_name = "OpenAPI Specs"
+    description  = "OpenAPI Specs."
+    revision     = "1"
+    path         = "specs/api/v1"
+    host         = "api.dev.io.italia.it"
+    protocols    = "https"
+  },
 ]
 
 apim_api_operation_policies = [
@@ -91,5 +100,9 @@ apim_api_operation_policies = [
   {
     api_name     = "digital-citizenship-api"
     operation_id = "visibleServices"
+  },
+  {
+    api_name     = "openapi-specs"
+    operation_id = "getOpenApi"
   },
 ]
