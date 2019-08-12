@@ -1,0 +1,624 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "${display_name}",
+        "version": "1.0",
+        "description": "${description}"
+    },
+    "host": "${host}",
+    "basePath": "/${path}",
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+        "apiKeyHeader": {
+            "type": "apiKey",
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header"
+        },
+        "apiKeyQuery": {
+            "type": "apiKey",
+            "name": "subscription-key",
+            "in": "query"
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ],
+    "paths": {
+        "/messages/{fiscal_code}/{id}": {
+            "get": {
+                "description": "The previously created message with the provided message ID is returned.",
+                "operationId": "getMessage",
+                "summary": "getMessage",
+                "parameters": [
+                    {
+                        "name": "fiscal_code",
+                        "in": "path",
+                        "description": "The fiscal code of the user, all upper case.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the message.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Message found.",
+                        "schema": {
+                            "$ref": "#/definitions/MessageResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": {
+                                    "id": "01BX9NSMKAAAS5PSP2FATZM6BQ",
+                                    "fiscal_code": "QXJNTX9RCRVD6V4O",
+                                    "time_to_live": 3600,
+                                    "content": {
+                                        "subject": "message subject, aliquip sint nulla in estinut",
+                                        "markdown": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et mollis felis. Vivamus orci nisl, commodo ut sodales ut, eleifend a libero. Donec dapibus, turpis in mattis tempor, risus nunc malesuada ex, non aliquet metus nunc a lacus. Aenean in arcu vitae nisl porta fermentum nec non nibh. Phasellus tortor tellus, semper in metus eget, eleifend laoreet nibh. Aenean feugiat lectus ut nisl eleifend gravida."
+                                    },
+                                    "sender_service_id": "01BX9NSMKVXXS5PSP2FATZM6QX"
+                                },
+                                "notification": {
+                                    "email": "QUEUED"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No message found for the provided ID."
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/messages/{fiscal_code}": {
+            "get": {
+                "description": "Returns the messages for the user identified by the provided fiscal code.\nMessages will be returned in inverse acceptance order (from last to first).\nThe \"next\" field, when present, contains an URL pointing to the next page of results.",
+                "operationId": "getMessagesByUser",
+                "summary": "getMessagesByUser",
+                "parameters": [
+                    {
+                        "name": "fiscal_code",
+                        "in": "path",
+                        "description": "The fiscal code of the user, all upper case.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "An opaque identifier that points to the next item in the collection.",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found.",
+                        "schema": {
+                            "$ref": "#/definitions/Messages{fiscal_code}Get200ApplicationJsonResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "items": [
+                                    {
+                                        "id": "01BX9NSMKVXXS5PSP2FATZMYYY",
+                                        "fiscal_code": "PUPFHK4TD3MWL20W",
+                                        "time_to_live": 3600,
+                                        "content": {
+                                            "subject": "amet sunt dolor nulla esseesseanim",
+                                            "markdown": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et mollis felis. Vivamus orci nisl, commodo ut sodales ut, eleifend a libero. Donec dapibus, turpis in mattis tempor, risus nunc malesuada ex, non aliquet metus nunc a lacus. Aenean in arcu vitae nisl porta fermentum nec non nibh. Phasellus tortor tellus, semper in metus eget, eleifend laoreet nibh. Aenean feugiat lectus ut nisl eleifend gravida."
+                                        },
+                                        "sender_service_id": "01BX9NSMKVXXS5PSP2FATZMZZZ"
+                                    },
+                                    {
+                                        "id": "01BX9NSMKVXXS5PSP2FATZM123",
+                                        "fiscal_code": "PKTINH4QDQUV696L",
+                                        "time_to_live": 3600,
+                                        "content": {
+                                            "subject": "idUt quis tempor esseesseanim",
+                                            "markdown": "Nullam dapibus metus sed elementum efficitur. Curabitur facilisis sagittis risus nec sodales. Vestibulum in eros sapien. Donec ac odio sit amet dui semper ornare eget nec odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent nibh ex, mattis sit amet felis id, sodales euismod velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                        },
+                                        "sender_service_id": "01BX9NSMKVXXS5PSP2FATZMWWW"
+                                    }
+                                ],
+                                "page_size": 2,
+                                "next": "https://example.com/next"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No message found."
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            },
+            "post": {
+                "description": "Submits a message to a user.\nOn error, the reason is returned in the response payload.",
+                "operationId": "submitMessageforUser",
+                "summary": "submitMessageforUser",
+                "parameters": [
+                    {
+                        "name": "fiscal_code",
+                        "in": "path",
+                        "description": "The fiscal code of the user, all upper case.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "newMessage",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/NewMessage"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Message created.",
+                        "headers": {
+                            "Location": {
+                                "type": "string",
+                                "description": "Location (URL) of created message resource.\nA GET request to this URL returns the message status and details."
+                            }
+                        },
+                        "examples": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid payload.",
+                        "schema": {
+                            "$ref": "#/definitions/ProblemJson"
+                        }
+                    },
+                    "500": {
+                        "description": "The message cannot be delivered.",
+                        "schema": {
+                            "$ref": "#/definitions/ProblemJson"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/profiles/{fiscal_code}": {
+            "get": {
+                "description": "Returns the preferences for the user identified by the provided fiscal code.",
+                "operationId": "getProfile",
+                "summary": "getProfile",
+                "parameters": [
+                    {
+                        "name": "fiscal_code",
+                        "in": "path",
+                        "description": "The fiscal code of the user, all upper case.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found.",
+                        "schema": {
+                            "$ref": "#/definitions/Profiles{fiscal_code}Get200ApplicationJsonResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "email": "foobar@example.com",
+                                "version": 1
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No user found for the provided fiscal code."
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            },
+            "post": {
+                "description": "Create or update the preferences for the user identified by the provided fiscal code.",
+                "operationId": "upsertProfile",
+                "summary": "upsertProfile",
+                "parameters": [
+                    {
+                        "name": "fiscal_code",
+                        "in": "path",
+                        "description": "The fiscal code of the user, all upper case.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "extendedProfile",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/ExtendedProfile"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile updated.",
+                        "schema": {
+                            "$ref": "#/definitions/Profiles{fiscal_code}Post200ApplicationJsonResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "email": "foobar@example.com",
+                                "version": 0
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid payload."
+                    },
+                    "500": {
+                        "description": "Profile cannot be updated."
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/info": {
+            "get": {
+                "description": "An endpoint to test authenticated access to the API backend.",
+                "operationId": "getInfo",
+                "summary": "getInfo",
+                "responses": {
+                    "200": {
+                        "description": "Returns success if the API-Key is right.",
+                        "schema": {
+                            "$ref": "#/definitions/InfoGet200ApplicationJsonResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Returns unauthorized when the API-key if empty or wrong."
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            }
+        },
+        "/profiles/{fiscal_code}/sender-services": {
+            "get": {
+                "operationId": "senderServices",
+                "summary": "senderServices",
+                "parameters": [
+                    {
+                        "name": "fiscal_code",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/services": {
+            "get": {
+                "operationId": "visibleServices",
+                "summary": "visibleServices",
+                "responses": {}
+            }
+        },
+        "/services/{service_id}": {
+            "get": {
+                "operationId": "getService",
+                "summary": "getService",
+                "parameters": [
+                    {
+                        "name": "service_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "ProblemJson": {
+            "title": "Problem Type",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "An absolute URI that identifies the problem type. When dereferenced,\nit SHOULD provide human-readable documentation for the problem type\n(e.g., using HTML).\n",
+                    "default": "about:blank",
+                    "example": "https://example.com/problem/constraint-violation"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "A short, summary of the problem type. Written in english and readable\nfor engineers (usually not suited for non technical stakeholders and\nnot localized); example: Service Unavailable\n"
+                },
+                "status": {
+                    "$ref": "#/definitions/HttpStatusCode"
+                },
+                "detail": {
+                    "type": "string",
+                    "description": "A human readable explanation specific to this occurrence of the\nproblem.\n",
+                    "example": "There was an error processing the request"
+                },
+                "instance": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "An absolute URI that identifies the specific occurrence of the problem.\nIt may or may not yield further information if dereferenced."
+                }
+            }
+        },
+        "MessageContent": {
+            "title": "MessageContent",
+            "type": "object",
+            "properties": {
+                "subject": {
+                    "$ref": "#/definitions/MessageSubject"
+                },
+                "markdown": {
+                    "$ref": "#/definitions/MessageBodyMarkdown"
+                }
+            },
+            "required": [
+                "markdown"
+            ]
+        },
+        "NewMessage": {
+            "title": "NewMessage",
+            "type": "object",
+            "properties": {
+                "time_to_live": {
+                    "$ref": "#/definitions/TimeToLive"
+                },
+                "content": {
+                    "$ref": "#/definitions/MessageContent"
+                },
+                "default_addresses": {
+                    "$ref": "#/definitions/NewMessageDefaultAddresses"
+                }
+            },
+            "required": [
+                "content"
+            ]
+        },
+        "NotificationChannelStatus": {
+            "type": "string",
+            "x-extensible-enum": [
+                "QUEUED",
+                "SENT_TO_CHANNEL"
+            ],
+            "example": "SENT_TO_CHANNEL"
+        },
+        "NotificationStatus": {
+            "title": "NotificationStatus",
+            "type": "object",
+            "properties": {
+                "email": {
+                    "$ref": "#/definitions/NotificationChannelStatus"
+                }
+            }
+        },
+        "CreatedMessage": {
+            "title": "CreatedMessage",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "fiscal_code": {
+                    "$ref": "#/definitions/FiscalCode"
+                },
+                "time_to_live": {
+                    "$ref": "#/definitions/TimeToLive"
+                },
+                "content": {
+                    "$ref": "#/definitions/MessageContent"
+                },
+                "sender_service_id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "fiscal_code",
+                "sender_service_id"
+            ]
+        },
+        "MessageResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/CreatedMessage"
+                },
+                "notification": {
+                    "$ref": "#/definitions/NotificationStatus"
+                }
+            },
+            "required": [
+                "message"
+            ]
+        },
+        "FiscalCode": {
+            "type": "string",
+            "description": "User's fiscal code.",
+            "pattern": "^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$",
+            "example": "SPNDNL80R13C555X"
+        },
+        "MessageSubject": {
+            "type": "string",
+            "description": "The (optional) subject of the message - note that only some notification\nchannels support the display of a subject. When a subject is not provided,\none gets generated from the client attributes.",
+            "minLength": 10,
+            "maxLength": 120,
+            "example": "Welcome new user !"
+        },
+        "MessageBodyMarkdown": {
+            "type": "string",
+            "description": "The full version of the message, in plain text or Markdown format. The\ncontent of this field will be delivered to channels that don't have any\nlimit in terms of content size (e.g. email, etc...).",
+            "minLength": 80,
+            "maxLength": 10000,
+            "example": "# This is a markdown header\n\nto show how easily markdown can be converted to **HTML**\n\nRemember: this has to be a long text."
+        },
+        "PaginationResponse": {
+            "type": "object",
+            "title": "pagination",
+            "description": "Pagination response parameters.",
+            "properties": {
+                "page_size": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Number of items returned for each page.",
+                    "example": 2
+                },
+                "next": {
+                    "type": "string",
+                    "description": "Contains an URL to GET the next #<page_size> results in the retrieved collection of items.",
+                    "format": "uri",
+                    "example": "https://example.com/?p=0XXX2"
+                }
+            }
+        },
+        "LimitedProfile": {
+            "title": "A citizen's profile",
+            "description": "Describes the citizen's profile, mostly interesting for preferences attributes.",
+            "type": "object",
+            "properties": {
+                "preferred_languages": {
+                    "$ref": "#/definitions/PreferredLanguages"
+                }
+            }
+        },
+        "ExtendedProfile": {
+            "title": "A citizen's profile",
+            "description": "Describes the citizen's profile, mostly interesting for preferences attributes.",
+            "type": "object",
+            "properties": {
+                "email": {
+                    "$ref": "#/definitions/EmailAddress"
+                },
+                "preferred_languages": {
+                    "$ref": "#/definitions/PreferredLanguages"
+                },
+                "version": {
+                    "type": "integer"
+                }
+            }
+        },
+        "TimeToLive": {
+            "type": "integer",
+            "minimum": 3600,
+            "maximum": 31536000,
+            "description": "This parameter specifies for how long (in seconds) the system will try to deliver the message to the channels configured by the user.",
+            "example": 3600
+        },
+        "HttpStatusCode": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The HTTP status code generated by the origin server for this occurrence\nof the problem.\n",
+            "minimum": 100,
+            "maximum": 600,
+            "exclusiveMaximum": true,
+            "example": 200
+        },
+        "NewMessageDefaultAddresses": {
+            "type": "object",
+            "description": "Default addresses for notifying the recipient of the message in case no address for the related channel is set in his profile.",
+            "properties": {
+                "email": {
+                    "$ref": "#/definitions/EmailAddress"
+                }
+            }
+        },
+        "EmailAddress": {
+            "type": "string",
+            "format": "email",
+            "example": "foobar@example.com"
+        },
+        "PreferredLanguage": {
+            "type": "string",
+            "x-extensible-enum": [
+                "it_IT",
+                "en_GB",
+                "es_ES",
+                "de_DE",
+                "fr_FR"
+            ],
+            "example": "it_IT"
+        },
+        "PreferredLanguages": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/PreferredLanguage"
+            },
+            "description": "Indicates the User's preferred written or spoken languages in order of preference. Generally used for selecting a localized User interface. Valid values are concatenation of the ISO 639-1 two letter language code, an underscore, and the ISO 3166-1 2 letter country code; e.g., 'en_US' specifies the language English and country US."
+        },
+        "Messages{fiscal_code}Get200ApplicationJsonResponse": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CreatedMessage"
+                            }
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/PaginationResponse"
+                }
+            ]
+        },
+        "Profiles{fiscal_code}Get200ApplicationJsonResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/LimitedProfile"
+                },
+                {
+                    "$ref": "#/definitions/ExtendedProfile"
+                }
+            ]
+        },
+        "Profiles{fiscal_code}Post200ApplicationJsonResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/LimitedProfile"
+                },
+                {
+                    "$ref": "#/definitions/ExtendedProfile"
+                }
+            ]
+        },
+        "InfoGet200ApplicationJsonResponse": {
+            "type": "object",
+            "properties": {}
+        }
+    },
+    "tags": []
+}
