@@ -83,6 +83,6 @@ apim_groups = [
 apim_properties = [
   {
     name  = "backendUrl"
-    value = "https://dev-functions-test.azurewebsites.net"
+    value = "https://io-dev-fn-1-01.azurewebsites.net"
   },
 ]
