@@ -7,7 +7,7 @@ terragrunt = {
       "../subnet_k8s_01",
       "../cosmosdb_sql_database",
       "../subnet_functions",
-      "../storage_account_functions"
+      "../storage_account_functions",
     ]
   }
 
@@ -21,18 +21,20 @@ terragrunt = {
   }
 }
 
-plan_name                      = "functions-01"
-storage_account_name           = "fn101"
-functionapp_name               = "1-01"
+plan_name = "functions-01"
 
-functionapp_settings           = [
+storage_account_name = "fn101"
+
+functionapp_name = "1-01"
+
+functionapp_settings = [
   {
     name  = "AzureWebJobsSecretStorageType"
     value = "disabled"
   },
   {
     name  = "COSMOSDB_NAME"
-    value = "io-documentdb-dev"
+    value = "io-dev-sqldb-db-01"
   },
   {
     name  = "DIAGNOSTICS_AZUREBLOBRETENTIONINDAYS"
@@ -73,10 +75,10 @@ functionapp_settings           = [
   {
     name  = "WEBSITE_NODE_DEFAULT_VERSION"
     value = "6.11.2"
-  }
+  },
 ]
 
-functionapp_settings_secrets   = [
+functionapp_settings_secrets = [
   {
     name        = "MAILUP_USERNAME"
     vault_alias = "fn101MailupUsername"
@@ -100,7 +102,7 @@ functionapp_settings_secrets   = [
   {
     name        = "WEBHOOK_CHANNEL_URL"
     vault_alias = "fn101WebhookChannelUrl"
-  }
+  },
 ]
 
 functionapp_connection_strings = [
@@ -111,5 +113,5 @@ functionapp_connection_strings = [
   {
     name        = "COSMOSDB_URI"
     vault_alias = "fn101CosmosdbUri"
-  }
+  },
 ]
