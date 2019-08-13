@@ -15,14 +15,12 @@ terragrunt = {
 
 # CosmosDB account specific variables
 cosmosdb_account_name = "apim"
-
-container_name = "services"
-
-partitionKey_paths = ["/serviceId"]
-
-includedPaths = [{
-  path = "/*"
-
+documentdb_name       = "db-01"
+container_name        = "services"
+container_throughput  = 1000
+partitionKey_paths    = ["/serviceId"]
+includedPaths         = [{
+  path    = "/*"
   indexes = [
     {
       kind      = "Range"
