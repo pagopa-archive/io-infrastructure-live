@@ -17,3 +17,4 @@ terragrunt = {
 
 # CosmosDB account specific variables
 cosmosdb_account_name = "apim"
+documentdb_name       = "db-01"
