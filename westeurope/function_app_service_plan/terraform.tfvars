@@ -15,10 +15,10 @@ terragrunt = {
   }
 }
 
-# app service plan specific variables
-
-azurerm_app_service_plan_kind         = "elastic"
-azurerm_app_service_plan_sku_tier     = "ElasticPremium"
-azurerm_app_service_plan_sku_size     = "EP1"
-azurerm_app_service_plan_sku_capacity = "1"
-azurerm_app_service_plan_suffix       = "functions-01"
+# App service plan specific variables
+azurerm_app_service_plan_kind                         = "elastic"
+azurerm_app_service_plan_sku_tier                     = "ElasticPremium"
+azurerm_app_service_plan_sku_size                     = "EP1"
+azurerm_app_service_plan_sku_capacity                 = "1"
+azurerm_app_service_plan_suffix                       = "functions-01"
+azurerm_app_service_plan_maximum_elastic_worker_count = "4"
