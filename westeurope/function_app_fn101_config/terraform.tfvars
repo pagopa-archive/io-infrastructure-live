@@ -4,7 +4,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../function_app_fn101",
+      "../function_app_fn101"
     ]
   }
 
@@ -19,16 +19,10 @@ terragrunt = {
 }
 
 # Function app config module variables
-functionapp_name = "1-01"
-
-vnet_name = "common"
-
-subnet_name = "functions"
-
-azurerm_functionapp_git_repo = "https://github.com/teamdigitale/digital-citizenship-functions"
-
-azurerm_functionapp_git_branch = "funcpack-release-latest"
-
-storage_account_name = "fn101"
-
+functionapp_name                          = "1-01"
+vnet_name                                 = "common"
+subnet_name                               = "functions"
+azurerm_functionapp_git_repo              = "https://github.com/teamdigitale/digital-citizenship-functions"
+azurerm_functionapp_git_branch            = "funcpack-release-latest"
+storage_account_name                      = "fn101"
 azurerm_functionapp_reservedInstanceCount = "1"
