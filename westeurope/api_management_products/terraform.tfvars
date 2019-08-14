@@ -25,7 +25,8 @@ apim_products = [
     display_name        = "Digital Citizenship (alpha)"
     description         = "Subscribers will be able to integrate with the alpha version Digital Citizenship API"
     subscriptions_limit = "100"
-    admin_group = "developers"
+    admin_group         = "developers"
+
     xml_content = <<XML
 <!--
             IMPORTANT:
@@ -66,6 +67,10 @@ apim_product_api_bindings = [
   },
   {
     api_name   = "digital-citizenship-api"
+    product_id = "io-dev-apim-prod-01"
+  },
+  {
+    api_name   = "openapi-specs"
     product_id = "io-dev-apim-prod-01"
   },
 ]

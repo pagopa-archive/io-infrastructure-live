@@ -95,10 +95,11 @@ apim_secret_named_values = [
 ]
 
 apim_users = [{
-  user_id       = "k8s-app-backend"
-  first_name    = "k8s"
-  last_name     = "app-backend"
-  email         = "k8s-app-backend@io.italia.com"
+  user_id    = "k8s-app-backend"
+  first_name = "k8s"
+  last_name  = "app-backend"
+  email      = "k8s-app-backend@io.italia.com"
+
   groups        = "ApiFullProfileRead,ApiServiceRead,ApiPublicServiceList,ApiServiceByRecipientQuery,ApiMessageRead,ApiMessageList,ApiInfoRead"
   subscriptions = "io-dev-apim-prod-01"
 }]
