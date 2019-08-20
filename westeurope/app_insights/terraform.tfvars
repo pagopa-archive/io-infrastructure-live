@@ -17,5 +17,5 @@ terragrunt = {
 
 # Notification Hub module variables
 
-azurerm_app_insights_application_type  = "Web"
-azurerm_app_insights_name              = "01"
+azurerm_application_insights_application_type  = "Web"
+azurerm_application_insights_name              = "01"
