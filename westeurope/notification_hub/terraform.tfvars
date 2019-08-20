@@ -17,5 +17,6 @@ terragrunt = {
 
 # Notification Hub module variables
 
-notification_hub_name                       = "nh-01"
-azurerm_notification_hub_namespace_sku_name = "Standard"
+notification_hub_name                                     = "nh-01"
+azurerm_notification_hub_namespace_sku_name               = "Standard"
+azurerm_notification_hub_apns_credential_application_mode = "Production"
