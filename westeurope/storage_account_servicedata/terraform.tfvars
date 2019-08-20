@@ -23,5 +23,9 @@ allowed_subnets                                  = [
   {
     vnet   = "io-dev-vnet-common"
     subnet = "io-dev-subnet-mgmt"
+  },
+  {
+    vnet   = "io-dev-vnet-common"
+    subnet = "io-dev-subnet-functions"
   }
 ]
