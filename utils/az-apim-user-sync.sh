@@ -44,10 +44,11 @@ echo "Completed."
 
 echo "Processing Group Membership.."
 
-GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ .resources[] | select((.type | contains("Microsoft.ApiManagement/service/groups/users")  and (.name | contains("/developers") | not )) | del(.dependsOn) ]')
+GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/groups/users"))  and (.name | contains("/developers") | not )) | del(.dependsOn) ]')
 
-GROUP_MEMBERSHIP_1=$(echo $GROUP_MEMBERSHIP | jq -r '[limit(800;.[])]')
-
+GROUP_MEMBERSHIP_COUNT=$(echo $GROUP_MEMBERSHIP | jq ' length')
+# GROUP_MEMBERSHIP_1=$(echo $GROUP_MEMBERSHIP | jq -r '[limit(800;.[])]')
+echo "$GROUP_MEMBERSHIP_COUNT group memberships found."
 echo " 
    {
     \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
@@ -59,7 +60,7 @@ echo "
         }
     },
     \"variables\": {},
-    \"resources\": $GROUP_MEMBERSHIP_1
+    \"resources\": $GROUP_MEMBERSHIP
 }
 " >apim-group-membership.json
 if ! $DRY_RUN; then
@@ -75,7 +76,9 @@ SUBSCRIPTIONS=$(cat template.json | jq -r '[ .resources[] | select( (.type | con
 # Replace source product name with the destination one
 SUBSCRIPTIONS=$(echo ${SUBSCRIPTIONS//$SRC_APIM_PRODUCT_NAME/$DST_APIM_PRODUCT_NAME})
 
-SUBSCRIPTIONS_1=$(echo $SUBSCRIPTIONS | jq -r '[limit(800;.[])]')
+SUBSCRIPTIONS_COUNT=$(echo $SUBSCRIPTIONS | jq ' length')
+echo "$SUBSCRIPTIONS_COUNT subscriptions found."
+# SUBSCRIPTIONS_1=$(echo $SUBSCRIPTIONS | jq -r '[limit(800;.[])]')
 echo " 
    {
     \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
@@ -87,7 +90,7 @@ echo "
         }
     },
     \"variables\": {},
-    \"resources\": $SUBSCRIPTIONS_1
+    \"resources\": $SUBSCRIPTIONS
 }
 " >apim-subscriptions.json
 
