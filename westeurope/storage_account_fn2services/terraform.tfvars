@@ -22,6 +22,6 @@ azurerm_storage_account_account_replication_type      = "LRS"
 azurerm_storage_account_network_rules_allowed_subnets = [
   {
     vnet   = "io-dev-vnet-common"
-    subnet = "io-dev-subnet-functions"
+    subnet = "io-dev-subnet-function-services"
   },
 ]
