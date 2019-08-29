@@ -77,6 +77,18 @@ Before using any Terraform script, export the environment variables running:
 source az-export.sh
 ```
 
+### API Management User, Group and subscription sync: az-apim-sync.sh
+
+The sync script use the API Management ARM template (template.json) as source and generate 3 new ARM templates:
+
+* Users (apim-users.json)
+* Group Membership (apim-group-membership.json)
+* Subscriptions (apim-subscriptions.json)
+
+If the DRY_RUN variable has a value >0 (default) it also run the deployment on the Azure environment where you are logged in.  
+
+NOTE: Remeber to customize script variables (on the top of the script) in order to set the desidered API Management name, product and group
+
 ## Authorize new administrators
 
 New users should be explicitly authorized in order to list and get entries (read), both from the vault and from the Active Directory services.

@@ -1,5 +1,20 @@
-# Source API Management settings
-SRC_APIM_NAME=agid-apim-prod
+#!/usr/bin/env bash
+
+# Azure API Management sync tool
+
+# Source API Management name is not used yet, needed for auto-generating the ARM template using
+# Microsoft Resource Explorer in next versions of this tool.
+#
+# This is a draf implementation
+# SRC_APIM_NAME=agid-apim-prod
+# SRC_RESOURCE_GROUP=agid-prod
+#
+# SRC_APIM_ID=`az resource show -g $SRC_RESOURCE_GROUP  -n $SRC_APIM_NAME  --resource-type "Microsoft.ApiManagement/service" | jq '.id'`
+# 
+# GET https://management.azure.com$SRC_APIM_ID?api-version=2018-01-01
+#
+# (Missing step) Produce a full export of the API Management config
+#
 SRC_APIM_PRODUCT_NAME=starter
 
 # Destination API Management settings
@@ -13,6 +28,7 @@ DRY_RUN=0
 # NOTE: Export the Source API Management ARM template ( Issue a manual export on the Azure portal )
 # and launch the script from the export directory where the template.json file exists
 #
+
 NOW=$(date '+%Y-%m-%d-%H%M%S')
 
 echo "Started at $NOW"
