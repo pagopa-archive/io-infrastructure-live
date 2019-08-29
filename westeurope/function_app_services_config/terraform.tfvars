@@ -21,6 +21,6 @@ terragrunt = {
 # Function app config module variables
 functionapp_name                          = "2-services"
 vnet_name                                 = "common"
-subnet_name                               = "functions"
+subnet_name                               = "function-services"
 storage_account_name                      = "fn2services"
 azurerm_functionapp_reservedInstanceCount = "1"
