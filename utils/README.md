@@ -1,14 +1,14 @@
+# IO utility scripts
+
+The document describes how to use the bash utility scripts in this folder.
+
 ## Prerequisites
 
 The following prerequisites should be satisfied in order to use the scripts.
 
-### Install the Azure CLI utility
+* **Install the Azure CLI utility**: the Azure CLI utility (az) is extensively used by all scripts of the repository. To install the az tool follow [this guide](https://docs.microsoft.com/it-it/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-The Azure CLI utility (az) is extensively used by all scripts of the repository. To install the az tool follow [this guide](https://docs.microsoft.com/it-it/cli/azure/install-azure-cli?view=azure-cli-latest).
-
-### Log into Azure
-
-Before being able to run the scripts you should access Azure through the CLI tool.
+* **Log into Azure**: Before being able to run the scripts you should access Azure through the CLI tool.
 
 ```shell
 az login
@@ -16,91 +16,65 @@ az login
 
 A browser should open and a login form should pop up automatically.
 
-## The scripts
+## Initialize the Azure environment and export envrionment variables
 
-This section briefly describes what the scripts do.
+A combination of three scripts (*.env.example*, *az-init.sh*, *az-export.sh*) allows operators to make a generic Azure subscription ready to work with Terraform, and export the environment variables needed by other scripts (i.e. Terraform) to work.
 
-### .env.example and .env
+### Define your environment settings with the .env files
 
-The .env files contain a list of variables (a user is required to provide her/his own values) and common functions that will be used by all other scripts before execution.
+The .env files contain a list of variables and common functions that are read by all other scripts, before execution.
 
-### az-init.sh
-
-The init script initializes the Azure environment, creating the following:
-
-* An infrastructure dedicated resource group
-* An infrastructure vault where to save secrets
-* A storage account and a storage container for Terraform (then saving the auto-generated secret of the storage account in the infrastructure vault)
-* A service profile with contributor role for Packer. The secret -saved as well in the infrastructure vault- is an auto-generated 20 chars password made of upper case and lower case letters, numbers and symbols.
-
-The script should be completely idempotent. As such, further runs will simply keep resources as they are, if already existing in the Azure subscription.
-
-Ideally, the script should run only once.
-
-### az-export.sh
-
-The export script loads some values from the .env file and the Azure Active Directory, and some secrets from the populated infrastructure vault to allow Packer and Terraform to provision the infrastructure. Values are exposed to the system as environment variables. 
-
-The script exports the following environment variables:
-
-* **SUBSCRIPTION**: the Azure subscription to use (comes from the .env file).
-
-* **RG_NAME**: the infrastructure resource group where the vault is, where Terraform will save the state, and where Packer will save images (comes from the .env file). 
-
-* **DEFAULT_ADMIN_USER**: the default admin user name created on new Packer images (comes from the .env file).
-
-* **TERRAFORM_STORAGE_ACCOUNT_NAME**: the Terraform storage account name used to save the Terraform state (comes from the .env file).
-
-* **TERRAFORM_CONTAINER_NAME**: the Terraform storage container name used to save the Terraform state (comes from the .env file).
-
-* **ARM_ACCESS_KEY**: the storage access key used by Terraform to access the storage container (through the storage account) to save the state (comes from the infrastructure vault).
-
-The script should run any time before running Packer or Terraform scripts.
-
-## How to use the scripts
-
-Copy the *.env.example* file to a *.env* file and customize it using your own values.
+Before running any other script, copy the *.env.example* file to a *.env* file and customize it using your own values.
 
 ```shell
 cp .env.example .env
 ```
 
-**To be done just once** - to initialize the Azure account run:
+### Initialize the Azure infrastructure with az-init.sh
+
+The *az-init.sh* script initializes the Azure environment, creating
+
+* A dedicated infrastructure resource group
+
+* An infrastructure Azure Keyvault where to save secrets
+
+* A storage account and a storage container for Terraform (then saving the auto-generated secret of the storage account in the infrastructure vault)
+
+The script should be idempotent. Further runs will simply keep resources as they are, if already existing in the Azure subscription.
+
+After the *.env* file has been sourced, initialize the Azure account running:
 
 ```shell
 source az-init.sh
 ```
 
-Before using any Terraform script, export the environment variables running:
+### Export the environment variables with az-export.sh
+
+The *az-export.sh* script loads some values from the .env file, from the Azure Active Directory, and some secrets from the infrastructure Keyvault to allow Terraform to provision the infrastructure. Values are exposed to the system as environment variables.
+
+Before using any other script and after the *.env* file has been sourced, to export the environment variables run:
 
 ```shell
 source az-export.sh
 ```
 
-## Authorize new administrators
+## API Management utlity scripts: sync users, groups and subscriptions
 
-New users should be explicitly authorized in order to list and get entries (read), both from the vault and from the Active Directory services.
+The *az-apim-sync.sh* helps operators to sync users, groups and subscriptions between two APIMs.
+Data should be exported manually from the old APIM and saved in a local file called *template.json*. The script takes the (*template.json*) file in input and generates three ARM templates:
 
-This can be easily achieved through the Azure UI, as well as with scripting, even if not reported here.
+* Users (*apim-users.json*)
 
-### Authorize a registered user to list and read from the Vault
+* Group Membership (*apim-group-membership.json*)
 
-* Open the Azure portal
-* Look for the vault name in the top search field and open it
-* In the vault left panel click on IAM. Verify that 
-* Click on role assignments and make sure the user is listed, at least as a *reader*
-* In the vault left panel click on access policies, then *Add new*
-* Do not configure from a template, but try to select the policies that best fit your needs. At the very least, the user will need to read and list the vault secrets
-* Click on service principal and type the exact name of the user in the text field (otherwise no matches will be shown)
-* Click ok and then save, at the top
+* Subscriptions (*apim-subscriptions.json*)
 
-### Authorize a registered user to list and read from the Azure Active Directory
+If the *DRY_RUN* variable has a value *>0* (default) it also runs the deployment on the destination Azure environment.
 
-* Open the Azure portal
-* Look for Active Directory in the top search field and open it
-* In the Active Directory left panel click on users and find the user you'd like to enable
-* Then, always in the AD left panel click on Directory role
-* Click on add role
-* Give the user a role allowing to list users. For example, *Global Administrator*
+>**NOTE:** Remeber to customize script variables -at the top of the script- to set the source and destination Azure API Management Services (APIMs) name, product and resource group.
 
->NOTE: Do this carefully, as it may impact your security!
+To synchronize users run:
+
+```shell
+source az-apim-sync.sh
+```
