@@ -87,7 +87,15 @@ The sync script use the API Management ARM template (template.json) as source an
 
 If the DRY_RUN variable has a value >0 (default) it also run the deployment on the Azure environment where you are logged in.  
 
-NOTE: Remeber to customize script variables (on the top of the script) in order to set the desidered API Management name, product and group
+NOTE: Remeber to customize script variables (on the top of the script) in order to set the source and destination API Management name, product and resource group.
+
+#### How to run
+
+```shell
+source az-apim-sync.sh
+```
+
+Wait until the ARM deployment complete and check for errors (if any).
 
 ## Authorize new administrators
 
