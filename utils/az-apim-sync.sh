@@ -1,33 +1,21 @@
 #!/usr/bin/env bash
 
-# Azure API Management sync tool
+# Azure API Management Services (APIMs) sync tool
 
-# Source API Management name is not used yet, needed for auto-generating the ARM template using
-# Microsoft Resource Explorer in next versions of this tool.
-#
-# This is a draf implementation
-# SRC_APIM_NAME=agid-apim-prod
-# SRC_RESOURCE_GROUP=agid-prod
-#
-# SRC_APIM_ID=`az resource show -g $SRC_RESOURCE_GROUP  -n $SRC_APIM_NAME  --resource-type "Microsoft.ApiManagement/service" | jq '.id'`
-# 
-# GET https://management.azure.com$SRC_APIM_ID?api-version=2018-01-01
-#
-# (Missing step) Produce a full export of the API Management config
-#
-SRC_APIM_PRODUCT_NAME=starter
+# Reads a template.json file in input (manually exported from the original APIM)
+# and creates users, groups, subscriptions on the new APIM
 
-# Destination API Management settings
+# The input file template.json should be in the same directory where the script
+# is run from.
+
+# TODO: produce a full export of the API Management config
+
+# Destination APIM settings
 DST_APIM_NAME=io-dev-apim-01
 DST_APIM_PRODUCT_NAME=io-dev-apim-prod-01
 DST_RESOURCE_GROUP=io-dev-rg
 
 DRY_RUN=0
-
-#
-# NOTE: Export the Source API Management ARM template ( Issue a manual export on the Azure portal )
-# and launch the script from the export directory where the template.json file exists
-#
 
 NOW=$(date '+%Y-%m-%d-%H%M%S')
 
@@ -63,7 +51,6 @@ echo "Processing Group Membership.."
 GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/groups/users"))  and (.name | contains("/developers") | not )) | del(.dependsOn) ]')
 
 GROUP_MEMBERSHIP_COUNT=$(echo $GROUP_MEMBERSHIP | jq ' length')
-# GROUP_MEMBERSHIP_1=$(echo $GROUP_MEMBERSHIP | jq -r '[limit(800;.[])]')
 echo "$GROUP_MEMBERSHIP_COUNT group memberships found."
 echo " 
    {
@@ -89,12 +76,11 @@ echo "Completed."
 echo "Processing Subscriptions.."
 SUBSCRIPTIONS=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/subscriptions")) and (.name | contains("/master") | not )  and (.name | contains("/azure-deploy") | not )) | del(.dependsOn) ]')
 
-# Replace source product name with the destination one
+# Replace source product name with the destination product name
 SUBSCRIPTIONS=$(echo ${SUBSCRIPTIONS//$SRC_APIM_PRODUCT_NAME/$DST_APIM_PRODUCT_NAME})
 
 SUBSCRIPTIONS_COUNT=$(echo $SUBSCRIPTIONS | jq ' length')
 echo "$SUBSCRIPTIONS_COUNT subscriptions found."
-# SUBSCRIPTIONS_1=$(echo $SUBSCRIPTIONS | jq -r '[limit(800;.[])]')
 echo " 
    {
     \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
