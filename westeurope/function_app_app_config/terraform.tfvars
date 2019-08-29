@@ -9,7 +9,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_function_app_config"
+    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_function_app_config_clean"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -21,6 +21,6 @@ terragrunt = {
 # Function app config module variables
 functionapp_name                          = "2-app"
 vnet_name                                 = "common"
-subnet_name                               = "functions"
+subnet_name                               = "function-app"
 storage_account_name                      = "fn2app"
 azurerm_functionapp_reservedInstanceCount = "1"
