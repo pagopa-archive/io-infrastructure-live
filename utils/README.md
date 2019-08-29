@@ -1,6 +1,6 @@
 # IO utility scripts
 
-The document describes how to use the utility scripts shipped with this repository.
+The document describes how to use the bash utility scripts in this folder.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ A combination of three scripts (*.env.example*, *az-init.sh*, *az-export.sh*) al
 
 ### Define your environment settings with the .env files
 
-The .env files contain a list of variables (a user is required to provide her/his own values) and common functions that will be used by all other scripts, before execution.
+The .env files contain a list of variables and common functions that are read by all other scripts, before execution.
 
 Before running any other script, copy the *.env.example* file to a *.env* file and customize it using your own values.
 
@@ -32,28 +32,27 @@ cp .env.example .env
 
 ### Initialize the Azure infrastructure with az-init.sh
 
-The *az-init.sh* script initializes the Azure environment, creating the following:
+The *az-init.sh* script initializes the Azure environment, creating
 
-* An infrastructure dedicated resource group
-* An infrastructure vault where to save secrets
+* A dedicated infrastructure resource group
+
+* An infrastructure Azure Keyvault where to save secrets
+
 * A storage account and a storage container for Terraform (then saving the auto-generated secret of the storage account in the infrastructure vault)
-* A service profile with contributor role for Packer. The secret -saved as well in the infrastructure vault- is an auto-generated 20 chars password made of upper case and lower case letters, numbers and symbols.
 
-The script should be completely idempotent. As such, further runs will simply keep resources as they are, if already existing in the Azure subscription.
+The script should be idempotent. Further runs will simply keep resources as they are, if already existing in the Azure subscription.
 
-After the *.env* file has been sourced, to initialize the Azure account run:
+After the *.env* file has been sourced, initialize the Azure account running:
 
 ```shell
 source az-init.sh
 ```
 
->**NOTE** The script should be idempotent
-
 ### Export the environment variables with az-export.sh
 
-The *az-export.sh* script loads some values from the .env file and the Azure Active Directory, and some secrets from the populated infrastructure vault to allow Packer and Terraform to provision the infrastructure. Values are exposed to the system as environment variables.
+The *az-export.sh* script loads some values from the .env file, from the Azure Active Directory, and some secrets from the infrastructure Keyvault to allow Terraform to provision the infrastructure. Values are exposed to the system as environment variables.
 
-After the *.env* file has been sourced, to export environment variables before using any other script, run:
+Before using any other script and after the *.env* file has been sourced, to export the environment variables run:
 
 ```shell
 source az-export.sh
@@ -61,7 +60,8 @@ source az-export.sh
 
 ## API Management utlity scripts: sync users, groups and subscriptions
 
-The *az-apim-sync.sh* script uses the API Management ARM template (*template.json*) as source to generate three ARM templates:
+The *az-apim-sync.sh* helps operators to sync users, groups and subscriptions between two APIMs.
+Data should be exported manually from the old APIM and saved in a local file called *template.json*. The script takes the (*template.json*) file in input and generates three ARM templates:
 
 * Users (*apim-users.json*)
 
@@ -69,7 +69,7 @@ The *az-apim-sync.sh* script uses the API Management ARM template (*template.jso
 
 * Subscriptions (*apim-subscriptions.json*)
 
-If the *DRY_RUN* variable has a value *>0* (default) it also runs the deployment on the Azure environment where the operator is logged into.  
+If the *DRY_RUN* variable has a value *>0* (default) it also runs the deployment on the destination Azure environment.
 
 >**NOTE:** Remeber to customize script variables -at the top of the script- to set the source and destination Azure API Management Services (APIMs) name, product and resource group.
 
@@ -78,5 +78,3 @@ To synchronize users run:
 ```shell
 source az-apim-sync.sh
 ```
-
-Wait until the ARM deployment completes and check for errors, if any.
