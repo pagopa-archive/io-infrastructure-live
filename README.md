@@ -33,21 +33,33 @@ Modules can also optionally inherit shared variables from higher level folders. 
 
 ## How to use the scripts
 
-To provision the entire environment go into an environment folder and run
+First, export the environment variables needed by Terraform to work. Source the *az-export.sh* utility script in the *utility* folder. More info can be found in the readme in the *utility* folder.
+
+Then, you can start to provision the infrastructure.
+
+To provision a specific component go in the component folder and run
+
+```shell
+terragrunt apply
+```
+
+If you have not committed your Terragrunt modules yet, and you'd like to test the scripts using local modules run:
 
 ```
+terragrunt apply --terragrunt-source PATH_TO_YOUR_THE_LOCAL_MODULE_DIR
+```
+
+>Note: Substitute apply with destroy to destroy an entire environment
+
+Sometimes you may want to provision the entire environment. To do so, go into the environment folder (for example *westeurope*) and run
+
+```shell
 terragrunt apply-all
 ```
 
+Terragrunt will try to apply all the components in the westeurope folder, understanding what should be apply first and what should be applied later, depending on the dependencies defined in the components' terraform.tfvars files.
+
 >Note: Substitute apply-all with destroy-all to destroy an entire environment
-
-To provision a single module, go into the specific folder and run the same commands.
-
-If you have not committed your modules yet, and you'd like to test the scripts using local modules run:
-
-```
-terragrunt apply-all --terragrunt-source YOUR_PATH_TO_THE_LOCAL_MODULES_DIR
-```
 
 ## How to contribute
 
