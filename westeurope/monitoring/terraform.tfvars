@@ -12,7 +12,7 @@ terragrunt = {
 }
 
 #  monitoring action group module variables
-monitor_ag_name = "CriticalAlertses"
-monitor_ag_short_name = "CritAlerts"
-email_receiver_unique_name = "admins"
-email_receiver_email = "lprete@teamdigitale.it"
+azurerm_monitor_action_group_name = "CriticalAlertses"
+azurerm_monitor_action_group_short_name = "CritAlerts"
+azurerm_monitor_action_group_email_receiver_name = "admins"
+azurerm_monitor_action_group_email_receiver_email_address = "lprete@teamdigitale.it"
