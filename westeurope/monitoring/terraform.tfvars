@@ -13,6 +13,6 @@ terragrunt = {
 
 #  monitoring action group module variables
 monitor_ag_name = "CriticalAlertses"
-monitor_ag_short_name = "CriticalAlerts"
+monitor_ag_short_name = "CritAlerts"
 email_receiver_unique_name = "admins"
 email_receiver_email = "lprete@teamdigitale.it"
