@@ -11,8 +11,8 @@ terragrunt = {
   }
 }
 
-#  monitoring action group module variables
-azurerm_monitor_action_group_name = "CriticalAlertses"
-azurerm_monitor_action_group_short_name = "CritAlerts"
-azurerm_monitor_action_group_email_receiver_name = "admins"
-azurerm_monitor_action_group_email_receiver_email_address = "lprete@teamdigitale.it"
+# Monitoring action group module variables
+azurerm_monitor_action_group_name                         = "CriticalAlertses"
+azurerm_monitor_action_group_short_name                   = "CritAlerts"
+azurerm_monitor_action_group_email_receiver_name          = "admins"
+azurerm_monitor_action_group_email_receiver_email_address = "ToBeDefined"
