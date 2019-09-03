@@ -15,4 +15,4 @@ terragrunt = {
 azurerm_monitor_action_group_name                         = "CriticalAlertses"
 azurerm_monitor_action_group_short_name                   = "CritAlerts"
 azurerm_monitor_action_group_email_receiver_name          = "admins"
-azurerm_monitor_action_group_email_receiver_email_address = "ToBeDefined"
+azurerm_monitor_action_group_email_receiver_email_address = "io-alerts@teamdigitale.governo.it"
