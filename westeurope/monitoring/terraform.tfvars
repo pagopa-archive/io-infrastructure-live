@@ -2,6 +2,12 @@
 # For more info look at the README.md file of the module.
 
 terragrunt = {
+   dependencies {
+    paths = [
+      "../resource_group"
+    ]
+  }
+
   terraform {
     source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_monitor_action_group"
   }
