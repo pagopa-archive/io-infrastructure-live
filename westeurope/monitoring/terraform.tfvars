@@ -1,3 +1,4 @@
+
 # For more info look at the README.md file of the module.
 
 terragrunt = {
@@ -12,7 +13,7 @@ terragrunt = {
 }
 
 # Monitoring action group module variables
-azurerm_monitor_action_group_short_name                   = "CritAlerts"
+azurerm_monitor_action_group_short_name                   = "mnt-ag-01"
 azurerm_monitor_action_group_email_receiver_name          = "admins"
 azurerm_monitor_action_group_email_receiver_email_address = "io-alerts@teamdigitale.governo.it"
 azurerm_monitor_action_group_name_suffix                  = "01"
