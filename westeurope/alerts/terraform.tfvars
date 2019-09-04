@@ -1,6 +1,12 @@
 # For more info look at the README.md file of the module.
 
 terragrunt = {
+  dependencies {
+    paths = [
+      "../monitoring"
+    ]
+  }
+
   terraform {
     source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_monitor_metric_alert"
   }
