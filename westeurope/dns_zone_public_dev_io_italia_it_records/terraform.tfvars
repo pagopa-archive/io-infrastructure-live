@@ -27,6 +27,7 @@ kubernetes_cname_records       = [
   "api.pa-onboarding",
   "spid-testenv",
   "app-backend",
-  "app-backend-rc"
+  "app-backend-rc",
+  "pa-onboarding"
 ]
 # Kubernetes specific variables end
