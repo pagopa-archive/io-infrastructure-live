@@ -19,7 +19,7 @@ terragrunt = {
 
 apim_name = "01"
 
-function_app_name = "1-01"
+function_app_name = "2-services"
 
 apim_groups = [
   {
@@ -83,14 +83,14 @@ apim_groups = [
 apim_named_values = [
   {
     name  = "FunctionAppBaseUrl"
-    value = "https://io-dev-fn-1-01.azurewebsites.net"
+    value = "https://io-dev-fn-2-services.azurewebsites.net"
   },
 ]
 
 apim_secret_named_values = [
   {
     name        = "FunctionAppHostKey"
-    vault_alias = "fn101FunctionAppHostKey"
+    vault_alias = "fn2servicesFunctionAppHostKey"
   },
 ]
 
