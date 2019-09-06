@@ -78,6 +78,9 @@ apim_groups = [
     name         = "apiservicewrite"
     display_name = "ApiServiceWrite"
   },
+  {
+    name = "ApiSubscriptionsFeedRead"
+  },
 ]
 
 apim_named_values = [
