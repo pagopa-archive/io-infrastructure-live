@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../api_management",
+      "../api_management"
     ]
   }
 
@@ -78,20 +78,23 @@ apim_groups = [
     name         = "apiservicewrite"
     display_name = "ApiServiceWrite"
   },
+  {
+    name = "ApiSubscriptionsFeedRead"
+  }
 ]
 
 apim_named_values = [
   {
     name  = "FunctionAppBaseUrl"
     value = "https://io-dev-fn-2-services.azurewebsites.net"
-  },
+  }
 ]
 
 apim_secret_named_values = [
   {
     name        = "FunctionAppHostKey"
     vault_alias = "fn2servicesFunctionAppHostKey"
-  },
+  }
 ]
 
 apim_users = [{
