@@ -15,12 +15,12 @@ terragrunt = {
   }
 }
 
-# Azure DNS zone module variables
+# Azure Keyvault module variables
 
 # AD ID
 azurerm_key_vault_tenant_id = "cb44f084-ca44-4753-8973-dd3045d9ad2b"
 
-policy_object_list_map      = [
+user_policies               = [
   # Federico Feroldi
   {
     object_id               = "b9c42346-12d2-4ed2-bdcf-9f6f8bb486ee",
@@ -62,5 +62,20 @@ policy_object_list_map      = [
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
     certificate_permissions = "create,delete,update,get,list"
+  }
+]
+
+# TODO: The application seems to be added correctly,
+# but it does not work with the k8s secret synchronizer.
+app_policies                = [
+  # Kubernetes service principal
+  {
+    # Obtained with az ad sp list --display-name io-dev-sp-k8s-01
+    object_id               = "2d076fa6-e0f7-4d22-9739-109e038b92e2",
+    # Obtained with az ad app list --display-name io-dev-sp-k8s-01
+    application_id          = "cb20f564-e607-4db9-89a9-0e3093245475",
+    key_permissions         = "get",
+    secret_permissions      = "get",
+    certificate_permissions = "get"
   }
 ]
