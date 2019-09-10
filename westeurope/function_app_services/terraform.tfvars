@@ -62,6 +62,10 @@ functionapp_settings = [
     name  = "MAIL_FROM_DEFAULT"
     value = "IO - l'app dei servizi pubblici <no-reply@io.italia.it>"
   },
+  {
+    name  = "SUBSCRIPTIONS_FEED_TABLE"
+    value = "SubscriptionsFeedByDay"
+  },
 ]
 
 functionapp_settings_secrets = [
