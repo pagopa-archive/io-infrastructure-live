@@ -62,6 +62,10 @@ functionapp_settings = [
     name  = "MAIL_FROM_DEFAULT"
     value = "IO - l'app dei servizi pubblici <no-reply@io.italia.it>"
   },
+  {
+    name  = "SUBSCRIPTIONS_FEED_TABLE"
+    value = "SubscriptionsFeedByDay"
+  }
 ]
 
 functionapp_settings_secrets = [
@@ -80,7 +84,7 @@ functionapp_settings_secrets = [
   {
     name        = "MAILUP_SECRET"
     vault_alias = "fn2servicesMailupSecret"
-  },
+  }
 ]
 
 functionapp_connection_strings = [
@@ -91,5 +95,5 @@ functionapp_connection_strings = [
   {
     name        = "COSMOSDB_URI"
     vault_alias = "fn2servicesCosmosdbUri"
-  },
+  }
 ]
