@@ -58,6 +58,10 @@ functionapp_settings = [
     name  = "FUNCTIONS_EXTENSION_VERSION"
     value = "~2"
   },
+  {
+    name  = "SUBSCRIPTIONS_FEED_TABLE"
+    value = "SubscriptionsFeedByDay"
+  }
 ]
 
 functionapp_settings_secrets = [
