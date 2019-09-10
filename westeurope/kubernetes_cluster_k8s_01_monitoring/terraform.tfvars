@@ -64,6 +64,5 @@ alerts = [
     azurerm_monitor_metric_alert_criteria_metric_namespace = "Microsoft.ContainerService/managedClusters"
     azurerm_monitor_metric_alert_criteria_operator         = "LessThanOrEqual"
     azurerm_monitor_metric_alert_criteria_treshold         = "5368709120"
-  },
-
+  }
 ]
