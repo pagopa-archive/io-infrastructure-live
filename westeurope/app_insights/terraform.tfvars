@@ -1,3 +1,6 @@
+# The module creates and configure application insights
+
+# Existing infrastructure
 terragrunt = {
   dependencies {
     paths = [
@@ -15,7 +18,17 @@ terragrunt = {
   }
 }
 
-# Notification Hub module variables
+# New infrastructure
 
-azurerm_application_insights_application_type  = "Web"
-azurerm_application_insights_name              = "01"
+applications_insights = [
+  {
+    azurerm_application_insights_application_type  = "web"
+    azurerm_application_insights_name              = "01"
+    description                                    = "To be determined"
+  },
+  {
+    azurerm_application_insights_application_type  = "other"
+    azurerm_application_insights_name              = "01"
+    description                                    = "This is used for generic monitor"
+  }
+]
