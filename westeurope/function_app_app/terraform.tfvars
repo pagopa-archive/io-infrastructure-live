@@ -76,7 +76,7 @@ functionapp_settings_secrets = [
   {
     name        = "QueueStorageConnection"
     vault_alias = "fn2appQueueStorageConnection"
-  },
+  }
 ]
 
 functionapp_connection_strings = [
@@ -87,5 +87,5 @@ functionapp_connection_strings = [
   {
     name        = "COSMOSDB_URI"
     vault_alias = "fn2appCosmosdbUri"
-  },
+  }
 ]
