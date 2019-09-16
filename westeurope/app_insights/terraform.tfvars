@@ -24,11 +24,9 @@ applications_insights = [
   {
     azurerm_application_insights_application_type  = "web"
     azurerm_application_insights_name              = "01"
-    description                                    = "To be determined"
   },
   {
     azurerm_application_insights_application_type  = "other"
-    azurerm_application_insights_name              = "01"
-    description                                    = "This is used for generic monitor"
+    azurerm_application_insights_name              = "02"
   }
 ]
