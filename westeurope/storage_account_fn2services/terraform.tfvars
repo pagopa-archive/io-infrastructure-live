@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../subnet_functions"
+      "../subnet_function_app_admin"
     ]
   }
 
@@ -23,5 +23,5 @@ azurerm_storage_account_network_rules_allowed_subnets = [
   {
     vnet   = "io-dev-vnet-common"
     subnet = "io-dev-subnet-function-services"
-  },
+  }
 ]

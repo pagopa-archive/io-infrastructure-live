@@ -7,7 +7,7 @@ terragrunt = {
       "../subnet_k8s_01",
       "../cosmosdb_sql_database",
       "../subnet_functions_app_admin",
-      "../storage_account_functions",
+      "../storage_account_fn2admin"
     ]
   }
 
