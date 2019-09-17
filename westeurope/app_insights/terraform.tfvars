@@ -26,7 +26,7 @@ applications_insights = [
     azurerm_application_insights_name              = "01"
   },
   {
-    azurerm_application_insights_application_type  = "other"
-    azurerm_application_insights_name              = "02"
+    azurerm_application_insights_application_type  = "web"
+    azurerm_application_insights_name              = "generic-web-tests"
   }
 ]
