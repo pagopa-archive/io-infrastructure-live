@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../subnet_function_app_admin"
+      "../subnet_functions"
     ]
   }
 
@@ -16,12 +16,12 @@ terragrunt = {
 }
 
 # Storage account module related variables
-storage_account_name                                  = "fn2services"
+storage_account_name                                  = "fn2admin"
 azurerm_storage_account_account_tier                  = "Standard"
 azurerm_storage_account_account_replication_type      = "LRS"
 azurerm_storage_account_network_rules_allowed_subnets = [
   {
     vnet   = "io-dev-vnet-common"
-    subnet = "io-dev-subnet-function-services"
-  }
+    subnet = "io-dev-subnet-function-admin"
+  },
 ]
