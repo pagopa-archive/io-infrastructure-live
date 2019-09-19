@@ -20,6 +20,8 @@ terragrunt = {
 
 # New infrastructure
 
+azurerm_application_insight_suffix = "generic-web-tests"
+
 web_tests = [
   {
     name = "web_test_spid"
