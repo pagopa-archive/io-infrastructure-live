@@ -4,7 +4,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../app_insights_web_tests/"
+      "../app_insights_web_tests"
     ]
   }
 
