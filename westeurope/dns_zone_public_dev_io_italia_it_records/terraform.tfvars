@@ -28,6 +28,7 @@ kubernetes_cname_records       = [
   "spid-testenv",
   "app-backend",
   "app-backend-rc",
-  "pa-onboarding"
+  "pa-onboarding",
+  "backend.developer-portal"
 ]
 # Kubernetes specific variables end
