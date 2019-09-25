@@ -56,6 +56,10 @@ functionapp_settings_secrets = [
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
     vault_alias = "fn2adminAppInsightsInstrumentationKey"
+  },
+  {
+    name        = "StorageConnection"
+    vault_alias = "fn2adminStorageConnection"
   }
 ]
 
