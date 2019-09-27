@@ -87,6 +87,10 @@ apim_named_values = [
   {
     name  = "FunctionAppBaseUrl"
     value = "https://io-dev-fn-2-services.azurewebsites.net"
+  },
+    {
+    name  = "adminBackendUrl"
+    value = "https://io-dev-fn-2-admin.azurewebsites.net"
   }
 ]
 
@@ -94,6 +98,10 @@ apim_secret_named_values = [
   {
     name        = "FunctionAppHostKey"
     vault_alias = "fn2servicesFunctionAppHostKey"
+  },
+    {
+    name        = "adminCode"
+    vault_alias = "fn2adminadminCode"
   }
 ]
 
