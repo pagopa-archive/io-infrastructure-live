@@ -62,6 +62,13 @@ user_policies               = [
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
     certificate_permissions = "create,delete,update,get,list"
+  },
+  # Riccardo Setti - art48
+  {
+    object_id               = "994160c7-59ce-43db-802e-e73807640d9d",
+    key_permissions         = "create,delete,update,get,list",
+    secret_permissions      = "set,delete,get,list",
+    certificate_permissions = "create,delete,update,get,list"
   }
 ]
 
