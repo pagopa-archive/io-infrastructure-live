@@ -22,3 +22,6 @@ out/
 
 .env
 *.log
+
+# app_insights_web_test/terraform.tfvars is automatically generated with secrets from your Keyvault! DO NOT commit it!
+westeurope/app_insights_web_tests/terraform.tfvars
