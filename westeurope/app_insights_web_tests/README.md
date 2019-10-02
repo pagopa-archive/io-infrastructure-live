@@ -12,19 +12,14 @@ In order to add a new web test you will need to edit `request.json` and add an e
     }
 ```
 
-* name => name of the test
-* url  => url we want to test
-* headers_xml => is a list of string that contains the Name of the header, the value will be retrieved from azure key vault.
+* name        => name of the test
+* url         => url to test
+* headers_xml => a list of strings that contains the name of the header. The value will be retrieved from azure Keyvault.
 
+>**NOTE:** header names need to be consistent with the name of the secrets in the Keyvault, but need also to have a slightly different format, following a convention. For example, for a header called `Ocp-Apim-Subscription-Key` a secret called `app-insight-web-tests-Ocp-Apim-Subscription-Key` should be present in Azure KeyVault.
 
-### Note about headers:
+## Generate the web tests live file (terraform.tfvars)
 
-headers have to be saved with a specific name. If we want to have a header called `Ocp-Apim-Subscription-Key` we need to save it as
-`app-insight-web-tests-Ocp-Apim-Subscription-Key` in Azure Key Vault.
+Running `python generate-terraform-tfvars.py` within `io-infrastructure-live/westeurope/app_insights_web_tests` a new `terraform.tfvars` will be generated in the same folder. Then, it can be applied in production with terragrunt. 
 
-
-## Generate the web tests (terraform.tfvars)
-
-Simpy run `python generate-terraform-tfvars.py` within `io-infrastructure-live/westeurope/app_insights_web_tests` and a new terraform.tfvars will be added. Then you can follow the normal procedure to apply it to production with terragrunt. 
-
-**BE CAREFUL** to not commit terraform.tfvars as it contains configuration secrets we wouldn't like to share with the rest of the world.
+>**BE CAREFUL** DO NOT commit the *terraform.tfvars* generated, as it contains configuration secrets that shouldn't be shared with others.
