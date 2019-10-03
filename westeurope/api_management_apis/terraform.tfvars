@@ -58,15 +58,7 @@ apim_api_operation_policies = [
   },
   {
     api_name     = "io-api"
-    operation_id = "getInfo"
-  },
-  {
-    api_name     = "io-api"
     operation_id = "getMessage"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getMessagesByUser"
   },
   {
     api_name     = "io-api"
@@ -74,23 +66,7 @@ apim_api_operation_policies = [
   },
   {
     api_name     = "io-api"
-    operation_id = "getService"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "senderServices"
-  },
-  {
-    api_name     = "io-api"
     operation_id = "submitMessageforUser"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "upsertProfile"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "visibleServices"
   },
   {
     api_name     = "io-api"
