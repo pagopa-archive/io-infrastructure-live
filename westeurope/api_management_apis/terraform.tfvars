@@ -57,19 +57,19 @@ apim_api_operation_policies = [
     operation_id = "createDevelopmentProfile"
   },
   {
-    api_name     = "io-api"
+    api_name     = "io-services"
     operation_id = "getMessage"
   },
   {
-    api_name     = "io-api"
+    api_name     = "io-services"
     operation_id = "getProfile"
   },
   {
-    api_name     = "io-api"
+    api_name     = "io-services"
     operation_id = "submitMessageforUser"
   },
   {
-    api_name     = "io-api"
+    api_name     = "io-services"
     operation_id = "getsubscriptionsfeedfordate"
   },
 ]
