@@ -29,7 +29,7 @@ apim_apis = [
     protocols    = "https"
   },
   {
-    name         = "io-services"
+    name         = "io-api"
     display_name = "IO API for Services"
     description  = "IO API for Services."
     revision     = "3"
@@ -57,19 +57,19 @@ apim_api_operation_policies = [
     operation_id = "createDevelopmentProfile"
   },
   {
-    api_name     = "io-services"
+    api_name     = "io-api"
     operation_id = "getMessage"
   },
   {
-    api_name     = "io-services"
+    api_name     = "io-api"
     operation_id = "getProfile"
   },
   {
-    api_name     = "io-services"
+    api_name     = "io-api"
     operation_id = "submitMessageforUser"
   },
   {
-    api_name     = "io-services"
+    api_name     = "io-api"
     operation_id = "getsubscriptionsfeedfordate"
   },
 ]

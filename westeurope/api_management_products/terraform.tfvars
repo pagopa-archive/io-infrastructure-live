@@ -62,15 +62,11 @@ XML
 
 apim_product_api_bindings = [
   {
-    api_name   = "digital-citizenship-admin"
+    api_name   = "io-admin"
     product_id = "io-dev-apim-prod-01"
   },
   {
-    api_name   = "digital-citizenship-api"
-    product_id = "io-dev-apim-prod-01"
-  },
-  {
-    api_name   = "openapi-specs"
+    api_name   = "io-api"
     product_id = "io-dev-apim-prod-01"
   },
 ]
