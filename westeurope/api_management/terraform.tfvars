@@ -19,7 +19,7 @@ terragrunt = {
 
 apim_name = "01"
 
-virtualNetworkType = "external"
+virtualNetworkType = "internal"
 
 vnet_name = "common"
 
