@@ -26,7 +26,7 @@ apim_apis = [
     revision     = "1"
     path         = ""
     host         = "api.dev.io.italia.it"
-    protocols    = "https"
+    protocols    = "http,https"
   },
   {
     name         = "io-api"
@@ -35,7 +35,7 @@ apim_apis = [
     revision     = "3"
     path         = "api/v1"
     host         = "api.dev.io.italia.it"
-    protocols    = "https"
+    protocols    = "http,https"
   },
 ]
 
