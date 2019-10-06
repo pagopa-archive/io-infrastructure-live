@@ -26,7 +26,6 @@
     </outbound>
     <backend>
         <base />
-        <!--              { "azureResource": { "type": "funcapp", "id": "/subscriptions/b77298e2-ddab-4f40-850c-cdc71fdce6d8/resourceGroups/teamdigitale/providers/Microsoft.Web/sites/test-danilo" } }              -->
     </backend>
     <on-error>
         <base />
