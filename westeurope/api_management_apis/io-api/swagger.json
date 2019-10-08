@@ -35,7 +35,7 @@
             "get": {
                 "description": "Returns the hashed fiscal codes of users that subscribed to or\nunsubscribed from your service on the provided date (UTC). By querying\nthis feed on each day, you can know what users you can or cannot send\nmessages to without having to query `getProfile` for each message.\nThis is an optimization for services that send hi volumes of\nmessages per day to avoid having to make two API calls for each message.",
                 "operationId": "getsubscriptionsfeedfordate",
-                "summary": "Get your service subscriptions feed for a date",
+                "summary": "Get Subscriptions Feed",
                 "parameters": [
                     {
                         "name": "date",
@@ -57,7 +57,7 @@
                                 "subscriptions": [
                                     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
                                 ],
-                                "ubsubscriptions": []
+                                "unsubscriptions": []
                             }
                         }
                     },
@@ -83,7 +83,7 @@
             "post": {
                 "description": "Submits a message to a user.\nOn error, the reason is returned in the response payload.\nIn order to call `submitMessageforUser`, before sending any message,\nthe sender MUST call `getProfile` and check that the profile exists\n(for the specified fiscal code) and that the `sender_allowed` field\nof the user's profile it set to `true`.",
                 "operationId": "submitMessageforUser",
-                "summary": "Submit a message",
+                "summary": "Submit a Message passing the user fiscal_code as path parameter",
                 "parameters": [
                     {
                         "name": "fiscal_code",
@@ -252,6 +252,65 @@
                     "application/json"
                 ]
             }
+        },
+        "/messages": {
+            "post": {
+                "description": "Submits a message to a user.\nOn error, the reason is returned in the response payload.\nIn order to call `submitMessageforUser`, before sending any message,\nthe sender MUST call `getProfile` and check that the profile exists\n(for the specified fiscal code) and that the `sender_allowed` field\nof the user's profile it set to `true`.",
+                "operationId": "submitMessageforUserWithFiscalCodeInBody",
+                "summary": "Submit a Message passing the user fiscal_code in the request body",
+                "parameters": [
+                    {
+                        "name": "newMessage",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/NewMessage"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Message created.",
+                        "headers": {
+                            "Location": {
+                                "type": "string",
+                                "description": "Location (URL) of created message resource.\nA GET request to this URL returns the message status and details."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/MessagesPost201ApplicationJsonResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "id": "01BX9NSMKVXXS5PSP2FATZMYYY"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid payload.",
+                        "schema": {
+                            "$ref": "#/definitions/ProblemJson"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "The message cannot be delivered.",
+                        "schema": {
+                            "$ref": "#/definitions/ProblemJson"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ]
+            }
         }
     },
     "definitions": {
@@ -294,7 +353,7 @@
             "minLength": 10,
             "description": "A date in the format YYYY-MM-DD.",
             "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}",
-            "x-example": "2019-09-15T00:00:00Z"
+            "x-example": "2019-09-15"
         },
         "ProblemJson": {
             "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ProblemJson"
@@ -322,6 +381,15 @@
         },
         "NewMessage": {
             "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/NewMessage"
+        },
+        "MessagesPost201ApplicationJsonResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The identifier of the created message."
+                }
+            }
         },
         "MessagesFiscal_codePost201ApplicationJsonResponse": {
             "type": "object",

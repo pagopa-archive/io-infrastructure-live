@@ -39,37 +39,42 @@ apim_apis = [
   },
 ]
 
-apim_api_operation_policies = [
-  {
-    api_name     = "io-admin"
-    operation_id = "createService"
-  },
-  {
-    api_name     = "io-admin"
-    operation_id = "updateService"
-  },
-  {
-    api_name     = "io-admin"
-    operation_id = "getService"
-  },
-  {
-    api_name     = "io-admin"
-    operation_id = "createDevelopmentProfile"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getMessage"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getProfile"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "submitMessageforUser"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getsubscriptionsfeedfordate"
-  },
-]
+# apim_api_operation_policies = [
+#   {
+#     api_name     = "io-admin"
+#     operation_id = "createService"
+#   },
+#   {
+#     api_name     = "io-admin"
+#     operation_id = "updateService"
+#   },
+#   {
+#     api_name     = "io-admin"
+#     operation_id = "getService"
+#   },
+#   {
+#     api_name     = "io-admin"
+#     operation_id = "createDevelopmentProfile"
+#   },
+#   {
+#     api_name     = "io-api"
+#     operation_id = "getMessage"
+#   },
+#   {
+#     api_name     = "io-api"
+#     operation_id = "getProfile"
+#   },
+#   {
+#     api_name     = "io-api"
+#     operation_id = "submitMessageforUser"
+#   },
+#   {
+#     api_name     = "io-api"
+#     operation_id = "getsubscriptionsfeedfordate"
+#   },
+#   {
+#     api_name     = "io-api"
+#     operation_id = "submitMessageforUserWithFiscalCodeInBody"
+#   },
+# ]
+

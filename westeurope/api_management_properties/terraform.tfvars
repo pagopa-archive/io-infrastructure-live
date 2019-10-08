@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../api_management"
+      "../api_management",
     ]
   }
 
@@ -80,7 +80,10 @@ apim_groups = [
   },
   {
     name = "ApiSubscriptionsFeedRead"
-  }
+  },
+  {
+    name = "ApiDevelopmentProfileWrite"
+  },
 ]
 
 apim_named_values = [
@@ -88,10 +91,10 @@ apim_named_values = [
     name  = "FunctionAppBaseUrl"
     value = "https://io-dev-fn-2-services.azurewebsites.net"
   },
-    {
+  {
     name  = "adminBackendUrl"
     value = "https://io-dev-fn-2-admin.azurewebsites.net"
-  }
+  },
 ]
 
 apim_secret_named_values = [
@@ -99,10 +102,10 @@ apim_secret_named_values = [
     name        = "FunctionAppHostKey"
     vault_alias = "fn2servicesFunctionAppHostKey"
   },
-    {
+  {
     name        = "adminCode"
     vault_alias = "fn2adminadminCode"
-  }
+  },
 ]
 
 apim_users = [{
@@ -113,4 +116,13 @@ apim_users = [{
 
   groups        = "ApiFullProfileRead,ApiServiceRead,ApiPublicServiceList,ApiServiceByRecipientQuery,ApiMessageRead,ApiMessageList,ApiInfoRead"
   subscriptions = "io-dev-apim-prod-01"
-}]
+},
+  {
+    user_id       = "io-monitoring"
+    first_name    = "IO"
+    last_name     = "Monitoring"
+    email         = "io-alerts@teamdigitale.governo.it"
+    groups        = "ApiDevelopmentProfileWrite,ApiInfoRead,ApiLimitedMessageWrite,ApiLimitedProfileRead,ApiMessageRead,ApiMessageWrite,ApiServiceRead,ApiServiceWrite,ApiSubscriptionsFeedRead"
+    subscriptions = "io-dev-apim-prod-01"
+  },
+]

@@ -22,8 +22,8 @@ apim_name = "01"
 apim_products = [
   {
     id                  = "io-dev-apim-prod-01"
-    display_name        = "Digital Citizenship (alpha)"
-    description         = "Subscribers will be able to integrate with the alpha version Digital Citizenship API"
+    display_name        = "IO Italia"
+    description         = "Subscribers will be able to integrate with IO Italia API"
     subscriptions_limit = "100"
     admin_group         = "developers"
 
