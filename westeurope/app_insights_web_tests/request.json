@@ -11,7 +11,7 @@
 	"name": "ServiceGetProfile",
 	"url": "https://api.dev.io.italia.it/api/v1/profiles/ETOXUW84A84Y778X",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
-    }
+    },
     {
 	"name": "ServiceGetMessage",
 	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
