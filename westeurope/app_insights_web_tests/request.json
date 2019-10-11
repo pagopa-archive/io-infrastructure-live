@@ -29,8 +29,8 @@
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     },
     {
-	"name": "Submit a Message passing the user fiscal_code in the request body"
-	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X"
+	"name": "Submit a Message passing the user fiscal_code in the request body",
+	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
 	"method": "POST",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     }
