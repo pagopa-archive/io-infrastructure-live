@@ -84,6 +84,10 @@ functionapp_settings_secrets = [
   {
     name        = "MAILUP_SECRET"
     vault_alias = "fn2servicesMailupSecret"
+  },
+  {
+    name        = "WEBHOOK_CHANNEL_URL"
+    vault_alias = "fn2servicesWebhookChannelUrl"
   }
 ]
 
