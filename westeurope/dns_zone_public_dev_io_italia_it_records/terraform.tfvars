@@ -29,6 +29,7 @@ kubernetes_cname_records       = [
   "app-backend",
   "app-backend-rc",
   "pa-onboarding",
-  "backend.developer-portal"
+  "backend.developer",
+  "developer"
 ]
 # Kubernetes specific variables end
