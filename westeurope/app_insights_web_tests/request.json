@@ -8,8 +8,30 @@
 	"url": "https://app-backend.dev.io.italia.it"
     },
     {
-	"name": "webtestwithheaders",
-	"url": "https://io-dev-apim-01.azure-api.net/api/v1/profiles/ETOXUW84A84Y778X",
+	"name": "ServiceGetProfile",
+	"url": "https://api.dev.io.italia.it/api/v1/profiles/ETOXUW84A84Y778X",
+	"headers_xml": ["Ocp-Apim-Subscription-Key"]
+    },
+    {
+	"name": "ServiceGetMessage",
+	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
+	"headers_xml": ["Ocp-Apim-Subscription-Key"]
+    },
+    {
+	"name": "ServiceGetSubscriptionsFeed",
+	"url": "https://api.dev.io.italia.it/api/v1/subscriptions-feed/2019-09-30",
+	"headers_xml": ["Ocp-Apim-Subscription-Key"]
+    },
+    {
+	"name": "Submit a Message passing the user fiscal_code as path parameter",
+	"url": "https://api.dev.io.italia.it/api/v1/messages",
+	"method": "POST",
+	"headers_xml": ["Ocp-Apim-Subscription-Key"]
+    },
+    {
+	"name": "Submit a Message passing the user fiscal_code in the request body",
+	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
+	"method": "POST",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     }
 ]
