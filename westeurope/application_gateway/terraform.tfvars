@@ -21,5 +21,5 @@ azurerm_application_gateway_sku_tier                                            
 azurerm_application_gateway_backend_address_pool_ip_addresses                        = ["172.16.50.5"]
 azurerm_application_gateway_waf_configuration_firewall_mode                          = "Detection"
 
-# Azure key vault certificate variables
-azurerm_key_vault_certificate_certificate_policy_x509_certificate_properties_subject = "CN=api.dev.io.italia.it"
+# Log analytics 
+log_analytics_workspace_name = "log-analytics-workspace"
