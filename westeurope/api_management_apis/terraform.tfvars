@@ -23,6 +23,7 @@ apim_apis = [
   {
     name         = "io-admin"
     display_name = "IO API for administration purpose"
+    description  = "IO API for administration purpose"
     revision     = "1"
     path         = ""
     host         = "api.dev.io.italia.it"
@@ -36,40 +37,5 @@ apim_apis = [
     path         = "api/v1"
     host         = "api.dev.io.italia.it"
     protocols    = "http,https"
-  },
-]
-
-apim_api_operation_policies = [
-  {
-    api_name     = "io-admin"
-    operation_id = "createService"
-  },
-  {
-    api_name     = "io-admin"
-    operation_id = "updateService"
-  },
-  {
-    api_name     = "io-admin"
-    operation_id = "getService"
-  },
-  {
-    api_name     = "io-admin"
-    operation_id = "createDevelopmentProfile"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getMessage"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getProfile"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "submitMessageforUser"
-  },
-  {
-    api_name     = "io-api"
-    operation_id = "getsubscriptionsfeedfordate"
   },
 ]
