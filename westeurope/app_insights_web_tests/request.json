@@ -32,6 +32,13 @@
 	"name": "Submit a Message passing the user fiscal_code in the request body",
 	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
 	"method": "POST",
+	"body": {
+	    "time_to_live": "3600",
+	    "content": {
+		"subject": "[test] - Create message service function",
+		"markdown": "This is an automated test message, used to test the create message service function."
+	    }
+	},
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     }
 ]
