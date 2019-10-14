@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../api_management",
+      "../api_management"
     ]
   }
 
