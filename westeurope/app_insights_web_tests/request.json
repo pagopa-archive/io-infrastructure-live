@@ -35,8 +35,8 @@
 	"body": {
 	    "time_to_live": "3600",
 	    "content": {
-		"subject": "Prova functions v2 nuova",
-		"markdown": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..."
+		"subject": "[test] - Create message service function",
+		"markdown": "This is an automated test message, used to test the create message service function."
 	    }
 	},
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
