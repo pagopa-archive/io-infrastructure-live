@@ -36,7 +36,7 @@
 	    "time_to_live": "3600",
 	    "content": {
 		"subject": "Prova functions v2 nuova",
-		"markdown": "[demo]Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..."
+		"markdown": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..."
 	    }
 	},
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
