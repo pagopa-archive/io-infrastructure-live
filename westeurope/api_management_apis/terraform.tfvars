@@ -23,6 +23,7 @@ apim_apis = [
   {
     name         = "io-admin"
     display_name = "IO API for administration purpose"
+    description  = "IO API for administration purpose"
     revision     = "1"
     path         = ""
     host         = "api.dev.io.italia.it"
