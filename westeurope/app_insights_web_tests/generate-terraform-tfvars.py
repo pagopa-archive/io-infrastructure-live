@@ -36,7 +36,9 @@ web_tests = [ @@WEB_TESTS@@ ]
 WEB_TEST_HCL="""
     {
         "name"        = "@@web_test_name@@",
+        "method"      = "@@web_test_method@@",
         "url"         = "@@web_test_url@@",
+        "body"        = "@@web_test_body@@"
         "headers_xml" = <<XML
                         "@@web_test_headers_xml@@"
 XML
@@ -62,6 +64,9 @@ for test in web_tests:
     web_test = WEB_TEST_HCL
     web_test = web_test.replace("@@web_test_name@@", test["name"])
     web_test = web_test.replace("@@web_test_url@@", test["url"])
+
+    web_test = web_test.replace("@@web_test_method@@", test.get("method", "GET"))
+    web_test = web_test.replace("@@web_test_body@@", str(test.get("body", "")))
 
     try:
         if test["headers_xml"]:
