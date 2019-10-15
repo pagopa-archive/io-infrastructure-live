@@ -1,24 +1,29 @@
 [
     {
 	"name": "web_test_spid",
+	"method": "GET",
 	"url": "https://spid-testenv.dev.io.italia.it"
     },
     {
 	"name": "web_test_app_backend",
+	"method": "GET",
 	"url": "https://app-backend.dev.io.italia.it"
     },
     {
 	"name": "ServiceGetProfile",
+	"method": "GET",
 	"url": "https://api.dev.io.italia.it/api/v1/profiles/ETOXUW84A84Y778X",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     },
     {
 	"name": "ServiceGetMessage",
+	"method": "GET",
 	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     },
     {
 	"name": "ServiceGetSubscriptionsFeed",
+	"method": "GET",
 	"url": "https://api.dev.io.italia.it/api/v1/subscriptions-feed/2019-09-30",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     },
