@@ -18,7 +18,7 @@
     {
 	"name": "ServiceGetMessage",
 	"method": "GET",
-	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X",
+	"url": "https://api.dev.io.italia.it/api/v1/messages/ETOXUW84A84Y778X/01DNQ2C0Z6KT0432B3Y78M99YN",
 	"headers_xml": ["Ocp-Apim-Subscription-Key"]
     },
     {

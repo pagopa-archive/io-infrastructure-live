@@ -57,7 +57,7 @@ WEB_TEST_XML= Template("""
 	Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="200"
 	ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
 	<Headers>
-          {{ test_headers }}
+          {{ test["headers"] }}
 	</Headers>
         {% if test["method"] == "POST" %}
 	<StringHttpBody ContentType="application/json">{{ test["s_body"] }}</StringHttpBody>
@@ -98,10 +98,9 @@ for test in web_tests:
                 value = get_secret_value(header)
                 header = '<Header Name="%s" Value="%s"/>' % (header, value)
                 headers_string = headers_string+header
-            web_test = web_test.replace("@@web_test_headers_xml@@", headers_string)
-
+            test["headers"] = headers_string
     except KeyError:
-        web_test = web_test.replace("@@web_test_headers_xml@@", "")
+        test["headers"] = ""
 
     r_web_test_xml = web_test_xml.render(test=test)
     web_test = web_test.replace("@@web_test_xml@@", r_web_test_xml)
