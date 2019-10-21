@@ -88,8 +88,9 @@ for test in web_tests:
     web_test = web_test.replace("@@web_test_name@@", test["name"])
 
     web_test_xml = WEB_TEST_XML
-    b_body = b64encode(bytearray(str(test.get("body", "")), "utf-8"))
-    test["s_body"] = b_body.decode("utf-8")
+    body = json.dumps(test.get("body", ""))
+    b_body = b64encode(body.encode("ascii"))
+    test["s_body"] = b_body.decode("ascii")
 
     try:
         if test["headers_xml"]:
