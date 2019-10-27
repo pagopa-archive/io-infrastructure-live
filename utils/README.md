@@ -1,56 +1,37 @@
 # IO utility scripts
 
-The document describes how to use the bash utility scripts in this folder.
+The document describes how to use the bash utility scripts in the *utils* folder.
 
 ## Prerequisites
 
 The following prerequisites should be satisfied in order to use the scripts.
 
-* **Install the Azure CLI utility**: the Azure CLI utility (az) is extensively used by all scripts of the repository. To install the az tool follow [this guide](https://docs.microsoft.com/it-it/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Python 3 - used by the Azure CLI
 
-* **Log into Azure**: Before being able to run the scripts you should access Azure through the CLI tool.
+* [Azure CLI](https://docs.microsoft.com/it-it/cli/azure/install-azure-cli?view=azure-cli-latest)
+
+## Authentication
+
+Before being able to apply Terraform configurations, users need to authenticate on Azure and export some environment variables need by Terraform to operate.
+
+To authenticate on Azure, use the Azure CLI you've downloaded, running:
 
 ```shell
 az login
 ```
 
-A browser should open and a login form should pop up automatically.
+A web page will show up. When the authentication process is complete, you'll be able to go back to the Terminal.
 
-## Initialize the Azure environment and export envrionment variables
+## The .env files
 
-A combination of three scripts (*.env.example*, *az-init.sh*, *az-export.sh*) allows operators to make a generic Azure subscription ready to work with Terraform, and export the environment variables needed by other scripts (i.e. Terraform) to work.
+Both the utlity and the Terraform scripts can work in different environments. For this reason they make use of some environment variables, that can be either defined manually or exported through a script, that reads a *.env* file.
 
-### Define your environment settings with the .env files
+The *utils* folder contains a *.env.example* file, that contains a description of the values to set for each variable. The *.env.example* file should be copied to a *.env* file (to keep in the same location) and filled with the values required. Values can be get from the Azure GUI (*portal.azure.com*) or from a colleague. Alternatively, a copy of a working *.env* file can be directly provided by another Administrator.
 
-The .env files contain a list of variables and common functions that are read by all other scripts, before execution.
+## Export the environment variables with az-export.sh
 
-Before running any other script, copy the *.env.example* file to a *.env* file and customize it using your own values.
-
-```shell
-cp .env.example .env
-```
-
-### Initialize the Azure infrastructure with az-init.sh
-
-The *az-init.sh* script initializes the Azure environment, creating
-
-* A dedicated infrastructure resource group
-
-* An infrastructure Azure Keyvault where to save secrets
-
-* A storage account and a storage container for Terraform (then saving the auto-generated secret of the storage account in the infrastructure vault)
-
-The script should be idempotent. Further runs will simply keep resources as they are, if already existing in the Azure subscription.
-
-After the *.env* file has been sourced, initialize the Azure account running:
-
-```shell
-source az-init.sh
-```
-
-### Export the environment variables with az-export.sh
-
-The *az-export.sh* script loads some values from the .env file, from the Azure Active Directory, and some secrets from the infrastructure Keyvault to allow Terraform to provision the infrastructure. Values are exposed to the system as environment variables.
+The *az-export.sh* script exports the environment variables needed by any other script. Before being able to run the script the *.env* file should have been created and properly customized.
+The script exports some variable values, as they have been written in the *.env* file, some others from the Azure Active Directory, and some secrets from the infrastructure Keyvault.
 
 Before using any other script and after the *.env* file has been sourced, to export the environment variables run:
 
@@ -58,10 +39,31 @@ Before using any other script and after the *.env* file has been sourced, to exp
 source az-export.sh
 ```
 
-## API Management utlity scripts: sync users, groups and subscriptions
+## Initialize a new Azure environment with az-init.sh
 
-The *az-apim-sync.sh* helps operators to sync users, groups and subscriptions between two APIMs.
-Data should be exported manually from the old APIM and saved in a local file called *template.json*. The script takes the (*template.json*) file in input and generates three ARM templates:
+>NOTE: the script should be ONLY executed if a new Azure infrastructure needs to be created from scratch. If you've been asked to work on an existing infrastructure, you should not use this script.
+
+The *az-init.sh* script initializes a new Azure environment, creating
+
+* A dedicated infrastructure resource group
+
+* An infrastructure Azure Keyvault where to save secrets
+
+* A storage account and a storage container for Terraform (saving the auto-generated secret of the storage account in the infrastructure vault)
+
+The script should be idempotent. Further runs will simply keep resources as they are, if already existing in the Azure subscription.
+
+After the *.env* has been created and properly customized, initialize the Azure environment, running:
+
+```shell
+source az-init.sh
+```
+
+## Sync users, groups and subscriptions using the API Management utlity scripts
+
+The *az-apim-sync.sh* script helps operators to sync users, groups and subscriptions between two APIMs.
+
+Data need to be first exported manually from the old APIM and saved in a local file called *template.json*. The script then takes the *template.json* file in input and generates three ARM templates:
 
 * Users (*apim-users.json*)
 
@@ -69,9 +71,9 @@ Data should be exported manually from the old APIM and saved in a local file cal
 
 * Subscriptions (*apim-subscriptions.json*)
 
-If the *DRY_RUN* variable has a value *>0* (default) it also runs the deployment on the destination Azure environment.
+If the *DRY_RUN* variable in the script has a value *>0* (default) it also runs the deployment on the destination Azure environment.
 
->**NOTE:** Remeber to customize script variables -at the top of the script- to set the source and destination Azure API Management Services (APIMs) name, product and resource group.
+>**NOTE:** Remember to customize the variables at the top of the script to set the source and destination name, product and resource groups of the Azure API Management Services (APIMs).
 
 To synchronize users run:
 
