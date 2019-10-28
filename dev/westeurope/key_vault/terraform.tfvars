@@ -49,6 +49,13 @@ user_policies               = [
     secret_permissions      = "set,delete,get,list",
     certificate_permissions = "create,delete,update,get,list"
   },
+  # Francesco Persico - art48
+  {
+    object_id               = "ab6e3253-8ed9-464c-8f70-845bf2876b71",
+    key_permissions         = "create,delete,update,get,list",
+    secret_permissions      = "set,delete,get,list",
+    certificate_permissions = "create,delete,update,get,list"
+  },
   # Luca Pinna - BeeToBit
   {
     object_id               = "1a844c85-5f7a-4fb6-988a-054d5e6ddfdc",
