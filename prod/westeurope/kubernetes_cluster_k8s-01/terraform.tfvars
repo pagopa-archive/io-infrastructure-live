@@ -6,7 +6,7 @@ terragrunt = {
     paths = [
       "../subnet_k8s_01",
       "../dns_zone_private_common",
-      "../service_principal_k8s_01",
+      "../service_principal_k8s-01",
       "../key_vault_secret_ssh_keys",
       "../log_analytics_workspace"
     ]

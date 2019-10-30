@@ -2,7 +2,7 @@ terragrunt = {
   dependencies {
     paths = [
       "../dns_zone_public_dev_io_italia_it",
-      "../public_ip_k8s_01"
+      "../public_ip_k8s-01"
     ]
   }
 
