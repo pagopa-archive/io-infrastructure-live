@@ -1,6 +1,8 @@
 terragrunt = {
   dependencies {
-    paths = ["../azurerm_cosmosdb_sql_database"]
+    paths = [
+      "../cosmosdb_sql_database_db-01"
+    ]
   }
 
   terraform {
