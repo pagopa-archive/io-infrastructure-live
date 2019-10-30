@@ -16,7 +16,7 @@ terragrunt = {
 }
 
 # CosmosDB account specific variables
-cosmosdb_account_name = "apim"
+cosmosdb_account_name = "01"
 documentdb_name       = "db-01"
 container_name        = "services"
 container_throughput  = 1000
