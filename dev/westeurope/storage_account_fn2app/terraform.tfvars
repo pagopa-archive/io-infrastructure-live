@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../subnet_functions"
+      "../subnet_function_app_app"
     ]
   }
 
@@ -19,9 +19,9 @@ terragrunt = {
 storage_account_name                                  = "fn2app"
 azurerm_storage_account_account_tier                  = "Standard"
 azurerm_storage_account_account_replication_type      = "LRS"
-azurerm_storage_account_network_rules_allowed_subnets = [
-  {
-    vnet   = "io-dev-vnet-common"
-    subnet = "io-dev-subnet-function-app"
-  },
+allowed_subnets_suffixes                              = [
+  "function-app"
+]
+azurerm_storage_account_network_rules_allowed_ips = [
+  "5.97.129.253"
 ]
