@@ -4,10 +4,10 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../subnet_k8s_01",
-      "../cosmosdb_sql_database",
-      "../subnet_functions",
-      "../storage_account_functions",
+      "../function_app_service_plan_fn2services",
+      "../cosmosdb_account_01",
+      "../storage_account_appdata",
+      "../storage_account_fn2services"
     ]
   }
 
