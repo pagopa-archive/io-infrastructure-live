@@ -1,6 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
+      "../key_vault",
       "../subnet_function_app_admin",
       "../subnet_function_app_app",
       "../subnet_function_app_services"
