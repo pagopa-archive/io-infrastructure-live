@@ -1,7 +1,9 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../resource_group"
+      "../subnet_function_app_app",
+      "../subnet_function_app_admin",
+      "../subnet_function_app_services"
     ]
   }
 
@@ -16,21 +18,14 @@ terragrunt = {
 }
 
 # Storage account module related variables
-storage_account_name                                  = "appdata"
-azurerm_storage_account_account_tier                  = "Standard"
-azurerm_storage_account_account_replication_type      = "LRS"
-azurerm_storage_account_network_rules_allowed_subnets = [
-  {
-    vnet   = "io-dev-vnet-common"
-    subnet = "io-dev-subnet-functions"
-  },
-  {
-    vnet   = "io-dev-vnet-common"
-    subnet = "io-dev-subnet-function-app"
-  },
-  {
-    vnet   = "io-dev-vnet-common"
-    subnet = "io-dev-subnet-function-services"
-  },
+storage_account_name                              = "appdata"
+azurerm_storage_account_account_tier              = "Standard"
+azurerm_storage_account_account_replication_type  = "LRS"
+allowed_subnets_suffixes                          = [
+  "function-admin",
+  "function-app",
+  "function-services"
 ]
-azurerm_storage_account_network_rules_allowed_ips     = ["5.97.129.253"]
+azurerm_storage_account_network_rules_allowed_ips = [
+  "5.97.129.253"
+]
