@@ -4,7 +4,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../function_app_fn101"
+      "../function_app_app"
     ]
   }
 
