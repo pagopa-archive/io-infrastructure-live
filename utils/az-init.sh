@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Azure init script
-# 
+#
 # It initializes the Azure infrastructure, in order to
 # be then provisioned with Packer and Terraform.
-# 
+#
 # teamdigitale.governo.it
 
 if [ ! -f .env ]; then
@@ -25,11 +25,11 @@ run_cmd az account set -s ${SUBSCRIPTION}
 # Create resource group
 run_cmd az group create --location ${LOCATION}\
   --subscription ${SUBSCRIPTION}\
-  --name ${RG_NAME}
+  --name ${RG_INFRA_NAME}
 
 # Create the infrastructure vault
 run_cmd az keyvault create --name ${VAULT_NAME}\
-  --resource-group ${RG_NAME}\
+  --resource-group ${RG_INFRA_NAME}\
   --location ${LOCATION}\
   --output none
 
@@ -37,12 +37,12 @@ run_cmd az keyvault create --name ${VAULT_NAME}\
 
 # Create storage account to store the Terraform states and save
 # the secret in the vault
-run_cmd az storage account create --resource-group ${RG_NAME}\
+run_cmd az storage account create --resource-group ${RG_INFRA_NAME}\
   --name ${TERRAFORM_STORAGE_ACCOUNT_NAME}\
   --sku Standard_LRS\
   --encryption-services blob
 
-TERRAFORM_ACCOUNT_KEY=$(az storage account keys list --resource-group ${RG_NAME}\
+TERRAFORM_ACCOUNT_KEY=$(az storage account keys list --resource-group ${RG_INFRA_NAME}\
   --account-name ${TERRAFORM_STORAGE_ACCOUNT_NAME}\
   --query [0].value -o tsv)
 
