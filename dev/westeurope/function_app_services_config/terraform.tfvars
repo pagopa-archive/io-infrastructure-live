@@ -9,7 +9,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_function_app_config_clean"
+    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_function_app_config"
   }
 
   # Include all settings from the root terraform.tfvars file
