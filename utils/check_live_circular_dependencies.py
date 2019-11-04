@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import argparse
 import os
 import sys
 
@@ -8,8 +9,14 @@ import hcl
 
 dot = Digraph(comment='tfvars dev')
 
+parser = argparse.ArgumentParser(description='Scan live environment repository for circular dependencies')
+parser.add_argument('-d', '--directory', help='relative path')
+parser.add_argument('-o', '--output', help='output file')
 
-for root, dirs, files in os.walk("dev/westeurope"):
+args = parser.parse_args()
+
+
+for root, dirs, files in os.walk(args.directory):
     for name in files:
         if name == "terraform.tfvars":
             with open(os.path.join(root, name), 'r') as fp:
@@ -23,4 +30,4 @@ for root, dirs, files in os.walk("dev/westeurope"):
                     dot.node(name, name)
 
 
-dot.render('tfdev.gv', view=True)
+dot.render(args.output, view=True)

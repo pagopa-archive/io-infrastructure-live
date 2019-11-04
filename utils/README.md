@@ -80,3 +80,20 @@ To synchronize users run:
 ```shell
 source az-apim-sync.sh
 ```
+
+## Check for circular dependencies in live modules
+
+This is useful if we are building an environment from scratch after a long while.
+
+### Usage
+
+1. Create a python virtual environment
+2. Enable the environment
+2. Install required libries
+3. Run the script
+
+### Example:
+1. `virtualenv venv`
+2. `source venv/bin/activate`
+2. `pip install pyhcl graphviz`
+3. `python check_live_circular_dependencies.py -o live -d ../dev/westeurope`
