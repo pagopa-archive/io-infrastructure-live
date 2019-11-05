@@ -48,7 +48,7 @@ functionapp_settings = [
   },
   {
     name  = "PUBLIC_API_URL"
-    value = "https://io-dev-apim-01.azure-api.net"
+    value = "https://api.dev.io.italia.it"
   },
   {
     name  = "WEBSITE_HTTPSCALEV2_ENABLED"
