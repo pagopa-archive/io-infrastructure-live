@@ -142,6 +142,9 @@ cd ../subnet_apim && terragrunt apply
 cd ../subnet_agw && terragrunt apply
 cd ../subnet_k8s-01 && terragrunt apply
 
+# Private DNS zone
+cd ../dns_zone_private_common && terragrunt apply
+
 # Keyvault
 cd ../key_vault && terragrunt apply
 
@@ -160,11 +163,6 @@ cd ../cosmosdb_container_notifications && terragrunt apply
 cd ../cosmosdb_container_profiles && terragrunt apply
 cd ../cosmosdb_container_sender-services && terragrunt apply
 cd ../cosmosdb_container_services && terragrunt apply
-
-# DNS: private and public DNS zones and records
-cd ../dns_zone_private_common && terragrunt apply
-cd ../dns_zone_public_dev_io_italia_it && terragrunt apply
-cd ../dns_zone_public_dev_io_italia_it_records && terragrunt apply
 
 # Eventhub
 cd ../eventhub_apim && terragrunt apply
@@ -212,8 +210,28 @@ cd ../application_gateway && terragrunt apply
 # Kubernetes
 cd ../key_vault_secret_ssh_keys_vm && terragrunt apply
 cd ../service_principal_k8s-01 && terragrunt apply
+cd ../service_principal_k8s-01-aad-server && terragrunt apply
+
+# MANUAL OPERATIONS REQUIRED:
+# * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-server
+# * API permissions -> Grant admin consent -> yes
+# * Expose an API -> /user_impersonation -> Admins only -> Save
+
+cd ../service_principal_k8s-01-aad-client && terragrunt apply
+
+# MANUAL OPERATIONS REQUIRED:
+# * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-client
+# * API permissions -> Grant admin consent -> yes
+
 cd ../kubernetes_cluster_k8s-01 && terragrunt apply
 cd ../public_ip_k8s-01 && terragrunt apply
+
+# MANUAL OPERATIONS REQUIRED:
+# Update with the new IP the loadBalancerIP value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/nginx-ingress-custom.yaml
+
+# Public DNS zones and records
+cd ../dns_zone_public_dev_io_italia_it && terragrunt apply
+cd ../dns_zone_public_dev_io_italia_it_records && terragrunt apply
 
 # Developer portal prerequisites
 cd ../service_principal_developer-portal && terragrunt apply
