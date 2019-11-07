@@ -31,9 +31,10 @@ user_policies               = [
   # Luca Prete
   {
     object_id               = "4c94370d-6dfe-4dd8-ac5e-c81d23575ea8",
-    key_permissions         = "create,delete,update,get,list",
-    secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    key_permissions         = "get,list,update,create,import,delete,recover,backup,restore,decrypt,encrypt,unwrapKey,wrapKey,verify,sign,purge",
+    secret_permissions      = "get,list,set,delete,recover,backup,restore,purge",
+    certificate_permissions = "get,list,update,create,import,delete,recover,backup,restore,managecontacts,manageissuers,getissuers,listissuers,setissuers,deleteissuers,purge"
+
   },
   # Andrea Ceresoni
   {
