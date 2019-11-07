@@ -61,14 +61,31 @@ functionapp_settings = [
   {
     name  = "SUBSCRIPTIONS_FEED_TABLE"
     value = "SubscriptionsFeedByDay"
+  },
+  {
+    name  = "MAIL_FROM"
+    value = "IO - l'app dei servizi pubblici <no-reply@io.italia.it>"
+  },
+  {
+    name  = "MAIL_ORGANIZATION_FISCALCODE"
+    value = "80188230587"
+  },
+  {
+    name  = "MAIL_ORGANIZATION_NAME"
+    value = "Presidenza del Consiglio dei Ministri"
+  },
+  {
+    name  = "MAIL_SENDER_SERVICE"
+    value = "Team per la Trasformazione Digitale<br />Progetto IO"
+  },
+  {
+    name  = "FUNCTIONS_PUBLIC_URL"
+    # TODO: Change this when io-functions-public will be deployed
+    value = "https://localhost/public"
   }
 ]
 
 functionapp_settings_secrets = [
-  {
-    name        = "PUBLIC_API_KEY"
-    vault_alias = "fn2appPublicApiKey"
-  },
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
     vault_alias = "fn2appAppInsightsInstrumentationKey"
@@ -76,7 +93,19 @@ functionapp_settings_secrets = [
   {
     name        = "QueueStorageConnection"
     vault_alias = "fn2appQueueStorageConnection"
-  }
+  },
+  {
+    name        = "PUBLIC_API_KEY"
+    vault_alias = "fn2appPublicApiKey"
+  },
+  {
+    name        = "MAILUP_USERNAME"
+    vault_alias = "fn2CommonsMailupUsername"
+  },
+  {
+    name        = "MAILUP_SECRET"
+    vault_alias = "fn2CommonsMailupSecret"
+  },
 ]
 
 functionapp_connection_strings = [
