@@ -19,3 +19,6 @@ terragrunt = {
 app_name                                     = "k8s-01"
 azurerm_role_assignment_role_definition_name = "Contributor"
 azurerm_key_vault_secret_name                = "k8s-01-sp-secret"
+# AD ID
+azurerm_key_vault_tenant_id                  = "cb44f084-ca44-4753-8973-dd3045d9ad2b"
+add_to_keyvault_access_policy                = true
