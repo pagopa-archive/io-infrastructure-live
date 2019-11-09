@@ -79,18 +79,3 @@ user_policies               = [
     certificate_permissions = "create,delete,update,get,list"
   }
 ]
-
-# TODO: The application seems to be added correctly,
-# but it does not work with the k8s secret synchronizer.
-app_policies                = [
-  # Kubernetes service principal
-  {
-    # Obtained with az ad sp list --display-name io-dev-sp-k8s-01
-    object_id               = "2d076fa6-e0f7-4d22-9739-109e038b92e2",
-    # Obtained with az ad app list --display-name io-dev-sp-k8s-01
-    application_id          = "cb20f564-e607-4db9-89a9-0e3093245475",
-    key_permissions         = "get",
-    secret_permissions      = "get",
-    certificate_permissions = "get"
-  }
-]
