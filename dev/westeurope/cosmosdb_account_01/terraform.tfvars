@@ -4,7 +4,8 @@ terragrunt = {
       "../keyvault",
       "../subnet_function_app_admin",
       "../subnet_function_app_app",
-      "../subnet_function_app_services"
+      "../subnet_function_app_services",
+      "../subnet_function_app_public"
     ]
   }
 
@@ -32,5 +33,6 @@ allowed_vnet_suffix                                        = "common"
 allowed_subnets_suffix                                     = [
   "function-app",
   "function-services",
-  "function-admin"
+  "function-admin",
+  "function-public"
 ]
