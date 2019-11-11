@@ -79,11 +79,11 @@ functionapp_settings_secrets = [
   },
   {
     name        = "MAILUP_USERNAME"
-    vault_alias = "fn2servicesMailupUsername"
+    vault_alias = "fn2CommonsMailupUsername"
   },
   {
     name        = "MAILUP_SECRET"
-    vault_alias = "fn2servicesMailupSecret"
+    vault_alias = "fn2CommonsMailupSecret"
   },
   {
     name        = "WEBHOOK_CHANNEL_URL"
