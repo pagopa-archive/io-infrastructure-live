@@ -83,7 +83,11 @@ source az-apim-sync.sh
 
 ## Check for circular dependencies in live modules
 
-This will be used primarily in the CI process. It works by walking the
+This will be used primarily in the CI process. Two main possible usage are either as_text or as_image.
+
+as_text is meant to be use by a CI process as an exit code is raised depending if it discovered (simple) `circular dependencies` or in general issue with dependencies.
+
+as_image if the user wants an image to represent the terragrunt dependencies.
 
 ### Usage
 
