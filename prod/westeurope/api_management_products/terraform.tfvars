@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../api_management_apis",
+      "../api_management_apis"
     ]
   }
 
@@ -17,17 +17,17 @@ terragrunt = {
 
 # Azure API Management module variables
 
-apim_name = "01"
+apim_name               = "01"
 
-apim_products = [
+apim_products           = [
   {
-    id                  = "io-dev-apim-prod-01"
+    id_suffix           = "prod-01"
     display_name        = "IO Italia"
     description         = "Subscribers will be able to integrate with IO Italia API"
     subscriptions_limit = "100"
     admin_group         = "developers"
 
-    xml_content = <<XML
+    xml_content         = <<XML
 <!--
             IMPORTANT:
             - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
@@ -57,16 +57,16 @@ apim_products = [
     </on-error>
 </policies>
 XML
-  },
+  }
 ]
 
 apim_product_api_bindings = [
   {
-    api_name   = "io-admin"
-    product_id = "io-dev-apim-prod-01"
+    api_name          = "io-admin"
+    product_id_suffix = "prod-01"
   },
   {
-    api_name   = "io-api"
-    product_id = "io-dev-apim-prod-01"
-  },
+    api_name          = "io-api"
+    product_id_suffix = "prod-01"
+  }
 ]
