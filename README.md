@@ -178,6 +178,7 @@ cd ../storage_account_fn2services && terragrunt apply
 cd ../storage_account_fn2public && terragrunt apply
 cd ../storage_account_servicedata && terragrunt apply
 cd ../storage_account_appdata && terragrunt apply
+cd ../storage_container_cached && terragrunt apply
 cd ../storage_container_message-content && terragrunt apply
 cd ../storage_queue_createdmessages && terragrunt apply
 cd ../storage_queue_emailnotifications && terragrunt apply
