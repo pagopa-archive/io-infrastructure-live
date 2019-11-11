@@ -138,6 +138,7 @@ cd ../subnet_redis && terragrunt apply
 cd ../subnet_function_app_app && terragrunt apply
 cd ../subnet_function_app_admin && terragrunt apply
 cd ../subnet_function_app_services && terragrunt apply
+cd ../subnet_function_app_public && terragrunt apply
 cd ../subnet_apim && terragrunt apply
 cd ../subnet_agw && terragrunt apply
 cd ../subnet_k8s-01 && terragrunt apply
@@ -174,6 +175,7 @@ cd ../notification_hub && terragrunt apply
 cd ../storage_account_fn2admin && terragrunt apply
 cd ../storage_account_fn2app && terragrunt apply
 cd ../storage_account_fn2services && terragrunt apply
+cd ../storage_account_fn2public && terragrunt apply
 cd ../storage_account_servicedata && terragrunt apply
 cd ../storage_account_appdata && terragrunt apply
 cd ../storage_container_message-content && terragrunt apply
@@ -199,6 +201,11 @@ cd ../function_app_app_config && terragrunt apply
 cd ../function_app_service_plan_fn2services && terragrunt apply
 cd ../function_app_services && terragrunt apply
 cd ../function_app_services_config && terragrunt apply
+
+# Function-app public
+cd ../function_app_service_plan_fn2public && terragrunt apply
+cd ../function_app_public && terragrunt apply
+cd ../function_app_public_config && terragrunt apply
 
 # API Management (APIM) and Application Gateway (AGW)
 cd ../api_management && terragrunt apply
