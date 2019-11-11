@@ -83,17 +83,14 @@ source az-apim-sync.sh
 
 ## Check for circular dependencies in live modules
 
-This is useful if we are building an environment from scratch after a long while.
+This will be used primarily in the CI process. It works by walking the
 
 ### Usage
 
-1. Create a python virtual environment
-2. Enable the environment
-2. Install required libries
-3. Run the script
+* Create a python virtual environment -> `virtualenv venv`
 
-### Example:
-1. `virtualenv venv`
-2. `source venv/bin/activate`
-2. `pip install pyhcl graphviz`
-3. `python check_live_circular_dependencies.py -o live -d ../dev/westeurope`
+* Enable the environment -> `source venv/bin/activate`
+
+* Install required libries -> `source venv/bin/activate`
+
+* Run the script -> `python check_live_circular_dependencies.py -o live -d ../dev/westeurope`
