@@ -23,15 +23,17 @@ for root, dirs, files in os.walk(args.directory):
         continue
     for name in files:
         if name == "terraform.tfvars":
-            with open(os.path.join(root, name), "r") as fp:
+            tf_filename = os.path.join(root, name)
+            with open(tf_filename, "r") as fp:
                 obj = hcl.load(fp)
                 try:
-                    dot.node(os.path.join(root, name), os.path.join(root, name))
+                    dot.node(root, tf_filename)
                     dependencies = obj["terragrunt"]["dependencies"]["paths"]
                     for dep in dependencies:
-                        dot.edge(os.path.join(root, name), dep)
+                        root_dep = os.path.join(args.directory, dep[3:])
+                        dot.edge(root, root_dep )
                 except KeyError:
-                    dot.node(name, name)
+                    pass
 
 
 dot.render(args.output, view=True)
