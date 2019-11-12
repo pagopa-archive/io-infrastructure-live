@@ -126,6 +126,11 @@ cd io-infrastructure-live
 cd utils
 source az-export.sh
 
+# Optionally set TERRAGRUNT_SOURCE_UPDATE to true
+# to download the latest Terraform module each time
+# an apply is executed
+export TERRAGRUNT_SOURCE_UPDATE=true
+
 # Deploy the components of the dev environment, under the West Europe Azure DC location
 cd ../dev/westeurope
 
