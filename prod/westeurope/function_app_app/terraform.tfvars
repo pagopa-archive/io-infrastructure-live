@@ -28,7 +28,7 @@ functionapp_name     = "2-app"
 functionapp_settings = [
   {
     name  = "COSMOSDB_NAME"
-    value = "io-dev-sqldb-db-01"
+    value = "io-prod-sqldb-db-01"
   },
   {
     name  = "FUNCTION_APP_EDIT_MODE"
@@ -48,7 +48,7 @@ functionapp_settings = [
   },
   {
     name  = "PUBLIC_API_URL"
-    value = "https://api.dev.io.italia.it"
+    value = "https://api.prod.io.italia.it"
   },
   {
     name  = "WEBSITE_HTTPSCALEV2_ENABLED"

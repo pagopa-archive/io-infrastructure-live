@@ -89,11 +89,11 @@ apim_groups = [
 apim_named_values = [
   {
     name  = "FunctionAppBaseUrl"
-    value = "https://io-dev-fn-2-services.azurewebsites.net"
+    value = "https://io-prod-fn-2-services.azurewebsites.net"
   },
   {
     name  = "adminBackendUrl"
-    value = "https://io-dev-fn-2-admin.azurewebsites.net"
+    value = "https://io-prod-fn-2-admin.azurewebsites.net"
   },
 ]
 

@@ -48,7 +48,7 @@ functionapp_settings = [
   },
   {
     name  = "PUBLIC_API_URL"
-    value = "https://io-dev-apim-01.azure-api.net"
+    value = "https://io-prod-apim-01.azure-api.net"
   },
   {
     name  = "WEBSITE_HTTPSCALEV2_ENABLED"
