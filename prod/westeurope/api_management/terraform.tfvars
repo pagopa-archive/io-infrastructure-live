@@ -16,11 +16,12 @@ terragrunt = {
 }
 
 # APIM module variables
-apim_name                 = "01"
-virtualNetworkType        = "internal"
-vnet_name                 = "common"
-subnet_name               = "apim"
-publisher_name            = "IO Italia"
-publisher_email           = "io-apim@teamdigitale.governo.it"
-notification_sender_email = "io-apim@teamdigitale.governo.it"
-sku_name                  = "Developer"
+apim_name                               = "01"
+virtualNetworkType                      = "internal"
+vnet_name                               = "common"
+subnet_name                             = "apim"
+publisher_name                          = "IO Italia"
+publisher_email                         = "io-apim@teamdigitale.governo.it"
+notification_sender_email               = "io-apim@teamdigitale.governo.it"
+sku_name                                = "Developer"
+hostname_configurations_hostname_prefix = "api"
