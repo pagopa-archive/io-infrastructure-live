@@ -45,7 +45,7 @@ def as_text():
                     success = True
 
     except KeyError as e:
-        print("%s :: has possible dependencies problem" % e)
+        print("%s :: has possible dependencies problem: module %s looks for %s" % (e, k, d))
     return success
 
 
