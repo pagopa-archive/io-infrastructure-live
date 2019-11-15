@@ -145,7 +145,7 @@ cd ../subnet_function_app_admin && terragrunt apply
 cd ../subnet_function_app_services && terragrunt apply
 cd ../subnet_function_app_public && terragrunt apply
 cd ../subnet_apim && terragrunt apply
-cd ../subnet_agw && terragrunt apply
+cd ../subnet_ag-frontend && terragrunt apply
 cd ../subnet_k8s-01 && terragrunt apply
 
 # Private DNS zone
