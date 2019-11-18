@@ -213,12 +213,15 @@ cd ../function_app_service_plan_fn2public && terragrunt apply
 cd ../function_app_public && terragrunt apply
 cd ../function_app_public_config && terragrunt apply
 
-# API Management (APIM) and Application Gateway (AGW)
+# API Management (APIM)
 cd ../api_management && terragrunt apply
 cd ../api_management_properties && terragrunt apply
 cd ../api_management_apis && terragrunt apply
 cd ../api_management_products && terragrunt apply
-cd ../application_gateway && terragrunt apply
+
+# Application gateway
+cd ../public_ip_ag-to-apim-01 && terragrunt apply
+cd ../application_gateway_ag-to-apim-01 && terragrunt apply
 
 # Kubernetes
 cd ../key_vault_secret_ssh_keys_vm && terragrunt apply
