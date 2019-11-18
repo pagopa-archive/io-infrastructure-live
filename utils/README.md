@@ -80,3 +80,21 @@ To synchronize users run:
 ```shell
 source az-apim-sync.sh
 ```
+
+## Check for circular dependencies in live modules
+
+This will be used primarily in the CI process. Two main possible usage are either as_text or as_image.
+
+as_text is meant to be use by a CI process as an exit code is raised depending if it discovered (simple) `circular dependencies` or in general issue with dependencies.
+
+as_image if the user wants an image to represent the terragrunt dependencies.
+
+### Usage
+
+* Create a python virtual environment -> `virtualenv venv`
+
+* Enable the environment -> `source venv/bin/activate`
+
+* Install required libries -> `source venv/bin/activate`
+
+* Run the script -> `python check_live_circular_dependencies.py -o live -d ../dev/westeurope`
