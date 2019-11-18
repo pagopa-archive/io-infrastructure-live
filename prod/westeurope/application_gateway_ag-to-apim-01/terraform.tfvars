@@ -3,6 +3,7 @@ terragrunt = {
     paths = [
       "../kubernetes_cluster_k8s-01",
       "../subnet_ag-frontend",
+      "../subnet_apim",
       "../public_ip_ag-to-apim-01"
     ]
   }
@@ -21,6 +22,6 @@ terragrunt = {
 application_gateway_name_suffix                               = "to-apim-01"
 public_ip_address_name_suffix                                 = "ag-to-apim-01"
 azurerm_application_gateway_backend_address_pool_ip_addresses = ["172.16.50.5"]
-azurerm_key_vault_secret_certificate                          = "application-gateway-01-cert"
 vnet_name_suffix                                              = "common"
 subnet_name_suffix                                            = "ag-frontend"
+configure_ssl                                                 = true
