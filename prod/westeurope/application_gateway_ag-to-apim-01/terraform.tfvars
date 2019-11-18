@@ -1,7 +1,6 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../kubernetes_cluster_k8s-01",
       "../subnet_ag-frontend",
       "../subnet_apim",
       "../public_ip_ag-to-apim-01"
