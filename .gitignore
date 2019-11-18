@@ -23,5 +23,9 @@ out/
 .env
 *.log
 
+# this are for utils/check_live_circular_dependencies.py
+utils/venv
+utils/live*
+
 # app_insights_web_test/terraform.tfvars is automatically generated with secrets from your Keyvault! DO NOT commit it!
 dev/westeurope/app_insights_web_tests/terraform.tfvars
