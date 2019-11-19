@@ -19,7 +19,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_app_insights"
+    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_application_insights_web_test"
   }
 
   # Include all settings from the root terraform.tfvars file
