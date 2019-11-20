@@ -2,9 +2,9 @@
 
 # Script to ease secret uploading to keyvault loaded by the function app module
 # Each secret "name" parameter should match its own "Alias" declared within the  terraform.tfvar file for the function module
-# Replace "xxxxxxxxx" with the secret value (do not commit the resulting file) and set VAULT_NAME with the right value 
+# Replace "xxxxxxxxx" with the secret value (do not commit the resulting file) and set VAULT_NAME with the right value es.: io-dev-keyvaul
 
-VAULT_NAME="io-dev-keyvault"
+VAULT_NAME=""
 
 az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-Ocp-Apim-Subscription-Key" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "application-gateway-to-apim-01-cert" --value "VALUE"
