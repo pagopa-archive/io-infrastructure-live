@@ -13,5 +13,6 @@ terragrunt = {
 group_name_suffix                 = "k8s-onboarding"
 group_members_user_principal_name = [
   "danilo.spinelli_agid.gov.it#EXT#@ttdio.onmicrosoft.com",
-  "alexgpeppe84_hotmail.it#EXT#@ttdio.onmicrosoft.com"
+  "alexgpeppe84_hotmail.it#EXT#@ttdio.onmicrosoft.com",
+  "davide.aliti_it.ibm.com#EXT#@ttdio.onmicrosoft.com"
 ]
