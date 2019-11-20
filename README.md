@@ -155,52 +155,43 @@ cd ../dns_zone_private_common && terragrunt apply
 cd ../key_vault && terragrunt apply
 
 # MANUAL OPERATIONS REQUIRED: the following secrets need to be manually inserted in the Azure Keyvault 
-- apim01DevPortalClientId
-- apim01DevPortalClientSecret
-- app-insight-web-tests-Ocp-Apim-Subscription-Key
-- application-gateway-to-apim-01-cert
-- dev-portal-client-id-dev
-- dev-portal-client-secret-dev
-- developerPortalSpSecret
-- fn2adminadminCode
-- fn2adminAppInsightsInstrumentationKey
-- fn2adminCosmosdbKey
-- fn2adminCosmosdbUri
-- fn2adminFunctionAppHostKey
-- fn2adminPublicApiKey
-- fn2adminQueueStorageConnection
-- fn2adminStorageConnection
-- fn2appAppInsightsInstrumentationKey
-- fn2appPublicApiKey
-- fn2appQueueStorageConnection
-- fn2CommonsMailupSecret
-- fn2CommonsMailupUsername
-- fn2servicesAppInsightsInstrumentationKey
-- fn2servicesFunctionAppHostKey
-- fn2servicesMailupSecret
-- fn2servicesMailupUsername
-- fn2servicesQueueStorageConnection
-- fn2servicesWebhookChannelUrl
-- generated-cert
-- k8s-01-aad-client-sp-secret
-- k8s-01-aad-server-sp-secret
-- k8s-01-sp-secret
-- k8s-app-backend-secrets
-- k8s-app-backend-secrets-spid-certs
-- k8s-developer-portal-backend-secrets
-- k8s-io-onboarding-pa-api-secrets
-- k8s-io-onboarding-pa-api-secrets-spid-certs
-- k8s-pagopa-proxy-prod-secrets
-- k8s-pagopa-proxy-test-secrets
-- k8s-pagopa-proxy-test-secrets-io-certs
-- k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs
-- nhub01bundleid
-- nhub01gcmkey
-- nhub01keyid
-- nhub01teamid
-- nhub01token
-- terraformsshkey
-- terraformsshkeypub
+Secret  | Description 
+------- | --------------
+apim01DevPortalClientId | to be defined
+apim01DevPortalClientSecret | to be defined
+app-insight-web-tests-Ocp-Apim-Subscription-Key | to be defined
+application-gateway-to-apim-01-cert |to be defined
+dev-portal-client-id-dev | to be defined
+dev-portal-client-secret-dev | to be defined
+developerPortalSpSecret | to be defined
+fn2adminadminCode | to be defined
+fn2adminAppInsightsInstrumentationKey | The key generared by Application Insights module. Check in the azure portal to retrive it.
+fn2adminStorageConnection | The access key needed to access the appdata storage container.
+fn2appAppInsightsInstrumentationKey | The key generared by Application Insights module. Check in the azure portal to retrive it.
+fn2appQueueStorageConnection | The access key needed to access the appdata storage container.
+fn2CommonsMailupSecret | The secret used to connect to MailUP service.
+fn2CommonsMailupUsername | The username used to connect to MailUP service.
+fn2servicesAppInsightsInstrumentationKey | The key generared by Application Insights module. Check in the azure portal to retrive it.
+fn2servicesFunctionAppHostKey | The Host key created by the Azure Function.
+fn2servicesMailupSecret | The secret used to connect to MailUP service.
+fn2servicesMailupUsername | The username used to connect to MailUP service.
+fn2servicesQueueStorageConnection | The access key needed to access the appdata storage container
+fn2servicesWebhookChannelUrl | to be defined
+k8s-01-aad-client-sp-secret | to be defined
+k8s-01-aad-server-sp-secret | to be defined
+k8s-01-sp-secret | to be defined
+k8s-app-backend-secrets | to be defined
+k8s-app-backend-secrets-spid-certs | to be defined
+k8s-developer-portal-backend-secrets | to be defined
+k8s-io-onboarding-pa-api-secrets | to be defined
+k8s-io-onboarding-pa-api-secrets-spid-certs | to be defined
+nhub01bundleid | Also called the "App ID." This is the bundle identifier for the application.
+nhub01gcmkey | The api key for Google Cloud Messaging.
+nhub01keyid | Identifier of the private key generated in the Apple Developer portal;
+nhub01teamid | Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal;
+nhub01token | Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.
+terraformsshkey | the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa"
+terraformsshkeypub | the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa"
 
 # CosmosDB: account, sql-database, sql-containers
 cd ../cosmosdb_account_01 && terragrunt apply

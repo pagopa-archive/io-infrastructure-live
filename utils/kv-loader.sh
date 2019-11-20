@@ -2,48 +2,41 @@
 
 # Script to ease secret uploading to keyvault loaded by the function app module
 # Each secret "name" parameter should match its own "Alias" declared within the  terraform.tfvar file for the function module
-# Replace "xxxxxxxxx" with the secret value (do not commit the resulting file)
+# Replace "xxxxxxxxx" with the secret value (do not commit the resulting file) and set VAULT_NAME with the right value 
 
 VAULT_NAME="io-dev-keyvault"
 
-az keyvault secret set --vault-name "$VAULT_NAME" --name "cosmosdb-key" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "cosmosdb-uri" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "azurewebjobssecretstoragetype" --value "disabled"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "azurewebjobsstorage" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "diagnostics-azureblobretentionindays" --value "1"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "appinsights-instrumentationkey" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "mail-from-default" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "mailup-secret" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "mailup-username" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "message-container-name" --value "message-content"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "public-api-key" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "public-api-url" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "cosmosdb-name" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "queuestorageconnection" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "webhook-channel-url" --value "xxxxxxxxx"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "website-httplogging-retention-days" --value "3"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "function-app-edit-mode" --value "readonly"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "scm-use-funcpack-build" --value "1"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "functions-extension-version" --value "~1"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "functions-worker-runtime" --value "node"
-
-az keyvault secret set --vault-name "$VAULT_NAME" --name "website-node-default-version" --value "6.11.2"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-Ocp-Apim-Subscription-Key" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "application-gateway-to-apim-01-cert" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "dev-portal-client-id-dev" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "dev-portal-client-secret-dev" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "developerPortalSpSecret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2adminadminCode" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2adminAppInsightsInstrumentationKey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2adminStorageConnection" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2appAppInsightsInstrumentationKey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2appPublicApiKey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2CommonsMailupSecret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2CommonsMailupUsername" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesAppInsightsInstrumentationKey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesFunctionAppHostKey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesMailupSecret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesMailupUsername" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesQueueStorageConnection" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesWebhookChannelUrl" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "io-monitoring-api-key" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-01-aad-client-sp-secret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-01-aad-server-sp-secret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-01-sp-secret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-app-backend-secrets" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-app-backend-secrets-spid-certs" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-developer-portal-backend-secrets" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-io-onboarding-pa-api-secrets" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-io-onboarding-pa-api-secrets-spid-certs" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01bundleid" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01gcmkey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01keyid" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01teamid" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01token" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "terraformsshkey" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "terraformsshkeypub" --value "VALUE"
