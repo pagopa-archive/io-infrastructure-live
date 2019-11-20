@@ -154,10 +154,53 @@ cd ../dns_zone_private_common && terragrunt apply
 # Keyvault
 cd ../key_vault && terragrunt apply
 
-# MANUAL OPERATIONS REQUIRED: the following secrets need to be manually
-# inserted in the Azure Keyvault 
-# 
-# * TBD - look at the actual Keyvault for more info
+# MANUAL OPERATIONS REQUIRED: the following secrets need to be manually inserted in the Azure Keyvault 
+- apim01DevPortalClientId
+- apim01DevPortalClientSecret
+- app-insight-web-tests-Ocp-Apim-Subscription-Key
+- application-gateway-to-apim-01-cert
+- dev-portal-client-id-dev
+- dev-portal-client-secret-dev
+- developerPortalSpSecret
+- fn2adminadminCode
+- fn2adminAppInsightsInstrumentationKey
+- fn2adminCosmosdbKey
+- fn2adminCosmosdbUri
+- fn2adminFunctionAppHostKey
+- fn2adminPublicApiKey
+- fn2adminQueueStorageConnection
+- fn2adminStorageConnection
+- fn2appAppInsightsInstrumentationKey
+- fn2appPublicApiKey
+- fn2appQueueStorageConnection
+- fn2CommonsMailupSecret
+- fn2CommonsMailupUsername
+- fn2servicesAppInsightsInstrumentationKey
+- fn2servicesFunctionAppHostKey
+- fn2servicesMailupSecret
+- fn2servicesMailupUsername
+- fn2servicesQueueStorageConnection
+- fn2servicesWebhookChannelUrl
+- generated-cert
+- k8s-01-aad-client-sp-secret
+- k8s-01-aad-server-sp-secret
+- k8s-01-sp-secret
+- k8s-app-backend-secrets
+- k8s-app-backend-secrets-spid-certs
+- k8s-developer-portal-backend-secrets
+- k8s-io-onboarding-pa-api-secrets
+- k8s-io-onboarding-pa-api-secrets-spid-certs
+- k8s-pagopa-proxy-prod-secrets
+- k8s-pagopa-proxy-test-secrets
+- k8s-pagopa-proxy-test-secrets-io-certs
+- k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs
+- nhub01bundleid
+- nhub01gcmkey
+- nhub01keyid
+- nhub01teamid
+- nhub01token
+- terraformsshkey
+- terraformsshkeypub
 
 # CosmosDB: account, sql-database, sql-containers
 cd ../cosmosdb_account_01 && terragrunt apply
