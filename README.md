@@ -240,6 +240,7 @@ cd ../service_principal_k8s-01-aad-client && terragrunt apply
 # * API permissions -> Grant admin consent -> yes
 
 cd ../ad_group_k8s-admin && terragrunt apply
+cd ../ad_group_k8s-onboarding && terragrunt apply
 cd ../kubernetes_cluster_k8s-01 && terragrunt apply
 cd ../public_ip_k8s-01 && terragrunt apply
 
