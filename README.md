@@ -146,6 +146,7 @@ cd ../subnet_function_app_services && terragrunt apply
 cd ../subnet_function_app_public && terragrunt apply
 cd ../subnet_apim && terragrunt apply
 cd ../subnet_ag-frontend && terragrunt apply
+cd ../subnet_ag-to-k8s-01 && terragrunt apply
 cd ../subnet_k8s-01 && terragrunt apply
 
 # Private DNS zone
@@ -255,9 +256,11 @@ cd ../api_management_properties && terragrunt apply
 cd ../api_management_apis && terragrunt apply
 cd ../api_management_products && terragrunt apply
 
-# Application gateway
+# Application gateways
 cd ../public_ip_ag-to-apim-01 && terragrunt apply
+cd ../public_ip_ag-to-k8s-01 && terragrunt apply
 cd ../application_gateway_ag-to-apim-01 && terragrunt apply
+cd ../application_gateway_ag-to-k8s-01 && terragrunt apply
 
 # Kubernetes
 cd ../key_vault_secret_ssh_keys_vm && terragrunt apply
