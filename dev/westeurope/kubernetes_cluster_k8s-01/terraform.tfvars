@@ -32,7 +32,6 @@ azurerm_kubernetes_cluster_agent_pool_profile_min_count       = 1
 azurerm_kubernetes_cluster_agent_pool_profile_max_count       = 3
 azurerm_kubernetes_cluster_agent_pool_profile_vm_size         = "Standard_B8ms"
 azurerm_kubernetes_cluster_agent_pool_profile_max_pods        = 100
-azurerm_kubernetes_cluster_network_profile_pod_cidr           = "172.16.32.0/20"
 azurerm_kubernetes_cluster_network_profile_service_cidr       = "172.16.16.0/20"
 azurerm_kubernetes_cluster_network_profile_dns_service_ip     = "172.16.16.10"
 azurerm_kubernetes_cluster_network_profile_docker_bridge_cidr = "172.17.0.1/16"
