@@ -153,46 +153,48 @@ cd ../dns_zone_private_common && terragrunt apply
 
 # Keyvault
 cd ../key_vault && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED: the following secrets need to be manually inserted in the Azure Keyvault 
-Secret  | Description 
-------- | --------------
-app-insight-web-tests-Ocp-Apim-Subscription-Key | The APIM secret used by the monitoring user (for automated monitoring activities). This is usually the user "IO Monitoring" user, listed under users in the APIM.
-application-gateway-to-apim-01-cert | The application gateway certificate, to be loaded manually in pfx format.
-developerPortalSpSecret | Developer portal service principal secret.
-fn2adminadminCode | The master key of the admin function.
-fn2adminAppInsightsInstrumentationKey | The key generared by Application Insights module. Check in the azure portal to retrive it.
-fn2adminStorageConnection | The access key needed to access the appdata storage container.
-fn2appAppInsightsInstrumentationKey | The key generared by Application Insights module. Check in the azure portal to retrive it.
-fn2appQueueStorageConnection | The access key needed to access the appdata storage container.
-fn2CommonsMailupSecret | The secret used to connect to MailUP service.
-fn2CommonsMailupUsername | The username used to connect to MailUP service.
-fn2servicesAppInsightsInstrumentationKey | The key generared by Application Insights module. Check in the azure portal to retrive it.
-fn2servicesFunctionAppHostKey | The Host key created by the Azure Function.
-fn2servicesMailupSecret | The secret used to connect to MailUP service.
-fn2servicesMailupUsername | The username used to connect to MailUP service.
-fn2servicesQueueStorageConnection | The access key needed to access the appdata storage container.
-fn2servicesWebhookChannelUrl | The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY
-generated-cert | The application gateway certificate, to be loaded manually in pfx format.
-k8s-01-aad-client-sp-secret | The secret of the service principal used by kubernetes for aad integration (client side).
-k8s-01-aad-server-sp-secret | The secret of the service principal used by kubernetes for aad integration (server side).
-k8s-01-sp-secret | The secret of the service principal used by Kubernetes to interact with Azure.
-k8s-app-backend-secrets | A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}
-k8s-app-backend-secrets-spid-certs | The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs
-k8s-developer-portal-backend-secrets | A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}
-k8s-io-onboarding-pa-api-secrets-spid-certs | The certificates used by the onboarding portal to authenticate and dialog with official SPID IDPs.
-k8s-pagopa-proxy-prod-secrets | a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}
-k8s-pagopa-proxy-test-secrets | a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}
-k8s-pagopa-proxy-test-secrets-io-certs | The IO certificate (public+private key in PEM format) for the hostname connecting to the PagoPA test environment.
-k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs | The full-chain certificates of the PagoPA test endpoint.
-nhub01bundleid | Also called the "App ID." This is the bundle identifier for the application.
-nhub01gcmkey | The api key for Google Cloud Messaging.
-nhub01keyid | Identifier of the private key generated in the Apple Developer portal.
-nhub01teamid | Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal.
-nhub01token | Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.
-terraformsshkey | the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".
-terraformsshkeypub | the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".
+## MANUAL OPERATIONS REQUIRED
 
+## The following secrets need to be manually inserted in the Azure Keyvault
+
+| Secret  | Description    |
+| ------- | -------------- | 
+|`app-insight-web-tests-Ocp-Apim-Subscription-Key` | *The APIM secret used by the monitoring user (for automated monitoring activities). This is usually the user "IO Monitoring" user, listed under users in the APIM.* |
+|`application-gateway-to-apim-01-cert` | *The application gateway certificate, to be loaded manually in pfx format.* |
+|`developerPortalSpSecret` | *Developer portal service principal secret.* |
+|`fn2adminadminCode` | *The master key of the admin function.* |
+|`fn2adminAppInsightsInstrumentationKey` | *The key generared by Application Insights module. Check in the azure portal to retrive it.* |
+|`fn2adminStorageConnection` | *The access key needed to access the appdata storage container.* |
+|`fn2appAppInsightsInstrumentationKey` | *The key generared by Application Insights module. Check in the azure portal to retrive it.* |
+|`fn2appQueueStorageConnection` | *The access key needed to access the appdata storage container.* |
+|`fn2CommonsMailupSecret` | *The secret used to connect to MailUP service.* |
+|`fn2CommonsMailupUsername` | *The username used to connect to MailUP service.* |
+|`fn2servicesAppInsightsInstrumentationKey` | *The key generared by Application Insights module. Check in the azure portal to retrive it.* |
+|`fn2servicesFunctionAppHostKey` | *The Host key created by the Azure Function.* |
+|`fn2servicesMailupSecret` | *The secret used to connect to MailUP service.* |
+|`fn2servicesMailupUsername` | *The username used to connect to MailUP service.* |
+|`fn2servicesQueueStorageConnection` | T*he access key needed to access the appdata storage container.* |
+|`fn2servicesWebhookChannelUrl` | *The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY* |
+|`generated-cert` | *The application gateway certificate, to be loaded manually in pfx format.* | 
+|`k8s-app-backend-secrets` | *A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}* |
+|`k8s-app-backend-secrets-spid-certs` | *The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs.* |
+|`k8s-developer-portal-backend-secrets` | *A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}* |
+|`k8s-io-onboarding-pa-api-secrets-spid-certs` | *The certificates used by the onboarding portal to authenticate and dialog with official SPID IDPs.* |
+|`k8s-pagopa-proxy-prod-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
+|`k8s-pagopa-proxy-test-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
+|`k8s-pagopa-proxy-test-secrets-io-certs` | *The IO certificate (public+private key in PEM format) for the hostname connecting to the PagoPA test environment.* |
+|`k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs` | *The full-chain certificates of the PagoPA test endpoint.* |
+|`nhub01bundleid` | *Also called the "App ID." This is the bundle identifier for the application.* |
+|`nhub01gcmkey` | *The api key for Google Cloud Messaging.* |
+|`nhub01keyid` | *Identifier of the private key generated in the Apple Developer portal.* |
+|`nhub01teamid` | *Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal.* |
+|`nhub01token` | *Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.* |
+|`terraformsshkey` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
+|`terraformsshkeypub` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
+
+```shell
 # CosmosDB: account, sql-database, sql-containers
 cd ../cosmosdb_account_01 && terragrunt apply
 cd ../cosmosdb_sql_database_db-01 && terragrunt apply
