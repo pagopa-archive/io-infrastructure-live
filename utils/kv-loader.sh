@@ -29,9 +29,6 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesWebhookChan
 az keyvault secret set --vault-name "$VAULT_NAME" --name "generated-cert" --value "VALUE"
 
 # KUBERNETES
-az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-01-aad-client-sp-secret" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-01-aad-server-sp-secret" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-01-sp-secret" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-app-backend-secrets" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-app-backend-secrets-spid-certs" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-developer-portal-backend-secrets" --value "VALUE"
