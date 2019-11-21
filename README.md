@@ -174,9 +174,6 @@ fn2servicesMailupUsername | The username used to connect to MailUP service.
 fn2servicesQueueStorageConnection | The access key needed to access the appdata storage container.
 fn2servicesWebhookChannelUrl | The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY
 generated-cert | The application gateway certificate, to be loaded manually in pfx format.
-k8s-01-aad-client-sp-secret | The secret of the service principal used by kubernetes for aad integration (client side).
-k8s-01-aad-server-sp-secret | The secret of the service principal used by kubernetes for aad integration (server side).
-k8s-01-sp-secret | The secret of the service principal used by Kubernetes to interact with Azure.
 k8s-app-backend-secrets | A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}
 k8s-app-backend-secrets-spid-certs | The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs
 k8s-developer-portal-backend-secrets | A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}
