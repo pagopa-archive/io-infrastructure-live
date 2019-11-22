@@ -92,7 +92,7 @@ functionapp_settings_secrets = [
   },
   {
     name        = "QueueStorageConnection"
-    vault_alias = "fn2appQueueStorageConnection"
+    vault_alias = "fn2-common-sa-appdata-primary-connection-string"
   },
   {
     name        = "PUBLIC_API_KEY"

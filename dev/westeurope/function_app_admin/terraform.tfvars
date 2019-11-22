@@ -59,7 +59,7 @@ functionapp_settings_secrets = [
   },
   {
     name        = "StorageConnection"
-    vault_alias = "fn2adminStorageConnection"
+    vault_alias = "fn2-common-sa-appdata-primary-connection-string"
   }
 ]
 

@@ -75,7 +75,7 @@ functionapp_settings_secrets = [
   },
   {
     name        = "QueueStorageConnection"
-    vault_alias = "fn2servicesQueueStorageConnection"
+    vault_alias = "fn2-common-sa-appdata-primary-connection-string"
   },
   {
     name        = "MAILUP_USERNAME"
