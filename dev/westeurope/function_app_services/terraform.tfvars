@@ -71,7 +71,7 @@ functionapp_settings = [
 functionapp_settings_secrets = [
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
-    vault_alias = "fn2servicesAppInsightsInstrumentationKey"
+    vault_alias = "fn2CommonAppInsightsInstrumentationKey"
   },
   {
     name        = "QueueStorageConnection"
