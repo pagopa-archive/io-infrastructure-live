@@ -166,13 +166,10 @@ cd ../key_vault && terragrunt apply
 |`application-gateway-to-apim-01-cert` | *The application gateway certificate, to be loaded manually in pfx format.* |
 |`developerPortalSpSecret` | *Developer portal service principal secret.* |
 |`fn2adminadminCode` | *The master key of the admin function.* |
-|`fn2adminAppInsightsInstrumentationKey` | *The key generared by Application Insights module. Check in the azure portal to retrive it.* |
 |`fn2adminStorageConnection` | *The access key needed to access the appdata storage container.* |
-|`fn2appAppInsightsInstrumentationKey` | *The key generared by Application Insights module. Check in the azure portal to retrive it.* |
 |`fn2appQueueStorageConnection` | *The access key needed to access the appdata storage container.* |
 |`fn2CommonsMailupSecret` | *The secret used to connect to MailUP service.* |
 |`fn2CommonsMailupUsername` | *The username used to connect to MailUP service.* |
-|`fn2servicesAppInsightsInstrumentationKey` | *The key generared by Application Insights module. Check in the azure portal to retrive it.* |
 |`fn2servicesFunctionAppHostKey` | *The Host key created by the Azure Function.* |
 |`fn2servicesMailupSecret` | *The secret used to connect to MailUP service.* |
 |`fn2servicesMailupUsername` | *The username used to connect to MailUP service.* |
