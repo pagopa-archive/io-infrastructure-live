@@ -96,7 +96,7 @@ functionapp_settings_secrets = [
   },
   {
     name        = "PUBLIC_API_KEY"
-    vault_alias = "fn2appPublicApiKey"
+    vault_alias = "fn2-app-public-api-key"
   },
   {
     name        = "MAILUP_USERNAME"

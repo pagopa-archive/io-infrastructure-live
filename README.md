@@ -213,6 +213,7 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 |`fn2-commons-sa-appdata-primary-connection-string` | *The access key needed to access the appdata storage container.* |
 |`fn2-commons-mailup-secret` | *The secret used to connect to the MailUP service.* |
 |`fn2-commons-mailup-username` | *The username used to connect to the MailUP service.* |
+|`fn2-app-public-api-key` | *TBD* |
 |`fn2-services-webhook-channel-url` | *The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY* |
 
 ```shell

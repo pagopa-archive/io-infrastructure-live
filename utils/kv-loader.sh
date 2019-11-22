@@ -10,6 +10,7 @@ VAULT_NAME="io-prod-keyvault"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-commons-sa-appdata-primary-connection-string" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-commons-mailup-username" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-commons-mailup-secret" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-app-public-api-key" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-services-webhook-channel-url" --value "VALUE"
 
 # APIM
