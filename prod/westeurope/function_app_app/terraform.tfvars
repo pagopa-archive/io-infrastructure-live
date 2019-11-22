@@ -111,10 +111,10 @@ functionapp_settings_secrets = [
 functionapp_connection_strings = [
   {
     name        = "COSMOSDB_KEY"
-    vault_alias = "fn2appCosmosdbKey"
+    vault_alias = "fn2CommonCosmosdbKey"
   },
   {
     name        = "COSMOSDB_URI"
-    vault_alias = "fn2appCosmosdbUri"
+    vault_alias = "fn2CommonCosmosdbUri"
   }
 ]
