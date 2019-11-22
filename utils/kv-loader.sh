@@ -10,7 +10,6 @@ VAULT_NAME="io-prod-keyvault"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2adminStorageConnection" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2CommonsMailupSecret" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2CommonsMailupUsername" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesFunctionAppHostKey" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesMailupSecret" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesMailupUsername" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesQueueStorageConnection" --value "VALUE"
@@ -18,6 +17,7 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesWebhookChan
 
 # APIM
 az keyvault secret set --vault-name "$VAULT_NAME" --name "apim-01-fn2-admin-host-key" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "apim-01-fn2-services-host-key" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "generated-cert" --value "VALUE"
 
 # APPLICATION GATEWAY

@@ -244,11 +244,26 @@ cd ../function_app_public_config && terragrunt apply
 
 **Manual operations required**
 
-The following secrets need to be manually inserted in the Azure Keyvault
+* Navigate to the [Azure GUI](https://portal.azure.com)
+
+* Go to Function App
+ 
+* Navigate to io-dev-fn-2-admin -> Function app settings
+ 
+* Add new host key: as name input *ApimHostKey*; leave the value empty to auto-generate the secret. Copy it somewhere. You'll need it soon
+
+* Go back to Function App
+ 
+* Navigate to io-dev-fn-2-services -> Function app settings
+ 
+* Add new host key: as name input *ApimHostKey*; leave the value empty to auto-generate the secret. Copy it somewhere. You'll need it soon
+
+* The following secrets need to be manually inserted in the Azure Keyvault
 
 | Secret  | Description    |
 | ------- | -------------- |
-|`apim-01-fn2-admin-host-key` | *The host key of the admin function.* |
+|`apim-01-fn2-admin-host-key` | *The auto-generated host key of the admin function.* |
+|`apim-01-fn2-services-host-key` | *The auto-generated host key of the services function.* |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
 ```shell
