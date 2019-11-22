@@ -297,27 +297,40 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 cd ../key_vault_secret_ssh_keys_vm && terragrunt apply
 cd ../service_principal_k8s-01 && terragrunt apply
 cd ../service_principal_k8s-01-aad-server && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED:
-# * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-server
-# * API permissions -> Grant admin consent -> yes
-# * Expose an API -> /user_impersonation -> Admins only -> Save
+**Manual operations required**
 
+ * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-server
+
+ * API permissions -> Grant admin consent -> yes
+
+ * Expose an API -> /user_impersonation -> Admins only -> Save
+
+```shell
 cd ../service_principal_k8s-01-aad-client && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED:
-# * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-client
-# * API permissions -> Grant admin consent -> yes
+**Manual operations required**
 
+* Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-client
+
+* API permissions -> Grant admin consent -> yes
+
+```shell
 cd ../ad_group_k8s-admin && terragrunt apply
 cd ../ad_group_k8s-onboarding && terragrunt apply
 cd ../kubernetes_cluster_k8s-01 && terragrunt apply
 cd ../public_ip_k8s-01 && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED:
-# * Update with the group object_id output by the ad_group_k8s-admin live component the value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/azure-aad-cluster-roles.yaml
-# * Update with the new IP the loadBalancerIP value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/nginx-ingress-custom.yaml
+**Manual operations required**
 
+* Update with the group object_id output by the ad_group_k8s-admin live component the value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/azure-aad-cluster-roles.yaml
+
+* Update with the new IP the loadBalancerIP value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/nginx-ingress-custom.yaml
+
+```shell
 # Public DNS zones and records
 cd ../dns_zone_public_dev_io_italia_it && terragrunt apply
 cd ../dns_zone_public_dev_io_italia_it_records && terragrunt apply
