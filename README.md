@@ -156,14 +156,6 @@ cd ../dns_zone_private_common && terragrunt apply
 cd ../key_vault && terragrunt apply
 ```
 
-**Manual operations required**
-
-The following secrets need to be manually inserted in the Azure Keyvault
-
-| Secret  | Description    |
-| ------- | -------------- |
-|`developerPortalSpSecret` | *Developer portal service principal secret.* |
-
 ```shell
 # CosmosDB: account, sql-database, sql-containers
 cd ../cosmosdb_account_01 && terragrunt apply
