@@ -210,7 +210,6 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 
 | Secret  | Description    |
 | ------- | -------------- |
-|`fn2adminadminCode` | *The master key of the admin function.* |
 |`fn2adminStorageConnection` | *The access key needed to access the appdata storage container.* |
 |`fn2appQueueStorageConnection` | *The access key needed to access the appdata storage container.* |
 |`fn2CommonsMailupSecret` | *The secret used to connect to MailUP service.* |
@@ -249,6 +248,7 @@ The following secrets need to be manually inserted in the Azure Keyvault
 
 | Secret  | Description    |
 | ------- | -------------- |
+|`apim-01-fn2-admin-host-key` | *The host key of the admin function.* |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
 ```shell

@@ -7,7 +7,6 @@
 VAULT_NAME="io-prod-keyvault"
 
 # FUNCTION 
-az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2adminadminCode" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2adminStorageConnection" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2CommonsMailupSecret" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2CommonsMailupUsername" --value "VALUE"
@@ -18,11 +17,11 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesQueueStorag
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2servicesWebhookChannelUrl" --value "VALUE"
 
 # APIM
-az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-Ocp-Apim-Subscription-Key" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "application-gateway-to-apim-01-cert" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "apim-01-fn2-admin-host-key" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "generated-cert" --value "VALUE"
 
 # APPLICATION GATEWAY
-az keyvault secret set --vault-name "$VAULT_NAME" --name "generated-cert" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "application-gateway-to-apim-01-cert" --value "VALUE"
 
 # NOTIFICATION HUB
 az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01bundleid" --value "VALUE"
@@ -39,7 +38,8 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-prod-
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets-io-certs" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs" --value "VALUE"
-
-# TERRAFORM
 az keyvault secret set --vault-name "$VAULT_NAME" --name "terraformsshkey" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "terraformsshkeypub" --value "VALUE"
+
+# MONITORING
+az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-Ocp-Apim-Subscription-Key" --value "VALUE"
