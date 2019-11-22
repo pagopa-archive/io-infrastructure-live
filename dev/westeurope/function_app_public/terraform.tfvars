@@ -88,11 +88,11 @@ functionapp_settings = [
 functionapp_settings_secrets = [
   {
     name        = "MAILUP_USERNAME"
-    vault_alias = "fn2CommonsMailupUsername"
+    vault_alias = "fn2-commons-mailup-username"
   },
   {
     name        = "MAILUP_SECRET"
-    vault_alias = "fn2CommonsMailupSecret"
+    vault_alias = "fn2-commons-mailup-secret"
   },
 ]
 

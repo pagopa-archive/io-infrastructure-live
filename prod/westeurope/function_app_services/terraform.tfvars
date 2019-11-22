@@ -71,23 +71,23 @@ functionapp_settings = [
 functionapp_settings_secrets = [
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
-    vault_alias = "fn2CommonAppInsightsInstrumentationKey"
+    vault_alias = "fn2-commons-app-insights-instrumentation-key"
   },
   {
     name        = "QueueStorageConnection"
-    vault_alias = "fn2-common-sa-appdata-primary-connection-string"
+    vault_alias = "fn2-commons-sa-appdata-primary-connection-string"
   },
   {
     name        = "MAILUP_USERNAME"
-    vault_alias = "fn2CommonsMailupUsername"
+    vault_alias = "fn2-commons-mailup-username"
   },
   {
     name        = "MAILUP_SECRET"
-    vault_alias = "fn2CommonsMailupSecret"
+    vault_alias = "fn2-commons-mailup-secret"
   },
   {
     name        = "WEBHOOK_CHANNEL_URL"
-    vault_alias = "fn2servicesWebhookChannelUrl"
+    vault_alias = "fn2-services-webhook-channel-url"
   }
 ]
 

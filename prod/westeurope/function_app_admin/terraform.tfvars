@@ -55,11 +55,11 @@ functionapp_settings = [
 functionapp_settings_secrets = [
   {
     name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
-    vault_alias = "fn2-common-sa-appdata-primary-connection-string"
+    vault_alias = "fn2-commons-app-insights-instrumentation-key"
   },
   {
     name        = "StorageConnection"
-    vault_alias = "fn2adminStorageConnection"
+    vault_alias = "fn2-commons-sa-appdata-primary-connection-string"
   }
 ]
 
