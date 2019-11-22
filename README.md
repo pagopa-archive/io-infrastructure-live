@@ -214,7 +214,6 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 |`fn2appQueueStorageConnection` | *The access key needed to access the appdata storage container.* |
 |`fn2CommonsMailupSecret` | *The secret used to connect to MailUP service.* |
 |`fn2CommonsMailupUsername` | *The username used to connect to MailUP service.* |
-|`fn2servicesFunctionAppHostKey` | *The Host key created by the Azure Function.* |
 |`fn2servicesMailupSecret` | *The secret used to connect to MailUP service.* |
 |`fn2servicesMailupUsername` | *The username used to connect to MailUP service.* |
 |`fn2servicesQueueStorageConnection` | *The access key needed to access the appdata storage container.* |
@@ -250,13 +249,13 @@ cd ../function_app_public_config && terragrunt apply
  
 * Navigate to io-dev-fn-2-admin -> Function app settings
  
-* Add new host key: as name input *ApimHostKey*; leave the value empty to auto-generate the secret. Copy it somewhere. You'll need it soon
+* Add new host key: as name, input *ApimHostKey*; leave the value empty to auto-generate the host key. Copy it somewhere. You'll need it soon
 
 * Go back to Function App
  
 * Navigate to io-dev-fn-2-services -> Function app settings
  
-* Add new host key: as name input *ApimHostKey*; leave the value empty to auto-generate the secret. Copy it somewhere. You'll need it soon
+* Add new host key: as name, input *ApimHostKey*; leave the value empty to auto-generate the host key. Copy it somewhere. You'll need it soon
 
 * The following secrets need to be manually inserted in the Azure Keyvault
 
