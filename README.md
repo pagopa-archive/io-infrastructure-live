@@ -154,45 +154,7 @@ cd ../dns_zone_private_common && terragrunt apply
 
 # Keyvault
 cd ../key_vault && terragrunt apply
-```
 
-**Manual operations required**
-
-The following secrets need to be manually inserted in the Azure Keyvault
-
-| Secret  | Description    |
-| ------- | -------------- | 
-|`app-insight-web-tests-Ocp-Apim-Subscription-Key` | *The APIM secret used by the monitoring user (for automated monitoring activities). This is usually the user "IO Monitoring" user, listed under users in the APIM.* |
-|`application-gateway-to-apim-01-cert` | *The application gateway certificate, to be loaded manually in pfx format.* |
-|`developerPortalSpSecret` | *Developer portal service principal secret.* |
-|`fn2adminadminCode` | *The master key of the admin function.* |
-|`fn2adminStorageConnection` | *The access key needed to access the appdata storage container.* |
-|`fn2appQueueStorageConnection` | *The access key needed to access the appdata storage container.* |
-|`fn2CommonsMailupSecret` | *The secret used to connect to MailUP service.* |
-|`fn2CommonsMailupUsername` | *The username used to connect to MailUP service.* |
-|`fn2servicesFunctionAppHostKey` | *The Host key created by the Azure Function.* |
-|`fn2servicesMailupSecret` | *The secret used to connect to MailUP service.* |
-|`fn2servicesMailupUsername` | *The username used to connect to MailUP service.* |
-|`fn2servicesQueueStorageConnection` | T*he access key needed to access the appdata storage container.* |
-|`fn2servicesWebhookChannelUrl` | *The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY* |
-|`generated-cert` | *The application gateway certificate, to be loaded manually in pfx format.* | 
-|`k8s-app-backend-secrets` | *A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}* |
-|`k8s-app-backend-secrets-spid-certs` | *The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs.* |
-|`k8s-developer-portal-backend-secrets` | *A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}* |
-|`k8s-io-onboarding-pa-api-secrets-spid-certs` | *The certificates used by the onboarding portal to authenticate and dialog with official SPID IDPs.* |
-|`k8s-pagopa-proxy-prod-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
-|`k8s-pagopa-proxy-test-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
-|`k8s-pagopa-proxy-test-secrets-io-certs` | *The IO certificate (public+private key in PEM format) for the hostname connecting to the PagoPA test environment.* |
-|`k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs` | *The full-chain certificates of the PagoPA test endpoint.* |
-|`nhub01bundleid` | *Also called the "App ID." This is the bundle identifier for the application.* |
-|`nhub01gcmkey` | *The api key for Google Cloud Messaging.* |
-|`nhub01keyid` | *Identifier of the private key generated in the Apple Developer portal.* |
-|`nhub01teamid` | *Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal.* |
-|`nhub01token` | *Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.* |
-|`terraformsshkey` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
-|`terraformsshkeypub` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
-
-```shell
 # CosmosDB: account, sql-database, sql-containers
 cd ../cosmosdb_account_01 && terragrunt apply
 cd ../cosmosdb_sql_database_db-01 && terragrunt apply
@@ -206,7 +168,21 @@ cd ../cosmosdb_container_services && terragrunt apply
 
 # Eventhub
 cd ../eventhub_apim && terragrunt apply
+```
 
+**Manual operations required**
+
+The following secrets need to be manually inserted in the Azure Keyvault:
+
+| Secret  | Description    |
+| ------- | -------------- |
+|`nhub01bundleid` | *Also called the "App ID." This is the bundle identifier for the application.* |
+|`nhub01gcmkey` | *The api key for Google Cloud Messaging.* |
+|`nhub01keyid` | *Identifier of the private key generated in the Apple Developer portal.* |
+|`nhub01teamid` | *Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal.* |
+|`nhub01token` | *Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.* |
+
+```shell
 # Notificationhub
 cd ../notification_hub && terragrunt apply
 
@@ -226,7 +202,20 @@ cd ../storage_queue_emailnotifications && terragrunt apply
 
 # Redis cache
 cd ../redis_cache-01 && terragrunt apply
+```
 
+**Manual operations required**
+
+The following secrets need to be manually inserted in the Azure Keyvault:
+
+| Secret  | Description    |
+| ------- | -------------- |
+|`fn2-commons-sa-appdata-primary-connection-string` | *The access key needed to access the appdata storage container.* |
+|`fn2-commons-mailup-secret` | *The secret used to connect to the MailUP service.* |
+|`fn2-commons-mailup-username` | *The username used to connect to the MailUP service.* |
+|`fn2-services-webhook-channel-url` | *The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY* |
+
+```shell
 # Function-app admin
 cd ../function_app_service_plan_fn2admin && terragrunt apply
 cd ../function_app_admin && terragrunt apply
@@ -246,51 +235,129 @@ cd ../function_app_services_config && terragrunt apply
 cd ../function_app_service_plan_fn2public && terragrunt apply
 cd ../function_app_public && terragrunt apply
 cd ../function_app_public_config && terragrunt apply
+```
 
+**Manual operations required**
+
+* Navigate to the [Azure GUI](https://portal.azure.com)
+
+* Go to Function App
+ 
+* Navigate to io-dev-fn-2-admin -> Function app settings
+ 
+* Add new host key: as name, input *ApimHostKey*; leave the value empty to auto-generate the host key. Copy it somewhere. You'll need it soon
+
+* Go back to Function App
+ 
+* Navigate to io-dev-fn-2-services -> Function app settings
+ 
+* Add new host key: as name, input *ApimHostKey*; leave the value empty to auto-generate the host key. Copy it somewhere. You'll need it soon
+
+* The following secrets need to be manually inserted in the Azure Keyvault
+
+| Secret  | Description    |
+| ------- | -------------- |
+|`apim-01-fn2-admin-host-key` | *The auto-generated host key of the admin function.* |
+|`apim-01-fn2-services-host-key` | *The auto-generated host key of the services function.* |
+|`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
+
+```shell
 # API Management (APIM)
 cd ../api_management && terragrunt apply
 cd ../api_management_properties && terragrunt apply
 cd ../api_management_apis && terragrunt apply
 cd ../api_management_products && terragrunt apply
+```
 
+**Manual operations required**
+
+The following secrets need to be manually inserted in the Azure Keyvault
+
+| Secret  | Description    |
+| ------- | -------------- |
+|`application-gateway-to-apim-01-cert` | *The application gateway certificate, to be loaded manually in pfx format.* |
+
+```shell
 # Application gateways
 cd ../public_ip_ag-to-apim-01 && terragrunt apply
 cd ../public_ip_ag-to-k8s-01 && terragrunt apply
 cd ../application_gateway_ag-to-apim-01 && terragrunt apply
 cd ../application_gateway_ag-to-k8s-01 && terragrunt apply
+```
 
+**Manual operations required**
+
+The following secrets need to be manually inserted in the Azure Keyvault:
+
+| Secret  | Description    |
+| ------- | -------------- |
+|`terraformsshkey` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
+|`terraformsshkeypub` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
+|`k8s-app-backend-secrets` | *A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}* |
+|`k8s-app-backend-secrets-spid-certs` | *The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs.* |
+|`k8s-developer-portal-backend-secrets` | *A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}* |
+|`k8s-io-onboarding-pa-api-secrets-spid-certs` | *The certificates used by the onboarding portal to authenticate and dialog with official SPID IDPs.* |
+|`k8s-pagopa-proxy-prod-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
+|`k8s-pagopa-proxy-test-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
+|`k8s-pagopa-proxy-test-secrets-io-certs` | *The IO certificate (public+private key in PEM format) for the hostname connecting to the PagoPA test environment.* |
+|`k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs` | *The full-chain certificates of the PagoPA test endpoint.* |
+
+```shell
 # Kubernetes
 cd ../key_vault_secret_ssh_keys_vm && terragrunt apply
 cd ../service_principal_k8s-01 && terragrunt apply
 cd ../service_principal_k8s-01-aad-server && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED:
-# * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-server
-# * API permissions -> Grant admin consent -> yes
-# * Expose an API -> /user_impersonation -> Admins only -> Save
+**Manual operations required**
 
+ * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-server
+
+ * API permissions -> Grant admin consent -> yes
+
+ * Expose an API -> /user_impersonation -> Admins only -> Save
+
+```shell
 cd ../service_principal_k8s-01-aad-client && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED:
-# * Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-client
-# * API permissions -> Grant admin consent -> yes
+**Manual operations required**
 
+* Navigate to https://portal.azure.com -> Azure Active Directory -> io-{dev|prod}-sp-k8s-01-aad-client
+
+* API permissions -> Grant admin consent -> yes
+
+```shell
 cd ../ad_group_k8s-admin && terragrunt apply
 cd ../ad_group_k8s-onboarding && terragrunt apply
 cd ../kubernetes_cluster_k8s-01 && terragrunt apply
 cd ../public_ip_k8s-01 && terragrunt apply
+```
 
-# MANUAL OPERATIONS REQUIRED:
-# * Update with the group object_id output by the ad_group_k8s-admin live component the value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/azure-aad-cluster-roles.yaml
-# * Update with the new IP the loadBalancerIP value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/nginx-ingress-custom.yaml
+**Manual operations required**
 
+* Update with the group object_id output by the ad_group_k8s-admin live component the value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/azure-aad-cluster-roles.yaml
+
+* Update with the new IP the loadBalancerIP value in https://github.com/teamdigitale/io-infrastructure-post-config/blob/master/system/nginx-ingress-custom.yaml
+
+```shell
 # Public DNS zones and records
 cd ../dns_zone_public_dev_io_italia_it && terragrunt apply
 cd ../dns_zone_public_dev_io_italia_it_records && terragrunt apply
 
 # Developer portal prerequisites
 cd ../service_principal_developer-portal && terragrunt apply
+```
 
+**Manual operations required**
+
+The following secrets need to be manually inserted in the Azure Keyvault:
+
+| Secret  | Description    |
+| ------- | -------------- |
+|`app-insight-web-tests-Ocp-Apim-Subscription-Key` | *The APIM secret used by the monitoring user (for automated monitoring activities). This is usually the user "IO Monitoring" user, listed under users in the APIM.* |
+
+```shell
 # Logs, passive and active monitoring
 cd ../log_analytics_workspace && terragrunt apply
 cd ../monitoring && terragrunt apply
