@@ -100,10 +100,10 @@ apim_named_values = [
 apim_secret_named_values = [
   {
     name        = "FunctionAppHostKey"
-    vault_alias = "fn2servicesFunctionAppHostKey"
+    vault_alias = "apim-01-fn2-services-host-key"
   },
   {
     name        = "adminCode"
-    vault_alias = "fn2adminadminCode"
+    vault_alias = "apim-01-fn2-admin-host-key"
   },
 ]
