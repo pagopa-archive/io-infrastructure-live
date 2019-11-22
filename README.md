@@ -156,9 +156,9 @@ cd ../dns_zone_private_common && terragrunt apply
 cd ../key_vault && terragrunt apply
 ```
 
-## MANUAL OPERATIONS REQUIRED
+**Manual operations required**
 
-## The following secrets need to be manually inserted in the Azure Keyvault
+The following secrets need to be manually inserted in the Azure Keyvault
 
 | Secret  | Description    |
 | ------- | -------------- | 
