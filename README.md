@@ -154,9 +154,7 @@ cd ../dns_zone_private_common && terragrunt apply
 
 # Keyvault
 cd ../key_vault && terragrunt apply
-```
 
-```shell
 # CosmosDB: account, sql-database, sql-containers
 cd ../cosmosdb_account_01 && terragrunt apply
 cd ../cosmosdb_sql_database_db-01 && terragrunt apply
