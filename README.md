@@ -261,6 +261,7 @@ The following secrets need to be manually inserted in the Azure Keyvault
 | ------- | -------------- |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
+```shell
 # API Management (APIM)
 cd ../api_management && terragrunt apply
 cd ../api_management_properties && terragrunt apply
