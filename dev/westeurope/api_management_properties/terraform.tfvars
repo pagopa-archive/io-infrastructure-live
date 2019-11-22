@@ -83,7 +83,7 @@ apim_groups = [
   },
   {
     name = "ApiDevelopmentProfileWrite"
-  },
+  }
 ]
 
 apim_named_values = [
@@ -94,7 +94,7 @@ apim_named_values = [
   {
     name  = "adminBackendUrl"
     value = "https://io-dev-fn-2-admin.azurewebsites.net"
-  },
+  }
 ]
 
 apim_secret_named_values = [
@@ -105,5 +105,5 @@ apim_secret_named_values = [
   {
     name        = "adminCode"
     vault_alias = "apim-01-fn2-admin-host-key"
-  },
+  }
 ]
