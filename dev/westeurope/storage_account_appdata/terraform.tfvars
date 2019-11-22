@@ -30,3 +30,4 @@ allowed_subnets_suffixes                          = [
 azurerm_storage_account_network_rules_allowed_ips = [
   "5.97.129.253"
 ]
+create_keyvault_secret                            = true
