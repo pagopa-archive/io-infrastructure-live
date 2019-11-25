@@ -113,9 +113,19 @@ Terragrunt will try to apply all the components under the folder where the Terra
 
 ## How to build a new infrastructure from scratch
 
->WARNING: This section is still work in progress
-
 The paragraph describes the action to perform and the order in which they should be applied, in order to bring up a new IO infrastructure from scratch.
+
+### Notes about secrets and certificates creation/import
+
+While some of the secrets and certificates needed by some components below are automatically generated and uploaded during the creation of other resources, some secrets and certificates need to be uploaded manually. This may not necessarily be an easy operation as it would seems. Here are few tips that may help:
+
+* The [secrets-copier.sh utility script](utils/secrets-copier.sh) automates copy operation of secrets between two keyvaults
+
+* Certificates should be generally uploaded manually in the *certificates* section of the keyvault. Uploading certificates in PEM format may be error prone, since the private key and the public certificate should be manually combined in a unique file. We found out that the best way to upload certificates is to previously convert them in pfx format with *openssl*. For example, `openssl pkcs12 -inkey your_private.key -in your_public.crt -export -out your_pfx.pfx`
+
+* Some secrets contain the keyword certificate, even if they do not represent a private/public key-pair, but only a public certificate. This is the reason why they have been uploaded as secrets and not certificates. This is for example the case of *k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs*, which only represents the PagoPA public certificate. Do not try to upload it as certificate. It simply won't work!
+
+### Step by step
 
 The commands assume you're trying to provision the *dev* environment and that you've already initialized once the Azure infrastructure with the [az-init.sh script](utils/README.md) and that you already have a working [.env file](utils/README.md).
 
@@ -259,6 +269,11 @@ cd ../function_app_public_config && terragrunt apply
 | ------- | -------------- |
 |`apim-01-fn2-admin-host-key` | *The auto-generated host key of the admin function.* |
 |`apim-01-fn2-services-host-key` | *The auto-generated host key of the services function.* |
+
+* The following certificates need to be manually inserted in the Azure Keyvault
+
+|  Certificate  |  Description  |
+| ------------- | ------------- |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
 ```shell
@@ -294,11 +309,20 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 |`k8s-app-backend-secrets` | *A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}* |
 |`k8s-app-backend-secrets-spid-certs` | *The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs.* |
 |`k8s-developer-portal-backend-secrets` | *A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}* |
-|`k8s-io-onboarding-pa-api-secrets-spid-certs` | *The certificates used by the onboarding portal to authenticate and dialog with official SPID IDPs.* |
 |`k8s-pagopa-proxy-prod-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
-|`k8s-pagopa-proxy-test-secrets` | *a Json with the pagopa-proxy application secrets: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
-|`k8s-pagopa-proxy-test-secrets-io-certs` | *The IO certificate (public+private key in PEM format) for the hostname connecting to the PagoPA test environment.* |
+|`k8s-pagopa-proxy-test-secrets` | *a JSON with the pagopa-proxy application secrets used to connect to the PagoPA test environment: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
+|`k8s-pagopa-proxy-prod-secrets` | *a JSON with the pagopa-proxy application secrets used to connect to the PagoPA prod environment: {"pagopa-password": "XXX", "pagopa-id-psp": "XXX", "pagopa-id-int-psp": "XXX", "pagopa-id-canale": "XXX", "pagopa-id-canale-pagamento": "XXX", "redis-db-password": "XXX"}* |
 |`k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs` | *The full-chain certificates of the PagoPA test endpoint.* |
+|`k8s-pagopa-proxy-prod-secrets-pagopa-ca-chain-certs` | *The full-chain certificates of the PagoPA prod endpoint.* |
+
+* The following certificates need to be manually inserted in the Azure Keyvault
+
+|  Certificate  |  Description  |
+| ------------- | ------------- |
+|`k8s-io-app-backend-secrets-spid-certs` | *The certificates used by IO app backend to authenticate and dialog with official SPID IDPs.* |
+|`k8s-io-onboarding-pa-api-secrets-spid-certs` | *The certificates used by the onboarding portal to authenticate and dialog with official SPID IDPs.* |
+|`k8s-pagopa-proxy-test-secrets-io-certs` | *The certificate in PFX format for the IO PagoPA test environment endpoint.* |
+|`k8s-pagopa-proxy-prod-secrets-io-certs` | *The certificate in PFX format for the IO PagoPA prod environment endpoint.* |
 
 ```shell
 # Kubernetes

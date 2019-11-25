@@ -15,6 +15,7 @@
 # k8s-io-onboarding-pa-api-secrets-spid-certs
 # k8s-app-backend-secrets-spid-certs
 # k8s-pagopa-proxy-test-secrets-io-certs
+# k8s-pagopa-proxy-prod-secrets-io-certs
 
 src_vault_name="io-dev-keyvault"
 dst_vault_name="io-prod-keyvault"
