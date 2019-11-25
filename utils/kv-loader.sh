@@ -6,8 +6,7 @@
 
 VAULT_NAME="io-prod-keyvault"
 
-# FUNCTION 
-az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-commons-sa-appdata-primary-connection-string" --value "VALUE"
+# FUNCTIONS
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-commons-mailup-username" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-commons-mailup-secret" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "fn2-app-public-api-key" --value "VALUE"

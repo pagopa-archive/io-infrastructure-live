@@ -210,7 +210,6 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 
 | Secret  | Description    |
 | ------- | -------------- |
-|`fn2-commons-sa-appdata-primary-connection-string` | *The access key needed to access the appdata storage container.* |
 |`fn2-commons-mailup-secret` | *The secret used to connect to the MailUP service.* |
 |`fn2-commons-mailup-username` | *The username used to connect to the MailUP service.* |
 |`fn2-app-public-api-key` | *TBD* |
