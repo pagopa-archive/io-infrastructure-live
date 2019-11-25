@@ -80,8 +80,11 @@ functionapp_settings = [
   },
   {
     name  = "FUNCTIONS_PUBLIC_URL"
-    # TODO: Change this when io-functions-public will be deployed
-    value = "https://localhost/public"
+    value = "https://api.prod.io.italia.it/public"
+  },
+  {
+    name  = "NODE_ENV"
+    value = "production"
   }
 ]
 
