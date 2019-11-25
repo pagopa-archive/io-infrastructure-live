@@ -35,6 +35,14 @@ functionapp_settings = [
     value = "readonly"
   },
   {
+    name  = "FUNCTIONS_EXTENSION_VERSION"
+    value = "~2"
+  },
+  {
+    name  = "VALIDATION_CALLBACK_URL",
+    value = "https://app-backend.prod.io.italia.it/email_verification.html"
+  },
+  {
     name  = "WEBSITE_NODE_DEFAULT_VERSION"
     value = "10.14.1"
   },
@@ -43,58 +51,29 @@ functionapp_settings = [
     value = "1" 
   },
   {
-    name  = "MESSAGE_CONTAINER_NAME"
-    value = "message-content"
-  },
-  {
-    name  = "PUBLIC_API_URL"
-    value = "https://io-prod-apim-01.azure-api.net"
-  },
-  {
     name  = "WEBSITE_HTTPSCALEV2_ENABLED"
     value = "1"
-  },
-  {
-    name  = "FUNCTIONS_EXTENSION_VERSION"
-    value = "~2"
-  },
-  {
-    name  = "SUBSCRIPTIONS_FEED_TABLE"
-    value = "SubscriptionsFeedByDay"
-  },
-  {
-    name  = "MAIL_FROM"
-    value = "IO - l'app dei servizi pubblici <no-reply@io.italia.it>"
-  },
-  {
-    name  = "MAIL_ORGANIZATION_FISCALCODE"
-    value = "80188230587"
-  },
-  {
-    name  = "MAIL_ORGANIZATION_NAME"
-    value = "Presidenza del Consiglio dei Ministri"
-  },
-  {
-    name  = "MAIL_SENDER_SERVICE"
-    value = "Team per la Trasformazione Digitale<br />Progetto IO"
-  },
-  {
-    name  = "FUNCTIONS_PUBLIC_URL"
-    # TODO: Change this when io-functions-public will be deployed
-    value = "https://localhost/public"
   }
 ]
 
 functionapp_settings_secrets = [
   {
-    name        = "MAILUP_USERNAME"
-    vault_alias = "fn2-commons-mailup-username"
+    name        = "APPINSIGHTS_INSTRUMENTATIONKEY"
+    vault_alias = "fn2-commons-app-insights-instrumentation-key"
   },
   {
-    name        = "MAILUP_SECRET"
-    vault_alias = "fn2-commons-mailup-secret"
-  },
+    name        = "StorageConnection"
+    vault_alias = "fn2-commons-sa-appdata-primary-connection-string"
+  }
 ]
 
 functionapp_connection_strings = [
+  {
+    name        = "COSMOSDB_KEY"
+    vault_alias = "fn2-commons-cosmosdb-key"
+  },
+  {
+    name        = "COSMOSDB_URI"
+    vault_alias = "fn2-commons-cosmosdb-uri"
+  }
 ]
