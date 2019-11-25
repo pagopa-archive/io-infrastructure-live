@@ -36,8 +36,6 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-prod-
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets-io-certs" --value "VALUE"
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "terraformsshkey" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "terraformsshkeypub" --value "VALUE"
 
 # MONITORING
 az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-Ocp-Apim-Subscription-Key" --value "VALUE"
