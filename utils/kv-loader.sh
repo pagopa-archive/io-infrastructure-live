@@ -22,11 +22,11 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "generated-cert" --valu
 az keyvault secret set --vault-name "$VAULT_NAME" --name "application-gateway-to-apim-01-cert" --value "VALUE"
 
 # NOTIFICATION HUB
-az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01bundleid" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01gcmkey" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01keyid" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01teamid" --value "VALUE"
-az keyvault secret set --vault-name "$VAULT_NAME" --name "nhub01token" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "notification-hub-01-bundle-id" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "notification-hub-01-gc-m-key" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "notification-hub-01-key-id" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "notification-hub-01-team-id" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "notification-hub-01-token" --value "VALUE"
 
 # KUBERNETES
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-app-backend-secrets" --value "VALUE"

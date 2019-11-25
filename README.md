@@ -176,11 +176,11 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 
 | Secret  | Description    |
 | ------- | -------------- |
-|`nhub01bundleid` | *Also called the "App ID." This is the bundle identifier for the application.* |
-|`nhub01gcmkey` | *The api key for Google Cloud Messaging.* |
-|`nhub01keyid` | *Identifier of the private key generated in the Apple Developer portal.* |
-|`nhub01teamid` | *Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal.* |
-|`nhub01token` | *Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.* |
+|`notification-hub-01-bundle-id` | *Also called the "App ID." This is the bundle identifier for the application.* |
+|`notification-hub-01-gc-m-key` | *The api key for Google Cloud Messaging.* |
+|`notification-hub-01-key-id` | *Identifier of the private key generated in the Apple Developer portal.* |
+|`notification-hub-01-team-id` | *Also called the "Prefix" or "App Prefix." This is the identifier for the organization in the Apple Developer portal.* |
+|`notification-hub-01-token` | *Also called the "Key" or "Private Key." This is obtained from the .p8 file generated on the Apple Developer portal. The key must have APNS enabled (which is selected on the Apple Developer portal when generating the key). The value must have the PEM header/footer stripped from it when you supply it to the NH Portal/API.* |
 
 ```shell
 # Notificationhub
