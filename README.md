@@ -292,8 +292,6 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 
 | Secret  | Description    |
 | ------- | -------------- |
-|`terraformsshkey` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
-|`terraformsshkeypub` | *the private key used when Kubernetes VMs are created. Generate it first with "ssh-keygen -t rsa".* |
 |`k8s-app-backend-secrets` | *A JSON with backend secrets {"api-key": "XXX", "appinsights-instrumentationkey": "XXX", "azure-nh-endpoint": "XXX", "pre-shared-key": "XXX", "redis-password": "XXX"}* |
 |`k8s-app-backend-secrets-spid-certs` | *The certificates used by the IO app backend to authenticate and dialog with official SPID IDPs.* |
 |`k8s-developer-portal-backend-secrets` | *A JSON with portal backend secrets {"admin-api-key": "XXX”, "admin-api-url": "https://api.dev.io.italia.it", "appinsights-instrumentationkey": "XXX”, "arm-subscription-id": "XXX”, "arm-tenant-id": "XXX”, "client-id": "XXX”, "client-secret": "XXX”, "cookie-iv": "XXX”, "cookie-key": "XXX, "service-principal-client-id": "XXX”, "service-principal-secret": "XXX”, "service-principal-tenant-id": "XXX, "tenant-id": "XXX”}* |
