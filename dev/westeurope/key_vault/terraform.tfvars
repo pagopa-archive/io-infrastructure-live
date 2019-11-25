@@ -24,9 +24,9 @@ user_policies               = [
   # Federico Feroldi
   {
     object_id               = "b9c42346-12d2-4ed2-bdcf-9f6f8bb486ee",
-    key_permissions         = "create,delete,update,get,list",
-    secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    key_permissions         = "get,list,update,create,import,delete,recover,backup,restore,decrypt,encrypt,unwrapKey,wrapKey,verify,sign,purge",
+    secret_permissions      = "get,list,set,delete,recover,backup,restore,purge",
+    certificate_permissions = "get,list,update,create,import,delete,recover,backup,restore,managecontacts,manageissuers,getissuers,listissuers,setissuers,deleteissuers,purge"
   },
   # Luca Prete
   {
@@ -34,48 +34,47 @@ user_policies               = [
     key_permissions         = "get,list,update,create,import,delete,recover,backup,restore,decrypt,encrypt,unwrapKey,wrapKey,verify,sign,purge",
     secret_permissions      = "get,list,set,delete,recover,backup,restore,purge",
     certificate_permissions = "get,list,update,create,import,delete,recover,backup,restore,managecontacts,manageissuers,getissuers,listissuers,setissuers,deleteissuers,purge"
-
   },
   # Andrea Ceresoni
   {
     object_id               = "99b0ed3d-861d-4a5c-979e-fd0c6144d072",
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    certificate_permissions = "create,delete,update,get,list,import"
   },
   # Danilo Spinelli - AGID
   {
     object_id               = "8e50661e-ade5-4315-9801-39480fe4d19a",
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    certificate_permissions = "create,delete,update,get,list,import"
   },
   # Francesco Persico - art48
   {
     object_id               = "ab6e3253-8ed9-464c-8f70-845bf2876b71",
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    certificate_permissions = "create,delete,update,get,list,import"
   },
   # Luca Pinna - BeeToBit
   {
     object_id               = "1a844c85-5f7a-4fb6-988a-054d5e6ddfdc",
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    certificate_permissions = "create,delete,update,get,list,import"
   },
   # Roberto Chessa - BeeToBit
   {
     object_id               = "3b3ba5ac-76f9-4177-8aa3-8215a020d17a",
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    certificate_permissions = "create,delete,update,get,list,import"
   },
   # Riccardo Setti - art48
   {
     object_id               = "994160c7-59ce-43db-802e-e73807640d9d",
     key_permissions         = "create,delete,update,get,list",
     secret_permissions      = "set,delete,get,list",
-    certificate_permissions = "create,delete,update,get,list"
+    certificate_permissions = "create,delete,update,get,list,import"
   }
 ]
