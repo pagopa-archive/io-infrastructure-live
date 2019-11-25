@@ -38,4 +38,4 @@ az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-
 az keyvault secret set --vault-name "$VAULT_NAME" --name "k8s-pagopa-proxy-test-secrets-pagopa-ca-chain-certs" --value "VALUE"
 
 # MONITORING
-az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-Ocp-Apim-Subscription-Key" --value "VALUE"
+az keyvault secret set --vault-name "$VAULT_NAME" --name "app-insight-web-tests-ocp-apim-subscription-key" --value "VALUE"

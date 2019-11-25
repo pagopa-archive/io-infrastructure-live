@@ -18,7 +18,7 @@ In order to add a new web test you will need to edit `request.json` and add an e
 * body        => if the request needs a body
 * headers_xml => a list of strings that contains the name of the header. The value will be retrieved from azure Keyvault.
 
->**NOTE:** header names need to be consistent with the name of the secrets in the Keyvault, but need also to have a slightly different format, following a convention. For example, for a header called `Ocp-Apim-Subscription-Key` a secret called `app-insight-web-tests-Ocp-Apim-Subscription-Key` should be present in Azure KeyVault.
+>**NOTE:** header names need to be consistent with the name of the secrets in the Keyvault, but need also to have a slightly different format, following a convention. For example, for a header called `Ocp-Apim-Subscription-Key` a secret called `app-insight-web-tests-ocp-apim-subscription-key` should be present in Azure KeyVault.
 
 ## Generate the web tests live file (terraform.tfvars)
 

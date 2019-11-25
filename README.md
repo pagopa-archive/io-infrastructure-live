@@ -354,7 +354,7 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 
 | Secret  | Description    |
 | ------- | -------------- |
-|`app-insight-web-tests-Ocp-Apim-Subscription-Key` | *The APIM secret used by the monitoring user (for automated monitoring activities). This is usually the user "IO Monitoring" user, listed under users in the APIM.* |
+|`app-insight-web-tests-ocp-apim-subscription-Key` | *The APIM secret used by the monitoring user (for automated monitoring activities). This is usually the user "IO Monitoring" user, listed under users in the APIM.* |
 
 ```shell
 # Logs, passive and active monitoring
