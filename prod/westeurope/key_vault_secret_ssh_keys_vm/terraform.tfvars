@@ -15,6 +15,6 @@ terragrunt = {
   }
 }
 
-azurerm_key_vault_ssh_keys_private_secret_name = "terraformsshkey"
-azurerm_key_vault_ssh_keys_public_secret_name  = "terraformsshkeypub"
+azurerm_key_vault_ssh_keys_private_secret_name = "terraform-ssh-key"
+azurerm_key_vault_ssh_keys_public_secret_name  = "terraform-ssh-key-pub"
 azurerm_key_vault_ssh_keys_email               = "vms@io.italia.it"
