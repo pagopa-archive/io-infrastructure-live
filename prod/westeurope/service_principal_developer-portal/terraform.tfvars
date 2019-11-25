@@ -18,4 +18,4 @@ terragrunt = {
 # Service Principal module variables
 app_name                                     = "developer-portal"
 azurerm_role_assignment_role_definition_name = "Contributor"
-azurerm_key_vault_secret_name                = "developerPortalSpSecret"
+azurerm_key_vault_secret_name                = "developer-portal-sp-secret"
