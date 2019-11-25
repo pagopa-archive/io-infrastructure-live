@@ -98,3 +98,9 @@ as_image if the user wants an image to represent the terragrunt dependencies.
 * Install required libries -> `source venv/bin/activate`
 
 * Run the script -> `python check_live_circular_dependencies.py -o live -d ../dev/westeurope`
+
+## Copy secrets between two Azure keyvaults
+
+The *secrets-copier.sh* scripts allows to copy a pre-defined list of secrets between two keyvaults of the same subscription.
+
+To start the copy, simply make sure the name of the source and the destination vaults are up to date, and that the list of secrets reflects the ones you have to copy. Then execute it running `bash secrets-copier.sh` or `./secrets-copier.sh`.
