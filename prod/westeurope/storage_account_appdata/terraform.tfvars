@@ -24,8 +24,10 @@ azurerm_storage_account_account_replication_type  = "LRS"
 allowed_subnets_suffixes                          = [
   "function-admin",
   "function-app",
-  "function-services"
+  "function-services",
+  "function-public"
 ]
 azurerm_storage_account_network_rules_allowed_ips = [
   "5.97.129.253"
 ]
+create_keyvault_secret                            = true
