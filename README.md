@@ -208,7 +208,7 @@ cd ../storage_container_message-content && terragrunt apply
 cd ../storage_queue_createdmessages && terragrunt apply
 cd ../storage_queue_emailnotifications && terragrunt apply
 cd ../storage_queue_profileevents && terragrunt apply
-cd ../storage_queue_emailnotifications && terragrunt apply
+cd ../storage_queue_webhooknotifications && terragrunt apply
 
 # Redis cache
 cd ../redis_cache-01 && terragrunt apply
