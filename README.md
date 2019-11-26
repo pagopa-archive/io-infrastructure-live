@@ -212,6 +212,9 @@ cd ../storage_queue_webhooknotifications && terragrunt apply
 
 # Redis cache
 cd ../redis_cache-01 && terragrunt apply
+
+# App Insights
+cd ../app_insights && terragrunt apply
 ```
 
 **Manual operations required**
@@ -384,7 +387,6 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 cd ../log_analytics_workspace && terragrunt apply
 cd ../monitoring && terragrunt apply
 cd ../monitoring_group_01 && terragrunt apply
-cd ../app_insights && terragrunt apply
 cd ../app_insights_web_tests && python generate-terraform-tfvars.py && terragrunt apply
 ```
 
