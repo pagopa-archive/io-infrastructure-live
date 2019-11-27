@@ -39,6 +39,7 @@ secrets=(
   "notification-hub-01-token"
   # Kubernetes
   "k8s-app-backend-secrets"
+  "k8s-io-onboarding-pa-api"
   "k8s-developer-portal-backend-secrets"
   "k8s-pagopa-proxy-prod-secrets"
   "k8s-pagopa-proxy-test-secrets"
