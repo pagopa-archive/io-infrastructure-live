@@ -272,11 +272,6 @@ cd ../function_app_public_config && terragrunt apply
 | ------- | -------------- |
 |`apim-01-fn2-admin-host-key` | *The auto-generated host key of the admin function.* |
 |`apim-01-fn2-services-host-key` | *The auto-generated host key of the services function.* |
-
-* The following certificates need to be manually inserted in the Azure Keyvault
-
-|  Certificate  |  Description  |
-| ------------- | ------------- |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
 ```shell

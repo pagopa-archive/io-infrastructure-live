@@ -29,6 +29,7 @@ secrets=(
   # Apim
   "apim-01-fn2-admin-host-key"
   "apim-01-fn2-services-host-key"
+  "generated-cert"
   # Application gateway
   "application-gateway-to-apim-01-cert"
   # Notification hub
