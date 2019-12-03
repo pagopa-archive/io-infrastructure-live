@@ -20,8 +20,19 @@ dns_zone_suffix                = "io.italia.it"
 
 kubernetes_public_ip_name      = "agid-k8s-ip-test-k8s-01"
 kubernetes_resource_group_name = "MC_agid-rg-test_agid-aks-k8s-01-test_westeurope"
-aks_cluster_name               = "k8s.test"
-kubernetes_cname_records       = []
+aks_cluster_name_old           = "k8s.test"
+kubernetes_cname_records_old   = []
+
+kubernetes_cname_records       = [
+  "api.pa-onboarding",
+  "spid-testenv",
+  "app-backend",
+  "app-backend-rc",
+  "pa-onboarding",
+  "backend.developer",
+  # TODO: enable once new infra is migrated
+  # "developer"
+]
 
 developers_cname_records       = [
   {
