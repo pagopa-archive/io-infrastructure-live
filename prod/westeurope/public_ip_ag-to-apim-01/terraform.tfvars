@@ -19,6 +19,6 @@ terragrunt = {
 }
 
 # Public IP module variables
-azurerm_public_ip_name      = "ag-to-k8s-01"
+azurerm_public_ip_name      = "ag-to-apim-01"
 azurerm_resource_group_name = "io-prod-rg"
 azurerm_public_ip_sku       = "Standard"
