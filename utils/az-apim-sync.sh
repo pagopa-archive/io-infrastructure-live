@@ -12,6 +12,7 @@
 
 # Destination APIM settings
 DST_APIM_NAME=io-dev-apim-01
+SRC_APIM_PRODUCT_NAME=starter
 DST_APIM_PRODUCT_NAME=io-dev-apim-prod-01
 DST_RESOURCE_GROUP=io-dev-rg
 
@@ -39,19 +40,22 @@ echo "
 }
 " >apim-users.json
 
-if ! $DRY_RUN; then
-    echo "Deploying ARM template .."
+USERS_COUNT=$(echo $USERS | jq ' length')
+echo "... $USERS_COUNT users found."
+
+if [[ $DRY_RUN -ne 1 ]]; then
+    echo "... Deploying ARM template .."
     az group deployment create --name USER-SYNC-JOB-$NOW --resource-group $DST_RESOURCE_GROUP --template-file apim-users.json
     az group deployment wait --name USER-SYNC-JOB-$NOW --resource-group $DST_RESOURCE_GROUP --updated
+else
+    echo "... Dry Run is enabled, deployment disabled."
 fi
-echo "Completed."
+echo "... Completed."
 
-echo "Processing Group Membership.."
+echo "Processing Group Memberships.."
 
 GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/groups/users"))  and (.name | contains("/developers") | not )) | del(.dependsOn) ]')
 
-GROUP_MEMBERSHIP_COUNT=$(echo $GROUP_MEMBERSHIP | jq ' length')
-echo "$GROUP_MEMBERSHIP_COUNT group memberships found."
 echo " 
    {
     \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
@@ -66,21 +70,32 @@ echo "
     \"resources\": $GROUP_MEMBERSHIP
 }
 " >apim-group-membership.json
-if ! $DRY_RUN; then
-    echo "Deploying ARM template .."
+
+GROUP_MEMBERSHIP_COUNT=$(echo $GROUP_MEMBERSHIP | jq ' length')
+echo "... $GROUP_MEMBERSHIP_COUNT group memberships found."
+if [[ $GROUP_MEMBERSHIP_COUNT -gt 800 ]]; then
+    echo "... WARNING! The number of template resources limit exceeded. Limit: 800 and actual: $GROUP_MEMBERSHIP_COUNT. Limiting sync to the first 800 resources"
+    LIMITED_GROUP_MEMBERSHIP=$(cat apim-group-membership.json | jq -r '[ limit(800;.[]) ]')
+    echo "$LIMITED_GROUP_MEMBERSHIP" >apim-group-membership.json
+fi
+
+if [[ $DRY_RUN -ne 1 ]]; then
+    echo "... Deploying ARM template .."
     az group deployment create --name GROUP-MEMBERSHIP-SYNC-JOB-$NOW --resource-group $DST_RESOURCE_GROUP --template-file apim-group-membership.json
     az group deployment wait --name GROUP-MEMBERSHIP-SYNC-JOB-$NOW --resource-group $DST_RESOURCE_GROUP --updated
+else
+    echo "... Dry Run is enabled, deployment disabled."
 fi
-echo "Completed."
+echo "... Completed."
 
 echo "Processing Subscriptions.."
-SUBSCRIPTIONS=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/subscriptions")) and (.name | contains("/master") | not )  and (.name | contains("/azure-deploy") | not )) | del(.dependsOn) ]')
+SUBSCRIPTIONS=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/subscriptions")) and (.name | contains("/master") | not )) | del(.dependsOn) ]')
 
 # Replace source product name with the destination product name
 SUBSCRIPTIONS=$(echo ${SUBSCRIPTIONS//$SRC_APIM_PRODUCT_NAME/$DST_APIM_PRODUCT_NAME})
 
 SUBSCRIPTIONS_COUNT=$(echo $SUBSCRIPTIONS | jq ' length')
-echo "$SUBSCRIPTIONS_COUNT subscriptions found."
+echo "... $SUBSCRIPTIONS_COUNT subscriptions found."
 echo " 
    {
     \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
@@ -97,9 +112,15 @@ echo "
 " >apim-subscriptions.json
 
 NOW=$(date '+%Y-%m-%d-%H%M%S')
-if ! $DRY_RUN; then
-    echo "Deploying ARM template .."
+if [[ $DRY_RUN -ne 1 ]]; then
+    echo "... Deploying ARM template .."
     az group deployment create --name SUBSCRIPTIONS-SYNC-JOB-$NOW --resource-group $DST_RESOURCE_GROUP --template-file apim-subscriptions.json
     az group deployment wait --name SUBSCRIPTIONS-SYNC-JOB-$NOW --resource-group $DST_RESOURCE_GROUP --updated
+else
+    echo "... Dry Run is enabled, deployment disabled."
 fi
-echo "Completed."
+echo "... Completed."
+
+NOW=$(date '+%Y-%m-%d-%H%M%S')
+
+echo "Finished at $NOW"

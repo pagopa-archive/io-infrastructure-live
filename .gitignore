@@ -30,3 +30,9 @@ utils/live*
 # app_insights_web_test/terraform.tfvars is automatically generated with secrets from your Keyvault! DO NOT commit it!
 dev/westeurope/app_insights_web_tests/terraform.tfvars
 prod/westeurope/app_insights_web_tests/terraform.tfvars
+
+# Prevent some json temporary file (containing user secrets) to be committed during a sync process
+template.json
+apim-group-membership.json
+apim-users.json
+apim-subscriptions.json
