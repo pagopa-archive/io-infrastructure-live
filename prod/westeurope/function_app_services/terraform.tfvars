@@ -28,7 +28,7 @@ functionapp_name     = "2-services"
 functionapp_settings = [
   {
     name  = "COSMOSDB_NAME"
-    value = "io-dev-sqldb-db-01"
+    value = "io-prod-sqldb-db-01"
   },
   {
     name  = "FUNCTION_APP_EDIT_MODE"
