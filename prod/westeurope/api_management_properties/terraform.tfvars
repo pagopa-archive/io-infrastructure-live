@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../api_management"
+      "../api_management",
     ]
   }
 
@@ -83,7 +83,7 @@ apim_groups = [
   },
   {
     name = "ApiDevelopmentProfileWrite"
-  }
+  },
 ]
 
 apim_named_values = [
@@ -94,7 +94,11 @@ apim_named_values = [
   {
     name  = "adminBackendUrl"
     value = "https://io-prod-fn-2-admin.azurewebsites.net"
-  }
+  },
+  {
+    name  = "PublicFunctionAppBaseUrl"
+    value = "https://io-prod-fn-2-public.azurewebsites.net"
+  },
 ]
 
 apim_secret_named_values = [
@@ -105,5 +109,9 @@ apim_secret_named_values = [
   {
     name        = "adminCode"
     vault_alias = "apim-01-fn2-admin-host-key"
-  }
+  },
+  {
+    name        = "PublicFunctionAppHostKey"
+    vault_alias = "apim-01-fn2-public-host-key"
+  },
 ]

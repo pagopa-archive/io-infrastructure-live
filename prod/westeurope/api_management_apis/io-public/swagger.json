@@ -1,0 +1,48 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "${display_name}",
+        "contact": {
+            "name": "Digital Transformation Team",
+            "url": "https://forum.italia.it/c/progetto-io"
+        },
+        "x-logo": {
+            "url": "https://io.italia.it/assets/img/io-logo-blue.svg"
+        },
+        "description": "# Warning\n**This is an experimental API that is (most probably) going to change as we evolve the IO platform.**\n# Introduction\nThis is the documentation of the IO API Public.\n"
+    },
+    "host": "${host}",
+    "basePath": "/${path}",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/validate-profile-email": {
+            "get": {
+                "tags": [
+                    "developers"
+                ],
+                "summary": "ValidateProfileEmail",
+                "operationId": "validateProfileEmail",
+                "produces": [
+                    "text/html"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "token",
+                        "description": "Validation token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "303": {
+                        "description": "Redirect to validation result page"
+                    }
+                }
+            }
+        }
+    }
+}
