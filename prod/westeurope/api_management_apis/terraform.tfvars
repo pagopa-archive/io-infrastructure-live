@@ -38,4 +38,13 @@ apim_apis = [
     host         = "api.prod.io.italia.it"
     protocols    = "http,https"
   },
+  {
+    name         = "io-public"
+    display_name = "IO API Public"
+    description  = "IO API Public."
+    revision     = "1"
+    path         = "public"
+    host         = "api.prod.io.italia.it"
+    protocols    = "http,https"
+  },
 ]
