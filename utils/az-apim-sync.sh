@@ -11,10 +11,10 @@
 # TODO: produce a full export of the API Management config
 
 # Destination APIM settings
-DST_APIM_NAME=io-dev-apim-01
+DST_APIM_NAME=io-prod-apim-01
 SRC_APIM_PRODUCT_NAME=starter
-DST_APIM_PRODUCT_NAME=io-dev-apim-prod-01
-DST_RESOURCE_GROUP=io-dev-rg
+DST_APIM_PRODUCT_NAME=io-prod-apim-prod-01
+DST_RESOURCE_GROUP=io-prod-rg
 
 DRY_RUN=0
 
@@ -54,8 +54,9 @@ echo "... Completed."
 
 echo "Processing Group Memberships.."
 
-GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/groups/users"))  and (.name | contains("/developers") | not )) | del(.dependsOn) ]')
+GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ limit( 800; .resources[]) | select( (.type | contains("Microsoft.ApiManagement/service/groups/users"))  and (.name | contains("/developers") | not ) and (.name | contains("/1") | not ) ) | del(.dependsOn) ]')
 
+# GROUP_MEMBERSHIP=$(cat template.json | jq -r '[ .resources[] | select( (.type | contains("Microsoft.ApiManagement/service/groups/users"))  and (.name | contains("/developers") | not )) | del(.dependsOn) ]')
 echo " 
    {
     \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
@@ -75,8 +76,8 @@ GROUP_MEMBERSHIP_COUNT=$(echo $GROUP_MEMBERSHIP | jq ' length')
 echo "... $GROUP_MEMBERSHIP_COUNT group memberships found."
 if [[ $GROUP_MEMBERSHIP_COUNT -gt 800 ]]; then
     echo "... WARNING! The number of template resources limit exceeded. Limit: 800 and actual: $GROUP_MEMBERSHIP_COUNT. Limiting sync to the first 800 resources"
-    LIMITED_GROUP_MEMBERSHIP=$(cat apim-group-membership.json | jq -r '[ limit(800;.[]) ]')
-    echo "$LIMITED_GROUP_MEMBERSHIP" >apim-group-membership.json
+    # LIMITED_GROUP_MEMBERSHIP=$(cat apim-group-membership.json | jq -r '[ limit( 800; .resources[] ) ]')
+    # echo "$LIMITED_GROUP_MEMBERSHIP" >apim-group-membership.json
 fi
 
 if [[ $DRY_RUN -ne 1 ]]; then
