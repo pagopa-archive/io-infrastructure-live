@@ -284,7 +284,9 @@ cd ../api_management_products && terragrunt apply
 
 **Manual operations required**
 
-The following secrets need to be manually inserted in the Azure Keyvault
+* Remove *Subscription required* from APIs to public functions: access the Azure portal -> go to the API Management section -> enter your APIM -> APIs -> IO API Public -> Settings -> Remove the flag from *Subscription required*
+
+* The following secrets need to be manually inserted in the Azure Keyvault
 
 | Secret  | Description    |
 | ------- | -------------- |

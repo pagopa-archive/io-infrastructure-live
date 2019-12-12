@@ -105,5 +105,9 @@ apim_secret_named_values = [
   {
     name        = "adminCode"
     vault_alias = "apim-01-fn2-admin-host-key"
+  },
+  {
+    name        = "PublicFunctionAppHostKey"
+    vault_alias = "apim-01-fn2-public-host-key"
   }
 ]
