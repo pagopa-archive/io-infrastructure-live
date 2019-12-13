@@ -16,7 +16,7 @@ SRC_APIM_PRODUCT_NAME=starter
 DST_APIM_PRODUCT_NAME=io-prod-apim-prod-01
 DST_RESOURCE_GROUP=io-prod-rg
 
-DRY_RUN=0
+DRY_RUN=1
 
 NOW=$(date '+%Y-%m-%d-%H%M%S')
 
