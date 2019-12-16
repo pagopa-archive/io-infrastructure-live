@@ -66,7 +66,11 @@ apim_product_api_bindings = [
     product_id_suffix = "prod-01"
   },
   {
-    api_name          = "io-api"
+    api_name          = "io-public"
+    product_id_suffix = "prod-01"
+  },
+  {
+    api_name          = "io-service"
     product_id_suffix = "prod-01"
   }
 ]
