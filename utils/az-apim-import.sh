@@ -11,11 +11,13 @@
 dst_resource_group=io-prod-rg
 dst_apim_name=io-prod-apim-01
 dst_apim_product_id=io-prod-apim-prod-01
+dst_deployment_name=io-apim
 
 # The APIM product id to copy data from
 # Along the process, this will be changed to dst_apim_product_id
 src_template_file=template.json
 src_apim_product_id=starter
+src_deployment_name=service_agid_apim_prod_name
 
 # How many resources to import at each run (ARM limit 800)
 resource_count_pagination=700
@@ -68,20 +70,20 @@ function generate_arm_template {
     echo "[$resource_name] Processing resources from $limit_down to $limit_up"
     resources=$(cat "$src_template_file" | jq -r --arg LIMIT_DOWN "$limit_down" --arg LIMIT_UP "$limit_up" --arg RESOURCE_TYPE "$resource_type" --arg NO_NAMES "$no_names" '[.resources[] | select((.type==$RESOURCE_TYPE) and (.name | test($NO_NAMES) | not)) | del(.dependsOn)] | .[$LIMIT_DOWN|tonumber:$LIMIT_UP|tonumber]')
 
-    echo "
     {
-      \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
-      \"contentVersion\": \"1.0.0.0\",
-      \"parameters\": {
-        \"io-apim\": {
-          \"defaultValue\": \"$dst_apim_name\",
-          \"type\": \"String\"
-        }
-      },
-      \"variables\": {},
-      \"resources\": $resources
-    }
-    " >apim-$resource_name-$limit_down-$limit_up.json
+      echo "{"
+      echo "  \"\$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\","
+      echo "  \"contentVersion\": \"1.0.0.0\","
+      echo "  \"parameters\": {"
+      echo "    \"$dst_deployment_name\": {"
+      echo "      \"defaultValue\": \"$dst_apim_name\","
+      echo "      \"type\": \"String\""
+      echo "    }"
+      echo "  },"
+      echo "  \"variables\": {},"
+      echo "  \"resources\": $resources"
+      echo "}"
+    } > apim-$resource_name-$limit_down-$limit_up.json
 
     if [[ $dry_run = false ]]; then
       echo "[$resource_name] Deploying ARM template $resource_name from $limit_down to $limit_up"
@@ -124,6 +126,9 @@ fi
 
 # Cleanup old APIM product name and set the new one
 awk -v src_apim_product_id="${src_apim_product_id}" -v dst_apim_product_id="${dst_apim_product_id}" '{gsub(src_apim_product_id,dst_apim_product_id)}1' "$src_template_file" > "$src_template_file".tmp && mv "$src_template_file".tmp "$src_template_file"
+
+# Cleanup old APIM product name and set the new one
+awk -v src_deployment_name="${src_deployment_name}" -v dst_deployment_name="${dst_deployment_name}" '{gsub(src_deployment_name,dst_deployment_name)}1' "$src_template_file" > "$src_template_file".tmp && mv "$src_template_file".tmp "$src_template_file"
 
 generate_arm_template "Microsoft.ApiManagement/service/users" "\/1"
 generate_arm_template "Microsoft.ApiManagement/service/groups" "\/administrators|\/developers|\/guests"
