@@ -23,13 +23,26 @@ src_deployment_name=service_agid_apim_prod_name
 resource_count_pagination=700
 
 function usage {
-echo """
-Usage: az-apim-import [--help] [-d|--dry-run]
-Import users, groups and subscriptions to an Azure APIM.
-Options:
-  -h, --help            display this help message
-  -d, --dry-run         run in dry-run mode. Create files. Do not import resources.
-"""
+  echo "Usage: az-apim-import [--help] [-d|--dry-run]"
+  echo "Import users, groups and subscriptions to an Azure APIM."
+  echo "Options:"
+  echo "-h, --help            display this help message"
+  echo "-d, --dry-run         run in dry-run mode. Create files. Do not import resources"
+}
+
+# Splits a string in input, given a string delimiter
+# 
+# Input values:
+# $1 - string to split
+# $2 - delimiter
+function split {
+  s=$1$2
+  array=();
+  while [[ $s ]]; do
+    array+=( "${s%%"$2"*}" );
+    s=${s#*"$2"};
+  done;
+  echo "${array[@]}"
 }
 
 # Generates and uploads ARM templates to the destination APIM
@@ -44,8 +57,9 @@ function generate_arm_template {
 
   # The resource name is the second element of the string
   # resource_type in input, splitted using /
-  IFS='/' read -ra resource_type_array <<< "$resource_type"
-  resource_name="${resource_type_array[2]}"
+  resource_name=$(split "${resource_type}" "service/")
+  IFS=' ' read -ra resource_type_array <<< "$resource_name"
+  resource_name=$(echo ${resource_type_array[1]} | awk '{gsub("/","-")}1')
 
   # Get the total number of resources
   resource_count=$(cat "$src_template_file" | jq -r --arg RESOURCE_TYPE "$resource_type" --arg NO_NAMES "$no_names" '[.resources[] | select((.type==$RESOURCE_TYPE) and (.name | test($NO_NAMES) | not)) | del(.dependsOn)] | length')
@@ -132,6 +146,7 @@ awk -v src_deployment_name="${src_deployment_name}" -v dst_deployment_name="${ds
 
 generate_arm_template "Microsoft.ApiManagement/service/users" "\/1"
 generate_arm_template "Microsoft.ApiManagement/service/groups" "\/administrators|\/developers|\/guests"
+generate_arm_template "Microsoft.ApiManagement/service/groups/users" "\/administrators|\/developers|\/guests"
 generate_arm_template "Microsoft.ApiManagement/service/subscriptions" "\/master"
 
 echo -e "\n"
