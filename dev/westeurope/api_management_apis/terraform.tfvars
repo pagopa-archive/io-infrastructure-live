@@ -1,7 +1,7 @@
 terragrunt = {
   dependencies {
     paths = [
-      "../api_management",
+      "../api_management"
     ]
   }
 
@@ -30,7 +30,7 @@ apim_apis = [
     protocols    = "http,https"
   },
   {
-    name         = "io-api"
+    name         = "io-service"
     display_name = "IO API for Services"
     description  = "IO API for Services."
     revision     = "3"
@@ -38,4 +38,13 @@ apim_apis = [
     host         = "api.dev.io.italia.it"
     protocols    = "http,https"
   },
+  {
+    name         = "io-public"
+    display_name = "IO API Public"
+    description  = "IO API Public."
+    revision     = "1"
+    path         = "public"
+    host         = "api.dev.io.italia.it"
+    protocols    = "http,https"
+  }
 ]

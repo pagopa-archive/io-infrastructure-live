@@ -272,6 +272,7 @@ cd ../function_app_public_config && terragrunt apply
 | ------- | -------------- |
 |`apim-01-fn2-admin-host-key` | *The auto-generated host key of the admin function.* |
 |`apim-01-fn2-services-host-key` | *The auto-generated host key of the services function.* |
+|`apim-01-fn2-public-host-key` | *The auto-generated host key of the public function.* |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
 ```shell
@@ -284,7 +285,9 @@ cd ../api_management_products && terragrunt apply
 
 **Manual operations required**
 
-The following secrets need to be manually inserted in the Azure Keyvault
+* Remove *Subscription required* from APIs to public functions: access the Azure portal -> go to the API Management section -> enter your APIM -> APIs -> IO API Public -> Settings -> Remove the flag from *Subscription required*
+
+* The following secrets need to be manually inserted in the Azure Keyvault
 
 | Secret  | Description    |
 | ------- | -------------- |

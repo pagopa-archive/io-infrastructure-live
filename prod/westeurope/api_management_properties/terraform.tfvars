@@ -88,22 +88,30 @@ apim_groups = [
 
 apim_named_values = [
   {
-    name  = "FunctionAppBaseUrl"
+    name  = "ServiceFunctionAppBaseUrl"
     value = "https://io-prod-fn-2-services.azurewebsites.net"
   },
   {
-    name  = "adminBackendUrl"
+    name  = "AdminFunctionAppBaseUrl"
     value = "https://io-prod-fn-2-admin.azurewebsites.net"
+  },
+  {
+    name  = "PublicFunctionAppBaseUrl"
+    value = "https://io-prod-fn-2-public.azurewebsites.net"
   }
 ]
 
 apim_secret_named_values = [
   {
-    name        = "FunctionAppHostKey"
+    name        = "ServiceFunctionAppHostKey"
     vault_alias = "apim-01-fn2-services-host-key"
   },
   {
-    name        = "adminCode"
+    name        = "AdminFunctionAppHostKey"
     vault_alias = "apim-01-fn2-admin-host-key"
+  },
+  {
+    name        = "PublicFunctionAppHostKey"
+    vault_alias = "apim-01-fn2-public-host-key"
   }
 ]

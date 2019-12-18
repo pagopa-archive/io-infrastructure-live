@@ -26,16 +26,25 @@ apim_apis = [
     description  = "IO API for administration purpose"
     revision     = "1"
     path         = ""
-    host         = "api.prod.io.italia.it"
+    host         = "api.io.italia.it"
     protocols    = "http,https"
   },
   {
-    name         = "io-api"
+    name         = "io-service"
     display_name = "IO API for Services"
     description  = "IO API for Services."
     revision     = "3"
     path         = "api/v1"
-    host         = "api.prod.io.italia.it"
+    host         = "api.io.italia.it"
     protocols    = "http,https"
   },
+  {
+    name         = "io-public"
+    display_name = "IO API Public"
+    description  = "IO API Public."
+    revision     = "1"
+    path         = "public"
+    host         = "api.io.italia.it"
+    protocols    = "http,https"
+  }
 ]
