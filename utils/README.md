@@ -59,27 +59,45 @@ After the *.env* has been created and properly customized, initialize the Azure 
 source az-init.sh
 ```
 
-## Sync users, groups and subscriptions using the API Management utlity scripts
+## Import users, groups and subscriptions into an Azure API manager
 
-The *az-apim-sync.sh* script helps operators to sync users, groups and subscriptions between two APIMs.
+The *az-apim-import.sh* script can import users, groups and subscriptions into an existing APIM.
 
-Data need to be first exported manually from the old APIM and saved in a local file called *template.json*. The script then takes the *template.json* file in input and generates three ARM templates:
+Data need to be first exported manually from another APIM:
 
-* Users (*apim-users.json*)
+* Go to the [Microsoft Azure Portal](https://portal.azure.com)
 
-* Group Membership (*apim-group-membership.json*)
+* Go to the API Management section and select the APIM you need to export data from
 
-* Subscriptions (*apim-subscriptions.json*)
+* On the left pane, click on *Export template*
 
-If the *DRY_RUN* variable in the script has a value *>0* (default) it also runs the deployment on the destination Azure environment.
+* Wait for the template to render in the main page. Then, click *Download*
 
->**NOTE:** Remember to customize the variables at the top of the script to set the source and destination name, product and resource groups of the Azure API Management Services (APIMs).
+* A zip file will be downloaded. One of the two files inside interests you: the *template.json*. Extract it and copy it to the *utils directory* (this directory).
 
-To synchronize users run:
+>WARNING: before running the script set the options at the top of the file, such as pagination and destination apim name, resource group and product name.
+
+To import users, run the *az-apim-import.sh* command
 
 ```shell
-source az-apim-sync.sh
+./az-apim-import.sh --help
+
+Usage: az-apim-import [--help] [-d|--dry-run]
+Import users, groups and subscriptions to an Azure APIM.
+Options:
+  -h, --help            display this help message
+  -d, --dry-run         run in dry-run mode. Create files. Do not import resources.
 ```
+
+With or without the *--dry-run option* three temporary files will be produces:
+
+* *apim-users-X-Y.json* with users to import
+
+* *apim-groups-X-Y.json* with groups to import
+
+* *apim-subscriptions-X-Y.json* with the subscriptions to import
+
+Where X and Y are the lower and upper limits, based on the pagination set.
 
 ## Check for circular dependencies in live modules
 
