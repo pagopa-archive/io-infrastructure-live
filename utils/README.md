@@ -99,6 +99,14 @@ With or without the *--dry-run option* three temporary files will be produces:
 
 Where X and Y are the lower and upper limits, based on the pagination set.
 
+## Delete deployment 
+
+Deployments in a resource group are difficult to delete, both from UI or from command line. For example, they can be deleted one by one.
+
+This is the reason why the delete-deployment.sh script exists.
+
+Simply check the parameters. Then, run: `./delete-deployment.sh`
+
 ## Check for circular dependencies in live modules
 
 This will be used primarily in the CI process. Two main possible usage are either as_text or as_image.
