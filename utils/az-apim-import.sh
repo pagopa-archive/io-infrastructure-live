@@ -123,7 +123,7 @@ function generate_arm_template_threaded {
   # Then, deploy them one by one, if dry_run is 0.
   while [[ $limit_down -lt $resource_count ]]
   do
-    # If more then 10 threads are running, wait for 5 seconds, before open new ones
+    # If more then 20 threads are running, wait for 5 seconds, before open new ones
     while [[ $(ps aux | grep -i "az group deployment create" | wc -l) -gt 20 ]];
     do
       sleep 1
