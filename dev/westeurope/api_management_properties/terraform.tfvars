@@ -97,7 +97,7 @@ apim_named_values = [
   },
   {
     name  = "PublicFunctionAppBaseUrl"
-    value = "https://io-prod-fn-2-public.azurewebsites.net"
+    value = "https://io-dev-fn-2-public.azurewebsites.net"
   }
 ]
 
