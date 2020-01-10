@@ -32,3 +32,14 @@ kubernetes_cname_records       = [
   "developer"
 ]
 # Kubernetes specific variables end
+
+# Onboarding records
+
+onboarding_cname_records = [
+  "onboarding",
+  "logos"
+]
+onboarding_cname_records_targets = [
+  "io-dev-cdn-endpoint-obfrontend.azureedge.net", 
+  "io-dev-cdn-endpoint-oblogos.azureedge.net"
+]

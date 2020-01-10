@@ -1,0 +1,18 @@
+<policies>
+    <inbound>
+        <set-backend-service id="apim-generated-policy" base-url="{{OnboardingFunctionAppBaseUrl}}" />
+        <base />
+        <set-header name="x-functions-key" exists-action="override">
+            <value>{{OnboardingFunctionAppHostKey}}</value>
+        </set-header>
+    </inbound>
+    <outbound>
+        <base />
+    </outbound>
+    <backend>
+        <base />
+    </backend>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
