@@ -268,6 +268,12 @@ cd ../function_app_public_config && terragrunt apply
  
 * Add new host key: as name, input *ApimHostKey*; leave the value empty to auto-generate the host key. Copy it somewhere. You'll need it soon
 
+* Go back to Function App
+ 
+* Navigate to io-dev-fn-2-onboarding -> Function app settings
+ 
+* Add new host key: as name, input *ApimHostKey*; leave the value empty to auto-generate the host key. Copy it somewhere. You'll need it soon
+
 * The following secrets need to be manually inserted in the Azure Keyvault
 
 | Secret  | Description    |
@@ -275,6 +281,7 @@ cd ../function_app_public_config && terragrunt apply
 |`apim-01-fn2-admin-host-key` | *The auto-generated host key of the admin function.* |
 |`apim-01-fn2-services-host-key` | *The auto-generated host key of the services function.* |
 |`apim-01-fn2-public-host-key` | *The auto-generated host key of the public function.* |
+|`apim-01-fn2-onobarding-host-key` | *The auto-generated host key of the onboarding function.* |
 |`generated-cert` | *The application gateway certificate consumed by the APIM, to be loaded manually in pfx format.* |
 
 ```shell
