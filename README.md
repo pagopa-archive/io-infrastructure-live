@@ -159,6 +159,11 @@ cd ../subnet_ag-frontend && terragrunt apply
 cd ../subnet_ag-to-k8s-01 && terragrunt apply
 cd ../subnet_k8s-01 && terragrunt apply
 
+cd ../onboarding/subnet_function_app_onboarding && terragrunt apply
+cd ../subnet_postgresql && terragrunt apply
+cd ../subnet_function_app_onboarding && terragrunt apply
+cd ..
+
 # Private DNS zone
 cd ../dns_zone_private_common && terragrunt apply
 
@@ -212,6 +217,27 @@ cd ../storage_queue_webhooknotifications && terragrunt apply
 cd ../storage_table_subscriptionsfeedbyday && terragrunt apply
 cd ../storage_table_validationtokens && terragrunt apply
 
+cd ../onboarding/storage_website_logos && terragrunt apply
+cd ../storage_website_frontend && terragrunt apply
+cd ../storage_account_fn2onboarding && terragrunt apply
+cd ../storage_account_documents && terragrunt apply
+
+# PostgreSQL Server
+cd ../postgresql_server && terragrunt apply
+cd ../postgresql_database && terragrunt apply
+
+# Onboarding CDNs
+cd ../cdn_profile && terragrunt apply
+cd ../cdn_endpoint_logos && terragrunt apply
+cd ../cdn_custom_domain_logos && terragrunt apply
+cd ../cdn_endpoint_frontend && terragrunt apply
+cd ../cdn_custom_domain_frontend && terragrunt apply
+
+# Onboarding CDN custom domains
+cd ../dns_cname_records && terragrunt apply
+
+cd ..
+
 # Redis cache
 cd ../redis_cache-01 && terragrunt apply
 
@@ -250,6 +276,13 @@ cd ../function_app_services_config && terragrunt apply
 cd ../function_app_service_plan_fn2public && terragrunt apply
 cd ../function_app_public && terragrunt apply
 cd ../function_app_public_config && terragrunt apply
+
+# Function app onboarding
+cd onboarding
+cd ../function_app_service_plan_fn2onboarding && terragrunt apply
+cd ../function_app_onboarding && terragrunt apply
+cd ../function_app_onboarding_config && terragrunt apply
+cd ..
 ```
 
 **Manual operations required**
