@@ -325,6 +325,14 @@ cd ../api_management_apis && terragrunt apply
 cd ../api_management_products && terragrunt apply
 ```
 
+```shell
+# Onboarding API Management (APIM)
+cd ../onboarding/api_management_properties && terragrunt apply
+cd ../api_management_apis && terragrunt apply
+cd ../api_management_products && terragrunt apply
+cd ..
+```
+
 **Manual operations required**
 
 * Remove *Subscription required* from APIs to public functions: access the Azure portal -> go to the API Management section -> enter your APIM -> APIs -> IO API Public -> Settings -> Remove the flag from *Subscription required*
