@@ -7,7 +7,7 @@ terragrunt = {
   }
 
   terraform {
-    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_dns_zone_records_io_italia_it"
+    source = "git::git@github.com:teamdigitale/io-infrastructure-modules.git//azurerm_dns_zone_records_prod_io_italia_it"
   }
 
   # Include all settings from the root terraform.tfvars file
