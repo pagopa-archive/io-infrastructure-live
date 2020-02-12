@@ -22,6 +22,4 @@ azurerm_storage_account_account_replication_type      = "LRS"
 allowed_subnets_suffixes                              = [
   "function-admin"
 ]
-azurerm_storage_account_network_rules_allowed_ips = [
-  "5.97.129.253"
-]
+azurerm_storage_account_network_rules_allowed_ips = []
