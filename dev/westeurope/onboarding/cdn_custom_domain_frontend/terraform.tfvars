@@ -16,6 +16,8 @@ terragrunt = {
   }
 }
 
-azurerm_cdn_profile_suffix = "onboarding"
-azurerm_cdn_endpoint_suffix = "obfrontend"
-azurerm_cdn_custom_domain_host_name = "onboarding.dev.io.italia.it"
+azurerm_cdn_profile_suffix = "01"
+azurerm_cdn_endpoint_suffix = "onboarding"
+
+cname_record = "onboarding"
+dns_zone_name = "dev.io.italia.it"

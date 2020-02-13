@@ -217,8 +217,7 @@ cd ../storage_queue_webhooknotifications && terragrunt apply
 cd ../storage_table_subscriptionsfeedbyday && terragrunt apply
 cd ../storage_table_validationtokens && terragrunt apply
 
-cd ../onboarding/storage_website_logos && terragrunt apply
-cd ../storage_website_frontend && terragrunt apply
+cd ../onboarding/storage_website_frontend && terragrunt apply
 cd ../storage_account_fn2onboarding && terragrunt apply
 cd ../storage_account_documents && terragrunt apply
 
@@ -227,14 +226,8 @@ cd ../postgresql_server && terragrunt apply
 cd ../postgresql_database && terragrunt apply
 
 # Onboarding CDNs
-cd ../cdn_profile && terragrunt apply
-cd ../cdn_endpoint_logos && terragrunt apply
-cd ../cdn_custom_domain_logos && terragrunt apply
 cd ../cdn_endpoint_frontend && terragrunt apply
 cd ../cdn_custom_domain_frontend && terragrunt apply
-
-# Onboarding CDN custom domains
-cd ../dns_cname_records && terragrunt apply
 
 cd ..
 

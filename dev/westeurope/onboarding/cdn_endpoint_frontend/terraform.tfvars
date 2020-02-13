@@ -15,6 +15,6 @@ terragrunt = {
   }
 }
 
-azurerm_cdn_endpoint_profile_suffix = "onboarding"
-azurerm_cdn_endpoint_name = "ob-frontend"
+azurerm_cdn_endpoint_profile_suffix = "01"
+azurerm_cdn_endpoint_name = "onboarding"
 origin_storage_account_suffix = "obfrontend"
