@@ -25,9 +25,9 @@ apim_apis = [
     display_name = "IO API for administration purpose"
     description  = "IO API for administration purpose"
     revision     = "1"
-    path         = ""
+    path         = "adm"
     host         = "api.dev.io.italia.it"
-    protocols    = "http,https"
+    protocols    = "http"
   },
   {
     name         = "io-service"
@@ -36,7 +36,7 @@ apim_apis = [
     revision     = "3"
     path         = "api/v1"
     host         = "api.dev.io.italia.it"
-    protocols    = "http,https"
+    protocols    = "http"
   },
   {
     name         = "io-public"

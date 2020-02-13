@@ -18,3 +18,4 @@ storage_account_name                              = "assets"
 set_firewall                                      = false
 azurerm_storage_account_account_tier              = "Standard"
 azurerm_storage_account_account_replication_type  = "LRS"
+create_keyvault_secret                            = true
