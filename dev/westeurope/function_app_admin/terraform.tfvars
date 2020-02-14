@@ -31,6 +31,10 @@ functionapp_settings = [
     value = "io-dev-sqldb-db-01"
   },
   {
+    name = "LOGOS_URL",
+    value = "https://assets.dev.io.italia.it"
+  },
+  {
     name  = "FUNCTION_APP_EDIT_MODE"
     value = "readonly"
   },
@@ -60,6 +64,10 @@ functionapp_settings_secrets = [
   {
     name        = "StorageConnection"
     vault_alias = "fn2-commons-sa-appdata-primary-connection-string"
+  },
+  {
+    name        = "LogosStorageConnection"
+    vault_alias = "fn2-commons-sa-assets-primary-connection-string"
   }
 ]
 

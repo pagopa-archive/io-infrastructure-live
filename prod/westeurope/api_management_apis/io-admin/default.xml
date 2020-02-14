@@ -1,6 +1,6 @@
 <policies>
     <inbound>
-        <set-backend-service id="apim-generated-policy" base-url="{{AdminFunctionAppBaseUrl}}" />
+        <set-backend-service id="apim-generated-policy" base-url="{{AdminFunctionAppBaseUrl}}/adm" />
         <base />
         <set-header name="x-user-id" exists-action="override">
             <value>@(context.User.Id)</value>

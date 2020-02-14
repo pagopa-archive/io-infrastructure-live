@@ -1,291 +1,360 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "title": "${display_name}",
-        "version": "1.0",
-        "description": "${description}"
+  "swagger": "2.0",
+  "info": {
+    "title": "${display_name}",
+    "version": "1.0",
+    "description": "${description}"
+  },
+  "host": "${host}",
+  "basePath": "/${path}",
+  "schemes": ["https"],
+  "securityDefinitions": {
+    "apiKeyHeader": {
+      "type": "apiKey",
+      "name": "Ocp-Apim-Subscription-Key",
+      "in": "header"
     },
-    "host": "${host}",
-    "basePath": "/${path}",
-    "schemes": [
-        "https"
-    ],
-    "securityDefinitions": {
-        "apiKeyHeader": {
-            "type": "apiKey",
-            "name": "Ocp-Apim-Subscription-Key",
-            "in": "header"
-        },
-        "apiKeyQuery": {
-            "type": "apiKey",
-            "name": "subscription-key",
-            "in": "query"
-        }
+    "apiKeyQuery": {
+      "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
     },
-    "security": [
+    {
+      "apiKeyQuery": []
+    }
+  ],
+  "paths": {
+    "/services/{service_id}": {
+      "parameters": [
         {
-            "apiKeyHeader": []
+          "name": "service_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "The ID of an existing Service."
+        }
+      ],
+      "get": {
+        "operationId": "getService",
+        "summary": "Get Service",
+        "description": "A previously created service with the provided service ID is returned.",
+        "responses": {
+          "200": {
+            "description": "Service found.",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            },
+            "examples": {
+              "application/json": {
+                "id": "2b3e728c1a5d1efa035c-0000000000000001",
+                "authorized_recipients": ["XXXYYY79A95Y000X"],
+                "department_name": "dept",
+                "organization_name": "org",
+                "service_id": "2b3e728c1a5d1efa035c",
+                "service_name": "service",
+                "version": 1,
+                "authorized_cidrs": []
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "No service found for the provided ID."
+          }
+        },
+        "parameters": []
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "Service updated.",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            },
+            "examples": {
+              "application/json": {
+                "id": "2b3e728c1a5d1efa035c-0000000000000001",
+                "authorized_recipients": ["XXXYYY79A95Y000X"],
+                "department_name": "dept",
+                "organization_name": "org",
+                "service_id": "2b3e728c1a5d1efa035c",
+                "service_name": "service",
+                "version": 1,
+                "authorized_cidrs": []
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "No service found for the provided ID."
+          }
+        },
+        "summary": "Update Service",
+        "operationId": "updateService",
+        "description": "Update an existing service with the attributes provided in the\nrequest payload.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            },
+            "description": "The Service payload.",
+            "x-examples": {
+              "application/json": {
+                "authorized_recipients": ["XXXYYY79A95Y000X"],
+                "department_name": "dept",
+                "organization_name": "org",
+                "service_id": "2b3e728c1a5d1efa035c",
+                "service_name": "service",
+                "authorized_cidrs": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/services/{service_id}/logo": {
+      "parameters": [
+        {
+          "name": "service_id",
+          "in": "path",
+          "type": "string",
+          "required": true,
+          "description": "The ID of a existing Service."
         },
         {
-            "apiKeyQuery": []
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/Logo"
+          },
+          "description": "The logo payload"
         }
-    ],
-    "paths": {
-        "/adm/services/{service_id}": {
-            "get": {
-                "description": "A previously created service with the provided service ID is returned.",
-                "operationId": "getService",
-                "summary": "Get Service",
-                "parameters": [
-                    {
-                        "name": "service_id",
-                        "in": "path",
-                        "description": "The ID of an existing Service.",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Service found.",
-                        "schema": {
-                            "$ref": "#/definitions/Service"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "id": "2b3e728c1a5d1efa035c-0000000000000001",
-                                "authorized_recipients": [
-                                    "XXXYYY79A95Y000X"
-                                ],
-                                "department_name": "dept",
-                                "organization_name": "org",
-                                "service_id": "2b3e728c1a5d1efa035c",
-                                "service_name": "service",
-                                "version": 1,
-                                "authorized_cidrs": []
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "No service found for the provided ID."
-                    }
-                },
-                "produces": [
-                    "application/json"
-                ]
-            },
-            "put": {
-                "description": "Update an existing service with the attributes provided in the\nrequest payload.",
-                "operationId": "updateService",
-                "summary": "Update Service",
-                "parameters": [
-                    {
-                        "name": "service_id",
-                        "in": "path",
-                        "description": "The ID of an existing Service.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "service",
-                        "in": "body",
-                        "schema": {
-                            "$ref": "#/definitions/Service"
-                        },
-                        "description": "The Service payload."
-                    }
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Service updated.",
-                        "schema": {
-                            "$ref": "#/definitions/Service"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "id": "2b3e728c1a5d1efa035c-0000000000000001",
-                                "authorized_recipients": [
-                                    "XXXYYY79A95Y000X"
-                                ],
-                                "department_name": "dept",
-                                "organization_name": "org",
-                                "service_id": "2b3e728c1a5d1efa035c",
-                                "service_name": "service",
-                                "version": 1,
-                                "authorized_cidrs": []
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "No service found for the provided ID."
-                    }
-                },
-                "produces": [
-                    "application/json"
-                ]
+      ],
+      "put": {
+        "responses": {
+          "201": {
+            "description": "Logo uploaded.",
+            "headers": {
+              "Location": {
+                "description": "Link to the uploaded logo",
+                "type": "string"
+              }
             }
+          },
+          "400": {
+            "description": "Invalid payload.",
+            "schema": {
+              "$ref": "#/definitions/ProblemJson"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "No service found for the provided ID."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
         },
-        "/adm/services": {
-            "post": {
-                "description": "Create a new Service with the attributes provided in the requst\npayload.",
-                "operationId": "createService",
-                "summary": "Create Service",
-                "parameters": [
-                    {
-                        "name": "service",
-                        "in": "body",
-                        "schema": {
-                            "$ref": "#/definitions/Service"
-                        },
-                        "description": "The Service payload."
-                    }
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Service created.",
-                        "schema": {
-                            "$ref": "#/definitions/Service"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "id": "2b3e728c1a5d1efa035c-0000000000000001",
-                                "authorized_recipients": [
-                                    "XXXYYY79A95Y000X"
-                                ],
-                                "department_name": "dept",
-                                "organization_name": "org",
-                                "service_id": "2b3e728c1a5d1efa035c",
-                                "service_name": "service",
-                                "version": 1,
-                                "authorized_cidrs": []
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    }
-                },
-                "produces": [
-                    "application/json"
-                ]
-            }
-        },
-        "/adm/development-profiles/{fiscal_code}": {
-            "post": {
-                "description": "Create a development profile for the user identified by the\nprovided fiscal code.",
-                "operationId": "createDevelopmentProfile",
-                "summary": "Create DevelopmentProfile",
-                "tags": [
-                    "restricted"
-                ],
-                "parameters": [
-                    {
-                        "name": "fiscal_code",
-                        "in": "path",
-                        "description": "The sandbox fiscal code of the user, all upper case.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "developmentProfile",
-                        "in": "body",
-                        "schema": {
-                            "$ref": "#/definitions/DevelopmentProfile"
-                        }
-                    }
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Profile updated.",
-                        "schema": {
-                            "$ref": "#/definitions/ExtendedProfile"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "email": "foobar@example.com",
-                                "version": 0
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid payload.",
-                        "schema": {
-                            "$ref": "#/definitions/ProblemJson"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "429": {
-                        "description": "Too many requests"
-                    }
-                },
-                "produces": [
-                    "application/json"
-                ]
-            }
-        }
+        "summary": "Upload service logo.",
+        "operationId": "uploadServiceLogo"
+      }
     },
-    "definitions": {
-        "DevelopmentProfile": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "$ref": "#/definitions/EmailAddress"
-                }
+    "/services": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Service created.",
+            "schema": {
+              "$ref": "#/definitions/Service"
             },
-            "required": [
-                "email"
-            ]
+            "examples": {
+              "application/json": {
+                "id": "2b3e728c1a5d1efa035c-0000000000000001",
+                "authorized_recipients": ["XXXYYY79A95Y000X"],
+                "department_name": "dept",
+                "organization_name": "org",
+                "service_id": "2b3e728c1a5d1efa035c",
+                "service_name": "service",
+                "version": 1,
+                "authorized_cidrs": []
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
         },
-        "EmailAddress": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/EmailAddress"
-        },
-        "ProblemJson": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ProblemJson"
-        },
-        "Service": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/Service"
-        },
-        "ServiceId": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceId"
-        },
-        "ServiceName": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceName"
-        },
-        "OrganizationName": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/OrganizationName"
-        },
-        "DepartmentName": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/DepartmentName"
-        },
-        "CIDR": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/CIDR"
-        },
-        "MaxAllowedPaymentAmount": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/MaxAllowedPaymentAmount"
-        },
-        "OrganizationFiscalCode": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/OrganizationFiscalCode"
-        },
-        "ExtendedProfile": {
-            "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ExtendedProfile"
-        }
+        "summary": "Create Service",
+        "description": "Create a new Service with the attributes provided in the requst\npayload.",
+        "operationId": "createService",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Service"
+            },
+            "description": "The Service payload.",
+            "x-examples": {
+              "application/json": {
+                "authorized_recipients": ["XXXYYY79A95Y000X"],
+                "department_name": "dept",
+                "organization_name": "org",
+                "service_id": "2b3e728c1a5d1efa035c",
+                "service_name": "service",
+                "authorized_cidrs": []
+              }
+            }
+          }
+        ]
+      }
     },
-    "tags": []
+    "/development-profiles/{fiscal_code}": {
+      "post": {
+        "tags": ["restricted"],
+        "description": "Create a development profile for the user identified by the\nprovided fiscal code.",
+        "operationId": "createDevelopmentProfile",
+        "summary": "Create DevelopmentProfile",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SandboxFiscalCode"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/DevelopmentProfile"
+            },
+            "x-examples": {
+              "application/json": {
+                "email": "foobar@example.com"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile updated.",
+            "schema": {
+              "$ref": "#/definitions/ExtendedProfile"
+            },
+            "examples": {
+              "application/json": {
+                "email": "foobar@example.com",
+                "version": 0
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid payload.",
+            "schema": {
+              "$ref": "#/definitions/ProblemJson"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Conflict.",
+            "schema": {
+              "$ref": "#/definitions/ProblemJson"
+            }
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DevelopmentProfile": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "$ref": "#/definitions/EmailAddress"
+        }
+      },
+      "required": ["email"]
+    },
+    "EmailAddress": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/EmailAddress"
+    },
+    "ProblemJson": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ProblemJson"
+    },
+    "Service": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/Service"
+    },
+    "ServiceMetadata": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceMetadata"
+    },
+    "ServiceId": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceId"
+    },
+    "ServiceName": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceName"
+    },
+    "OrganizationName": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/OrganizationName"
+    },
+    "DepartmentName": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/DepartmentName"
+    },
+    "CIDR": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/CIDR"
+    },
+    "MaxAllowedPaymentAmount": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/MaxAllowedPaymentAmount"
+    },
+    "OrganizationFiscalCode": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/OrganizationFiscalCode"
+    },
+    "ExtendedProfile": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ExtendedProfile"
+    },
+    "Logo": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "type": "string",
+          "format": "byte",
+          "minLength": 1
+        }
+      },
+      "required": ["logo"]
+    }
+  },
+  "responses": {},
+  "parameters": {
+    "SandboxFiscalCode": {
+      "name": "fiscal_code",
+      "in": "path",
+      "type": "string",
+      "maxLength": 16,
+      "minLength": 16,
+      "required": true,
+      "description": "The sandbox fiscal code of the user, all upper case.",
+      "pattern": "[A-Z]{6}[0-9]{2}A[0-9]{2}Y[0-9]{3}X",
+      "x-example": "SPNDNL80A13Y555X"
+    }
+  },
+  "tags": []
 }
