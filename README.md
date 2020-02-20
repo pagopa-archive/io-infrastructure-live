@@ -229,6 +229,10 @@ The following secrets need to be manually inserted in the Azure Keyvault:
 |`fn2-commons-mailup-username` | *The username used to connect to the MailUP service.* |
 |`fn2-app-public-api-key` | *TBD* |
 |`fn2-services-webhook-channel-url` | *The IO app backend callback URL, formatted as https://APP_BACKEND_ADDR/api/v1/notify?token=APP_BACKEND_PRE_SHARED_KEY where the APP_BACKEND_PRE_SHARED_KEY is a lower-case, alpha-numeric 30 chars string randomly generated* |
+|`fn2-admin-service-principal-client-id` | *ClientId of a service principal (application) that has the Contributor role on the API Management resource* |
+|`fn2-admin-service-principal-secret` | *Secret of a service principal (application) that has the Contributor role on the API Management resource*  |
+|`fn2-admin-service-principal-tenant-id` | *TenantId of a service principal (application) that has the Contributor role on the API Management resource* |
+|`fn2-admin-azure-subscription-id` | *The Azure SubscriptionId of the API management resource* |
 
 ```shell
 # Function-app admin

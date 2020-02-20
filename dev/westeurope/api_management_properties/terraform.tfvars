@@ -62,6 +62,15 @@ apim_groups = [
     name = "ApiProfileWrite"
   },
   {
+    name = "ApiServiceKeyRead"
+  },
+  {
+    name = "ApiServiceKeyWrite"
+  },
+  {
+    name = "ApiServiceList"
+  },
+  {
     name = "ApiPublicServiceList"
   },
   {
