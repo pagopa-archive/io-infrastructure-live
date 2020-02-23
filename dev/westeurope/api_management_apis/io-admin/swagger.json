@@ -177,6 +177,19 @@
       }
     },
     "/services": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "The list of server.",
+            "schema": {
+              "$ref": "#/definitions/ServiceCollection"
+            }
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
       "post": {
         "responses": {
           "200": {
@@ -282,6 +295,38 @@
           }
         }
       }
+    },
+    "/services/{service_id}/keys": {
+      "get": {
+        "summary": "Gets the subscription keys for the Service identified by the provided service_id",
+        "operationId": "getSubscriptionKeys",
+        "parameters": [
+          {
+            "name": "service_id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "The ID of an existing Service."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The subscription keys for the service",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionKeys"
+            }
+          },
+          "400": {
+            "description": "Subscription not found"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -296,6 +341,21 @@
     },
     "EmailAddress": {
       "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/EmailAddress"
+    },
+    "ServiceCollection": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Service"
+          }
+        },
+        "page_size": {
+          "type": "number"
+        }
+      },
+      "required": ["items", "page_size"]
     },
     "ProblemJson": {
       "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ProblemJson"
@@ -340,6 +400,18 @@
         }
       },
       "required": ["logo"]
+    },
+    "SubscriptionKeys": {
+      "type": "object",
+      "properties": {
+        "primary_key": {
+          "type": "string"
+        },
+        "secondary_key": {
+          "type": "string"
+        }
+      },
+      "required": ["primary_key", "secondary_key"]
     }
   },
   "responses": {},
@@ -356,5 +428,7 @@
       "x-example": "SPNDNL80A13Y555X"
     }
   },
-  "tags": []
+  "tags": [],
+  "consumes": ["application/json"],
+  "produces": ["application/json"]
 }

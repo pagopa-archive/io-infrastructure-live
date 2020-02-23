@@ -53,6 +53,14 @@ functionapp_settings = [
   {
     name  = "FUNCTIONS_EXTENSION_VERSION"
     value = "~2"
+  },
+  {
+    name  = "AZURE_APIM",
+    value = "io-prod-apim-01",
+  },
+  {
+    name  = "AZURE_APIM_RESOURCE_GROUP",
+    value = "io-prod-rg",
   }
 ]
 
@@ -68,6 +76,22 @@ functionapp_settings_secrets = [
   {
     name        = "LogosStorageConnection"
     vault_alias = "fn2-commons-sa-assets-primary-connection-string"
+  },
+  {
+    name        = "SERVICE_PRINCIPAL_CLIENT_ID"
+    vault_alias = "fn2-admin-service-principal-client-id"
+  },
+  {
+    name        = "SERVICE_PRINCIPAL_SECRET"
+    vault_alias = "fn2-admin-service-principal-secret"
+  },
+  {
+    name        = "SERVICE_PRINCIPAL_TENANT_ID"
+    vault_alias = "fn2-admin-service-principal-tenant-id"
+  },
+  {
+    name        = "AZURE_SUBSCRIPTION_ID",
+    vault_alias = "fn2-admin-azure-subscription-id",
   }
 ]
 
