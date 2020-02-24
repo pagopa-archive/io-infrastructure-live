@@ -92,6 +92,9 @@ apim_groups = [
   },
   {
     name = "ApiDevelopmentProfileWrite"
+  },
+  {
+    name = "ApiUserAdmin"
   }
 ]
 
