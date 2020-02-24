@@ -37,7 +37,7 @@ kubernetes_cname_records       = [
 developers_cname_records       = [
   {
     name  = "developer"
-    value = "teamdigitale.github.io"
+    value = "pagopa.github.io"
   },
   {
     name  = "dev-portal"
