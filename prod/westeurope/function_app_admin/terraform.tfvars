@@ -59,6 +59,10 @@ functionapp_settings = [
     value = "io-prod-apim-01",
   },
   {
+    name  = "AZURE_APIM_HOST",
+    value = "api.io.italia.it",
+  },
+  {
     name  = "AZURE_APIM_RESOURCE_GROUP",
     value = "io-prod-rg",
   }
