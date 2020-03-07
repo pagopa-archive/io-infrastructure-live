@@ -78,7 +78,7 @@ functionapp_settings_secrets = [
     vault_alias = "fn2-commons-sa-appdata-primary-connection-string"
   },
   {
-    name        = "LogosStorageConnection"
+    name        = "AssetsStorageConnection"
     vault_alias = "fn2-commons-sa-assets-primary-connection-string"
   },
   {
