@@ -389,6 +389,43 @@
           }
         }
       }
+    },
+    "/users/{email}": {
+      "get": {
+        "summary": "Get user",
+        "description": "Gets the user information, that is the complete list of subscription and the complete list of groups for the User identified by the provided email",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "type": "string",
+            "format": "email",
+            "required": true,
+            "description": "The email of the User"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User subscriptions and groups",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -544,6 +581,101 @@
       },
       "required": ["items"]
     },
+    "Group": {
+      "type": "object",
+      "properties": {
+        "display_name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["display_name"]
+    },
+    "Subscription": {
+      "type": "object",
+      "properties": {
+        "allow_tracing": {
+          "type": "boolean"
+        },
+        "created_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiration_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notification_date": {
+          "type": "string"
+        },
+        "owner_id": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "state": {
+          "$ref": "#/definitions/SubscriptionState"
+        },
+        "state_comment": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": ["scope"]
+    },
+    "SubscriptionState": {
+      "type": "string",
+      "x-extensible-enum": [
+        "active",
+        "cancelled",
+        "expired",
+        "rejected",
+        "submitted",
+        "suspended"
+      ]
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Group"
+          }
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Subscription"
+          }
+        }
+      }
+    },
     "UserIdentityContract": {
       "type": "object",
       "properties": {
@@ -574,7 +706,6 @@
       "x-example": "SPNDNL80A13Y555X"
     }
   },
-  "tags": [],
   "consumes": ["application/json"],
   "produces": ["application/json"]
 }
