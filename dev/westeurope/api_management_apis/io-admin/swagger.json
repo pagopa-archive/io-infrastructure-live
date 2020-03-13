@@ -388,6 +388,37 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create user",
+        "description": "Create a new user with a random password in the Active Directory Azure B2C, then create a corresponding user on the API management resource.",
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserPayload"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The new User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
       }
     },
     "/users/{email}": {
@@ -420,6 +451,101 @@
           },
           "404": {
             "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users/{email}/groups": {
+      "put": {
+        "summary": "Update user groups",
+        "description": "Update the list of groups (permissions) associated to the User identified by the provided email",
+        "operationId": "updateGroups",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "type": "string",
+            "format": "email",
+            "required": true,
+            "description": "The email of the User"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserGroupsPayload"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of groups associated to the User",
+            "schema": {
+              "$ref": "#/definitions/GroupCollection"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Resource (User or Product) not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users/{email}/subscriptions/{subscription_id}": {
+      "put": {
+        "summary": "Create subscription",
+        "description": "Create a Subscription identified by the provided subscription id for the User identified by the provided email",
+        "operationId": "createSubscription",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "type": "string",
+            "format": "email",
+            "required": true,
+            "description": "The email of the User"
+          },
+          {
+            "name": "subscription_id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "The id of the Subscription"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ProductNamePayload"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The subscription created",
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Resource (User or Product) not found"
           },
           "500": {
             "description": "Internal server error"
@@ -465,6 +591,9 @@
     "ServiceMetadata": {
       "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceMetadata"
     },
+    "ServiceScope": {
+      "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceScope"
+    },
     "ServiceId": {
       "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ServiceId"
     },
@@ -489,6 +618,53 @@
     "ExtendedProfile": {
       "$ref": "https://raw.githubusercontent.com/teamdigitale/io-functions-commons/master/openapi/definitions.yaml#/ExtendedProfile"
     },
+    "UserGroupsPayload": {
+      "description": "All the groups with which the user must be associated.\nThe already existing associations with groups which are not included in this object will be deleted.",
+      "type": "object",
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "description": "The value of `displayName` property of the group on the APIM",
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": ["groups"],
+      "example": {
+        "groups": ["ApiInfoRead", "ApiLimitedMessageWrite", "ApiMessageRead"]
+      }
+    },
+    "UserPayload": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "$ref": "#/definitions/EmailAddress"
+        },
+        "first_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["email", "first_name", "last_name"]
+    },
+    "GroupCollection": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Group"
+          }
+        }
+      },
+      "required": ["items"]
+    },
     "Logo": {
       "type": "object",
       "properties": {
@@ -499,6 +675,16 @@
         }
       },
       "required": ["logo"]
+    },
+    "ProductNamePayload": {
+      "type": "object",
+      "properties": {
+        "product_name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["product_name"]
     },
     "SubscriptionKeyTypePayload": {
       "type": "object",
