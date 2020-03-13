@@ -68,11 +68,11 @@ functionapp_settings = [
   },
   {
     name        = "ADB2C_CLIENT_ID",
-    vault_alias = "9f9b1d90-dd47-4be4-8546-800763b36fb9",
+    value       = "9f9b1d90-dd47-4be4-8546-800763b36fb9",
   },
   {
     name        = "ADB2C_TENANT_ID",
-    vault_alias = "agidweb.onmicrosoft.com",
+    value       = "agidweb.onmicrosoft.com",
   }
 ]
 
