@@ -65,6 +65,14 @@ functionapp_settings = [
   {
     name  = "AZURE_APIM_RESOURCE_GROUP",
     value = "io-prod-rg",
+  },
+  {
+    name        = "ADB2C_CLIENT_ID",
+    vault_alias = "9f9b1d90-dd47-4be4-8546-800763b36fb9",
+  },
+  {
+    name        = "ADB2C_TENANT_ID",
+    vault_alias = "agidweb.onmicrosoft.com",
   }
 ]
 
@@ -96,6 +104,10 @@ functionapp_settings_secrets = [
   {
     name        = "AZURE_SUBSCRIPTION_ID",
     vault_alias = "fn2-admin-azure-subscription-id",
+  },
+  {
+    name        = "ADB2C_CLIENT_KEY",
+    vault_alias = "fn2-admin-adb2c-client-key",
   }
 ]
 
